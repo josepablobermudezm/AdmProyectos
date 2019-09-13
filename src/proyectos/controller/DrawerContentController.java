@@ -48,7 +48,7 @@ public class DrawerContentController extends Controller {
         
         Image img;
         try {
-            img = new Image("/proyectos/resources/r.png");
+            img = new Image("/proyectos/resources/user (4).jpg");
             image.setImage(img);
         } catch (Exception e) {
         }

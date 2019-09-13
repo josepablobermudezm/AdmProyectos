@@ -10,6 +10,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import proyectos.util.FlowController;
@@ -22,6 +23,10 @@ public class Proyectos extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
+        
+        stage.setTitle("Administrador de Proyectos");
+        stage.getIcons().add(new Image("/proyectos/resources/icon.png"));
+        
         FlowController.getInstance().InitializeFlow(stage, null);
         FlowController.getInstance().goMain();
     }

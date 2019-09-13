@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package proyectos.controller;
 
 import com.jfoenix.controls.JFXButton;
@@ -33,80 +29,66 @@ public class MantenimientoProyectosController extends Controller  {
     @FXML
     private TableView<?> table;
     @FXML
-    private JFXTextField txtNombre;
-    @FXML
-    private JFXTextField txtCedula;
-    @FXML
-    private JFXTextField txtCorreo;
-    @FXML
     private JFXButton btnEditar1;
     @FXML
     private JFXButton btnEliminar1;
     @FXML
     private JFXButton btnAgregar1;
     @FXML
-    private ToggleGroup genero;
-    @FXML
     private JFXTextField txtFiltroEmpleado;
     @FXML
     private JFXButton btnBuscar;
-    private JFXTextField txtApellido;
     @FXML
-    private JFXDatePicker FechaDeNacimiento;
-    private Respuesta resp;
-    //private PacienteService pacienteService;
-    //private PacienteDto pacienteDto;
-    private Mensaje ms;
-    //private ArrayList<PacienteDto> pacientes;
-    private ObservableList items;
+    private JFXTextField txtNombreProyecto;
     @FXML
-    private TableColumn<?, String> COL_NOMBRE_PAC;
+    private JFXRadioButton btnSuspendido;
     @FXML
-    private TableColumn<?, String> COL_PAPELLIDO_PAC;
+    private ToggleGroup estado;
     @FXML
-    private TableColumn<?, String> COL_SAPELLIDO_PAC;
+    private JFXRadioButton btnEnCurso;
     @FXML
-    private TableColumn<?, String> COL_CEDULA_PAC;
+    private JFXRadioButton btnFinalizado;
     @FXML
-    private TableColumn<?, String> COL_CORREO_PAC;
+    private JFXTextField txtPatrocinador;
     @FXML
-    private TableColumn<?, String> COL_GENERO_PAC;
+    private JFXTextField txtLiderUsuario;
     @FXML
-    private TableColumn<?, String> COL_FECHANACIMIENTO_PAC;
+    private JFXTextField txtLiderTecnico;
     @FXML
-    private JFXTextField txtPApellido;
+    private JFXTextField txtCorreoLiderTecnico;
     @FXML
-    private JFXTextField txtSApellido;
+    private JFXTextField txtCorreoPatrocinador;
     @FXML
-    private JFXRadioButton btnMujer;
+    private JFXTextField txtCorreoLiderUsuario;
     @FXML
-    private JFXRadioButton btnHombre;
+    private TableColumn<?, String> COL_NOMBRE_PRO;
+    @FXML
+    private TableColumn<?, String> COL_LIDER_TECNICO_PRO;
+    @FXML
+    private TableColumn<?, String> COL_CORREO_LIDERTECNICO_PRO;
+    @FXML
+    private TableColumn<?, String> COL_PATROCINADOR_PRO;
+    @FXML
+    private TableColumn<?, String> COL_CORREO_PATROCINADOR_PRO;
+    @FXML
+    private TableColumn<?, String> COL_LIDERUSUARIO_PRO;
+    @FXML
+    private TableColumn<?, String> COL_CORREO_LIDERUSUARIO_PRO;
     
     
     @Override
     public void initialize() {
-        /*btnAgregar1.setCursor(Cursor.HAND);
-        btnBuscar.setCursor(Cursor.HAND);
-        btnEditar1.setCursor(Cursor.HAND);
-        btnEliminar1.setCursor(Cursor.HAND);
-        /*
-        /*typeKeys();
-        pacienteService = new PacienteService();
-        ms = new Mensaje();
-        resp = pacienteService.getPacientes();
-        pacientes = ((ArrayList<PacienteDto>) resp.getResultado("Pacientes"));
-        
-        COL_NOMBRE_PAC.setCellValueFactory(value -> new SimpleStringProperty(value.getValue().getNombre()));
-        COL_PAPELLIDO_PAC.setCellValueFactory(value -> new SimpleStringProperty(value.getValue().getpApellido()));
-        COL_SAPELLIDO_PAC.setCellValueFactory(value -> new SimpleStringProperty(value.getValue().getsApellido()));
-        COL_CEDULA_PAC.setCellValueFactory(value -> new SimpleStringProperty(value.getValue().getCedula()));
-        COL_CORREO_PAC.setCellValueFactory(value -> new SimpleStringProperty(value.getValue().getCorreo()));
-        COL_GENERO_PAC.setCellValueFactory(value -> new SimpleStringProperty(value.getValue().getGenero()));
-        COL_FECHANACIMIENTO_PAC.setCellValueFactory(value -> new SimpleStringProperty((value.getValue().getFechaNacimiento()!=null)?value.getValue().getFechaNacimiento().toString():"NULO"));
+/*
+        COL_NOMBRE_PRO.setCellValueFactory(value -> new SimpleStringProperty(value.getValue().getNombre()));
+        COL_LIDER_TECNICO_PRO.setCellValueFactory(value -> new SimpleStringProperty(value.getValue().getpApellido()));
+        COL_CORREO_LIDERTECNICO_PRO.setCellValueFactory(value -> new SimpleStringProperty(value.getValue().getsApellido()));
+        COL_PATROCINADOR_PRO.setCellValueFactory(value -> new SimpleStringProperty(value.getValue().getCedula()));
+        COL_CORREO_PATROCINADOR_PRO.setCellValueFactory(value -> new SimpleStringProperty(value.getValue().getCorreo()));
+        COL_LIDERUSUARIO_PRO.setCellValueFactory(value -> new SimpleStringProperty(value.getValue().getGenero()));
+        COL_CORREO_LIDERUSUARIO_PRO.setCellValueFactory(value -> new SimpleStringProperty((value.getValue().getFechaNacimiento()!=null)?value.getValue().getFechaNacimiento().toString():"NULO"));
         
         items = FXCollections.observableArrayList(pacientes);
         table.setItems(items);*/
-        //FechaDeNacimiento.getValue().
     }
     
 
@@ -143,32 +125,30 @@ public class MantenimientoProyectosController extends Controller  {
     }
 
     boolean registroCorrecto() {
-        return !txtNombre.getText().isEmpty() && !txtCedula.getText().isEmpty()
-               && !txtPApellido.getText().isEmpty() && !txtSApellido.getText().isEmpty()
-               && !FechaDeNacimiento.getValue().toString().isEmpty()
-               && !txtCorreo.getText().isEmpty() && (btnHombre.isSelected() || btnMujer.isSelected());
+        return !txtCorreoLiderTecnico.getText().isEmpty() && !txtCorreoLiderUsuario.getText().isEmpty()
+               && !txtCorreoPatrocinador.getText().isEmpty() && !txtLiderTecnico.getText().isEmpty()
+               && !txtLiderUsuario.getText().isEmpty() && !txtPatrocinador.getText().isEmpty()
+               && !txtNombreProyecto.getText().isEmpty() 
+               && (btnEnCurso.isSelected() || btnFinalizado.isSelected() || btnSuspendido.isSelected());
     }
     
     void limpiarValores() {
-        txtNombre.clear();
-        txtPApellido.clear();
-        txtSApellido.clear();
-        txtCorreo.clear();
-        txtCedula.clear();
-        btnMujer.setSelected(false);
-        btnHombre.setSelected(false);
-        FechaDeNacimiento.setValue(null);
+        txtCorreoLiderTecnico.clear();
+        txtCorreoLiderUsuario.clear();
+        txtCorreoPatrocinador.clear();
+        txtLiderTecnico.clear();
+        txtLiderUsuario.clear();
+        txtPatrocinador.clear();
+        txtNombreProyecto.clear();
+        btnEnCurso.setSelected(false);
+        btnFinalizado.setSelected(false);
+        btnSuspendido.setSelected(false);
         table.getSelectionModel().clearSelection();
     }
-    
-    private void typeKeys() {
-        txtNombre.setOnKeyTyped(Proyectos.aceptaCaracteres);
-        txtSApellido.setOnKeyTyped(Proyectos.aceptaCaracteres);
-        txtPApellido.setOnKeyTyped(Proyectos.aceptaCaracteres);
-    }
+
 
     @FXML
-    private void DatosPaciente(MouseEvent event) {
+    private void DatosProyecto(MouseEvent event) {
         
         
     

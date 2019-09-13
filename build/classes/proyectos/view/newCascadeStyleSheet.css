@@ -1,7 +1,7 @@
 
 #Titulo{
     -fx-text-fill: gray;
-    -fx-font-size : 35pt;
+    -fx-font-size : 25pt;
     -jfx-focus-color: -fx-secondary;
 }
 
@@ -21,25 +21,7 @@
     -fx-text-fill : gray;
 }
 .root{
-    -fx-background-color: white;
-}
-.calendar_pane {
-    -fx-background-color:  white;
-    -fx-border-style: dashed;
-    -fx-border-width: .5;
-    -fx-border-color: gray;
-}
-.calendar_pane:hover{
-    -fx-background-color: #0747b5;
-    -fx-border-style: solid;
-    -fx-border-width: 2.5;
-    -fx-border-color: gray;
-}
-.calendar_pane:pressed{
-    -fx-background-color: #042a6b;
-    -fx-border-style: solid;
-    -fx-border-width: 5.5;
-    -fx-border-color: gray;
+    -fx-background-color: F7F7F7;
 }
 
 .custom-jfx-radio-button-white{
@@ -48,19 +30,20 @@
 }
 
 .button{
-    -fx-background-color:#042a6b;
+    -fx-background-color: #0033AA;
     -jfx-button-type: RAISED;/*raised and flat*/
     -fx-text-fill: WHITE;
+    -fx-text-height: bold;
     -jfx-rippler-fill: RED;
 }
 .button:hover {
-    -fx-background-color: #06388f;
+    -fx-background-color: #0022DD;
     -jfx-button-type: RAISED;/*raised and flat*/
     -fx-text-fill: WHITE;
     -jfx-rippler-fill: RED;
 }
 .button .jfx-rippler{
-    -jfx-rippler-fill: #577fc2;
+    -jfx-rippler-fill: #7492c4;
 }
 
 .button:disabled{
@@ -73,29 +56,29 @@
 
 
 .table-view{
-   -fx-background-color: #042a6b;
+   -fx-background-color: #0033AA;
 }
 
 .table-view:focused{
-    -fx-background-color:#042a6b;
+    -fx-background-color:#0033AA;
 }
 
 
 .table-view .column-header-background{
-    -fx-background-color: #042a6b;
+    -fx-background-color: #0033AA;
 }
 
 .table-view .column-header-background .label{
-    -fx-background-color: #042a6b;
+    -fx-background-color: #0033AA;
     -fx-text-fill:white;
 }
 
 .table-view .column-header {
-    -fx-background-color: #042a6b;
+    -fx-background-color: #0033AA;
 }
 
 .table-view .table-cell{
-    -fx-text-fill: #042a6b;
+    -fx-text-fill: #0033AA;
 }
 
 .table-cell {     
@@ -120,8 +103,8 @@
 .table-view .cell{
    -fx-cell-size: 40;
   -fx-alignment: center-left;
-  -fx-background-color: #042a6b;
-  -fx-border-color: #042a6b;
+  -fx-background-color: #0033AA;
+  -fx-border-color: #0033AA;
   -fx-text-fill: white;
   -fx-alignment: CENTER_LEFT;
    
@@ -129,28 +112,28 @@
 /*celda selecionada*/
 .table-row-cell:selected {
    -fx-background-color: whitesmoke; 
-   -fx-text-background-color:  #042a6b;
+   -fx-text-background-color:  #0033AA;
 }
 /*fondo de la barra*/
 .table-view .scroll-bar:horizontal .track,
 .table-view .scroll-bar:vertical .track{
-	-fx-background-color: #042a6b;
-	-fx-border-color:#042a6b;
+	-fx-background-color: #0033AA;
+	-fx-border-color:#0033AA;
 }
 /*barra del tableview*/
 .table-view .scroll-bar:horizontal .thumb,
 .table-view .scroll-bar:vertical .thumb {
-    -fx-background-color:#042a6b;
+    -fx-background-color:#0033AA;
 	-fx-background-insets: 2, 0, 0;
 	-fx-background-radius: 2em;
 
 }
 .table-view .increment-button ,.table-view .decrement-button {
-    -fx-background-color:#042a6b;
-    -fx-border-color: #042a6b;
+    -fx-background-color:#0033AA;
+    -fx-border-color: #0033AA;
 }
 .jfx-hamburger StackPane {
-	-fx-background-color: #06388f;
+	-fx-background-color: #0033AA;
 }
 .text-field{
     -fx-prompt-text-fill: black;

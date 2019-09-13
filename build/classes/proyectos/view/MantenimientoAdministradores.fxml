@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXTimePicker?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -29,7 +28,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label fx:id="Titulo" text="        Mantenimiento1" GridPane.columnIndex="1" />
+                  <Label fx:id="Titulo" text="    Mantenimiento de Administradores" GridPane.columnIndex="1" />
                </children>
             </GridPane>
             <GridPane layoutY="68.0" prefHeight="62.0" prefWidth="1030.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
@@ -57,15 +56,15 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <TableView fx:id="table" onMouseReleased="#DatosMedico" prefHeight="280.0" prefWidth="950.0" GridPane.columnIndex="1">
+                  <TableView fx:id="table" onMouseReleased="#DatosAdministradores" prefHeight="280.0" prefWidth="950.0" GridPane.columnIndex="1">
                      <columns>
-                        <TableColumn fx:id="COL_CODIGO_MEDICOS" prefWidth="135.0" text="Dato" />
-                        <TableColumn fx:id="COL_FOLIO_MEDICOS" prefWidth="135.0" text="Dato2" />
-                        <TableColumn fx:id="COL_CARNE_MEDICOS" prefWidth="135.0" text="Dato3" />
-                        <TableColumn fx:id="COL_ESTADO_MEDICOS" prefWidth="135.0" text="Dato4" />
-                        <TableColumn fx:id="COL_INICIO_MEDICOS" prefWidth="135.0" text="Dato5" />
-                        <TableColumn fx:id="COL_FINAL_MEDICOS" prefWidth="135.0" text="Dato6" />
-                        <TableColumn fx:id="COL_ESPACIOS_MEDICOS" prefWidth="142.0" text="Dato7" />
+                        <TableColumn fx:id="COL_NOMBRE_ADM" prefWidth="135.0" text="Nombre" />
+                        <TableColumn fx:id="COL_PAPELLIDO_ADM" prefWidth="135.0" text="Primer Apellido" />
+                        <TableColumn fx:id="COL_SAPELLIDO_ADM" prefWidth="135.0" text="Segundo Apellido" />
+                        <TableColumn fx:id="COL_CEDULA_ADM" prefWidth="135.0" text="Cédula" />
+                        <TableColumn fx:id="COL_USUARIO_ADM" prefWidth="135.0" text="Usuario" />
+                        <TableColumn fx:id="COL_CONTRASENA_ADM" prefWidth="135.0" text="Contraseña" />
+                        <TableColumn fx:id="COL_CORREO_ADM" prefWidth="142.0" text="Correo" />
                      </columns>
                   </TableView>
                </children>
@@ -85,9 +84,9 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <JFXTextField fx:id="txtFolio" labelFloat="true" prefHeight="29.0" prefWidth="250.0" promptText="Dato2" GridPane.columnIndex="3" />
-                  <JFXTextField fx:id="txtCarne" labelFloat="true" prefHeight="29.0" prefWidth="250.0" promptText="Dato3" GridPane.columnIndex="5" />
-                  <JFXTextField fx:id="txtNombreUsuario" promptText="Dato" GridPane.columnIndex="1" />
+                  <JFXTextField fx:id="txtPapellido" labelFloat="true" prefHeight="29.0" prefWidth="250.0" promptText="Primer Apellido" GridPane.columnIndex="3" />
+                  <JFXTextField fx:id="txtSapellido" labelFloat="true" prefHeight="29.0" prefWidth="250.0" promptText="Segundo Apellido" GridPane.columnIndex="5" />
+                  <JFXTextField fx:id="txtNombre" promptText="Nombre" GridPane.columnIndex="1" />
                </children>
             </GridPane>
             <GridPane layoutY="537.0" prefHeight="62.0" prefWidth="1033.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="537.0">
@@ -105,9 +104,9 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <JFXTimePicker fx:id="timePickerInicio" prefHeight="29.0" prefWidth="250.0" promptText="Inicio Jornada" GridPane.columnIndex="3" />
-                  <JFXTimePicker fx:id="timePickerfinal" prefHeight="29.0" prefWidth="250.0" promptText="Final Jornada" GridPane.columnIndex="5" />
-                  <JFXTextField fx:id="txtCodigo" labelFloat="true" prefHeight="29.0" prefWidth="250.0" promptText="Dato4" GridPane.columnIndex="1" />
+                  <JFXTextField fx:id="txtCedula" labelFloat="true" prefHeight="29.0" prefWidth="250.0" promptText="Cédula" GridPane.columnIndex="1" />
+                  <JFXTextField fx:id="txtUsuario" labelFloat="true" prefHeight="29.0" prefWidth="61.0" promptText="Usuario" GridPane.columnIndex="3" />
+                  <JFXTextField fx:id="txtContraseña" labelFloat="true" prefHeight="29.0" prefWidth="250.0" promptText="Contraseña" GridPane.columnIndex="5" />
                </children>
             </GridPane>
             <GridPane layoutY="618.0" prefHeight="62.0" prefWidth="1033.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="618.0">
@@ -124,7 +123,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <JFXTextField fx:id="txtEspacio" prefHeight="29.0" prefWidth="250.0" promptText="Dato4" GridPane.columnIndex="2" />
+                  <JFXTextField fx:id="txtCorreo" prefHeight="29.0" prefWidth="250.0" promptText="Correo" GridPane.columnIndex="2" />
                   <HBox prefHeight="72.0" prefWidth="443.0" spacing="20.0" GridPane.columnIndex="4">
                      <padding>
                         <Insets left="20.0" right="20.0" top="40.0" />

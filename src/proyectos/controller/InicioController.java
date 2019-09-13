@@ -18,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -56,6 +57,13 @@ public class InicioController extends Controller {
     @Override
     public void initialize() {
 
+        Image omg1;
+        try {
+            omg1 = new Image("/proyectos/resources/background (1).jpg");
+            omg.setImage(omg1);
+        } catch (Exception e) {
+        }
+        
         try {
         VBox box = FXMLLoader.load(getClass().getResource("/proyectos/view/drawerContent.fxml"));
         drawer.setSidePane(box);
