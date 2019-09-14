@@ -14,6 +14,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import proyectos.Proyectos;
+import proyectos.util.Formato;
 import proyectos.util.Mensaje;
 import proyectos.util.Respuesta;
 
@@ -152,6 +153,18 @@ public class MantenimientoProyectosController extends Controller  {
         
         
     
+    }
+    //metodos extra
+    //metodo para dar formato a los distintos elementos
+    public void iniciarObjetos(){
+        txtCorreoLiderTecnico.setTextFormatter(Formato.getInstance().maxLengthFormat(20));
+        txtCorreoLiderUsuario.setTextFormatter(Formato.getInstance().maxLengthFormat(20));
+        txtCorreoPatrocinador.setTextFormatter(Formato.getInstance().maxLengthFormat(20));
+   
+        txtLiderTecnico.setTextFormatter(Formato.getInstance().letrasFormat(20));
+        txtLiderUsuario.setTextFormatter(Formato.getInstance().letrasFormat(20));
+        txtNombreProyecto.setTextFormatter(Formato.getInstance().maxLengthFormat(20));
+        txtPatrocinador.setTextFormatter(Formato.getInstance().letrasFormat(20));
     }
 
 }
