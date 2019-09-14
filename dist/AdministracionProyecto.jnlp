@@ -8,11 +8,8 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="AdministracionProyecto.jar" size="582829" download="eager" />
-    <jar href="lib\javax.persistence_2.1.1.v201509150925.jar" size="162116" download="eager" />
+    <jar href="AdministracionProyecto.jar" size="582750" download="eager" />
     <jar href="lib\jfoenix.jar" size="2372209" download="eager" />
-    <jar href="lib\mail.jar" size="521000" download="eager" />
-    <jar href="lib\ojdbc7.jar" size="3397734" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="AdministracionProyecto" >
     <param name="requiredFXVersion" value="8.0+"/>
