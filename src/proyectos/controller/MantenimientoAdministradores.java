@@ -11,6 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import proyectos.util.Formato;
 import proyectos.util.Mensaje;
 import proyectos.util.Respuesta;
 
@@ -128,5 +129,16 @@ public class MantenimientoAdministradores extends Controller {
 
     @FXML
     private void agregar(ActionEvent event) {
+    }
+    //metodos extra
+    // Da formato a los distintos elementos graficos
+    public void iniciarObjetos(){
+        txtNombre.setTextFormatter(Formato.getInstance().letrasFormat(20));
+        txtContraseña.setTextFormatter(Formato.getInstance().maxLengthFormat(8));
+        txtCorreo.setTextFormatter(Formato.getInstance().maxLengthFormat(20));
+        txtPapellido.setTextFormatter(Formato.getInstance().letrasFormat(20));
+        txtSapellido.setTextFormatter(Formato.getInstance().letrasFormat(20));
+        txtUsuario.setTextFormatter(Formato.getInstance().maxLengthFormat(20));
+        txtCedula.setTextFormatter(Formato.getInstance().cedulaFormat(10)); //revisar
     }
 }
