@@ -3,20 +3,21 @@ package webservice;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para guardar complex type.
+ * <p>Clase Java para eliminarAdministrador complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="guardar">
+ * &lt;complexType name="eliminarAdministrador">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="usuario" type="{http://webService/}tblProyecto" minOccurs="0"/>
+ *         &lt;element name="ID" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -26,35 +27,36 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "guardar", propOrder = {
-    "usuario"
+@XmlType(name = "eliminarAdministrador", propOrder = {
+    "id"
 })
-public class Guardar {
+public class EliminarAdministrador {
 
-    protected TblProyecto usuario;
+    @XmlElement(name = "ID")
+    protected Long id;
 
     /**
-     * Obtiene el valor de la propiedad usuario.
+     * Obtiene el valor de la propiedad id.
      * 
      * @return
      *     possible object is
-     *     {@link TblProyecto }
+     *     {@link Long }
      *     
      */
-    public TblProyecto getUsuario() {
-        return usuario;
+    public Long getID() {
+        return id;
     }
 
     /**
-     * Define el valor de la propiedad usuario.
+     * Define el valor de la propiedad id.
      * 
      * @param value
      *     allowed object is
-     *     {@link TblProyecto }
+     *     {@link Long }
      *     
      */
-    public void setUsuario(TblProyecto value) {
-        this.usuario = value;
+    public void setID(Long value) {
+        this.id = value;
     }
 
 }

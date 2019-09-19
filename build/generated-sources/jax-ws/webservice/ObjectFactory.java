@@ -24,11 +24,16 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _HelloResponse_QNAME = new QName("http://webService/", "helloResponse");
-    private final static QName _TblProyecto_QNAME = new QName("http://webService/", "tblProyecto");
-    private final static QName _Guardar_QNAME = new QName("http://webService/", "guardar");
-    private final static QName _GuardarResponse_QNAME = new QName("http://webService/", "guardarResponse");
-    private final static QName _Hello_QNAME = new QName("http://webService/", "hello");
+    private final static QName _GetProyectoPorIDResponse_QNAME = new QName("http://webService/", "getProyectoPorIDResponse");
+    private final static QName _GetAdministradorResponse_QNAME = new QName("http://webService/", "getAdministradorResponse");
+    private final static QName _AdministradorDto_QNAME = new QName("http://webService/", "AdministradorDto");
+    private final static QName _EliminarAdministrador_QNAME = new QName("http://webService/", "eliminarAdministrador");
+    private final static QName _GuardarAdministrador_QNAME = new QName("http://webService/", "guardarAdministrador");
+    private final static QName _EliminarAdministradorResponse_QNAME = new QName("http://webService/", "eliminarAdministradorResponse");
+    private final static QName _GuardarAdministradorResponse_QNAME = new QName("http://webService/", "guardarAdministradorResponse");
+    private final static QName _GetProyectoPorID_QNAME = new QName("http://webService/", "getProyectoPorID");
+    private final static QName _GetAdministrador_QNAME = new QName("http://webService/", "getAdministrador");
+    private final static QName _ProyectoDto_QNAME = new QName("http://webService/", "ProyectoDto");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: webservice
@@ -38,88 +43,181 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TblProyecto }
+     * Create an instance of {@link GuardarAdministrador }
      * 
      */
-    public TblProyecto createTblProyecto() {
-        return new TblProyecto();
+    public GuardarAdministrador createGuardarAdministrador() {
+        return new GuardarAdministrador();
     }
 
     /**
-     * Create an instance of {@link Guardar }
+     * Create an instance of {@link EliminarAdministrador }
      * 
      */
-    public Guardar createGuardar() {
-        return new Guardar();
+    public EliminarAdministrador createEliminarAdministrador() {
+        return new EliminarAdministrador();
     }
 
     /**
-     * Create an instance of {@link HelloResponse }
+     * Create an instance of {@link GetAdministradorResponse }
      * 
      */
-    public HelloResponse createHelloResponse() {
-        return new HelloResponse();
+    public GetAdministradorResponse createGetAdministradorResponse() {
+        return new GetAdministradorResponse();
     }
 
     /**
-     * Create an instance of {@link Hello }
+     * Create an instance of {@link GetProyectoPorIDResponse }
      * 
      */
-    public Hello createHello() {
-        return new Hello();
+    public GetProyectoPorIDResponse createGetProyectoPorIDResponse() {
+        return new GetProyectoPorIDResponse();
     }
 
     /**
-     * Create an instance of {@link GuardarResponse }
+     * Create an instance of {@link AdministradorDto }
      * 
      */
-    public GuardarResponse createGuardarResponse() {
-        return new GuardarResponse();
+    public AdministradorDto createAdministradorDto() {
+        return new AdministradorDto();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link HelloResponse }{@code >}}
+     * Create an instance of {@link GetAdministrador }
      * 
      */
-    @XmlElementDecl(namespace = "http://webService/", name = "helloResponse")
-    public JAXBElement<HelloResponse> createHelloResponse(HelloResponse value) {
-        return new JAXBElement<HelloResponse>(_HelloResponse_QNAME, HelloResponse.class, null, value);
+    public GetAdministrador createGetAdministrador() {
+        return new GetAdministrador();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link TblProyecto }{@code >}}
+     * Create an instance of {@link GetProyectoPorID }
      * 
      */
-    @XmlElementDecl(namespace = "http://webService/", name = "tblProyecto")
-    public JAXBElement<TblProyecto> createTblProyecto(TblProyecto value) {
-        return new JAXBElement<TblProyecto>(_TblProyecto_QNAME, TblProyecto.class, null, value);
+    public GetProyectoPorID createGetProyectoPorID() {
+        return new GetProyectoPorID();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Guardar }{@code >}}
+     * Create an instance of {@link ProyectoDto }
      * 
      */
-    @XmlElementDecl(namespace = "http://webService/", name = "guardar")
-    public JAXBElement<Guardar> createGuardar(Guardar value) {
-        return new JAXBElement<Guardar>(_Guardar_QNAME, Guardar.class, null, value);
+    public ProyectoDto createProyectoDto() {
+        return new ProyectoDto();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GuardarResponse }{@code >}}
+     * Create an instance of {@link EliminarAdministradorResponse }
      * 
      */
-    @XmlElementDecl(namespace = "http://webService/", name = "guardarResponse")
-    public JAXBElement<GuardarResponse> createGuardarResponse(GuardarResponse value) {
-        return new JAXBElement<GuardarResponse>(_GuardarResponse_QNAME, GuardarResponse.class, null, value);
+    public EliminarAdministradorResponse createEliminarAdministradorResponse() {
+        return new EliminarAdministradorResponse();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Hello }{@code >}}
+     * Create an instance of {@link GuardarAdministradorResponse }
      * 
      */
-    @XmlElementDecl(namespace = "http://webService/", name = "hello")
-    public JAXBElement<Hello> createHello(Hello value) {
-        return new JAXBElement<Hello>(_Hello_QNAME, Hello.class, null, value);
+    public GuardarAdministradorResponse createGuardarAdministradorResponse() {
+        return new GuardarAdministradorResponse();
+    }
+
+    /**
+     * Create an instance of {@link Respuesta }
+     * 
+     */
+    public Respuesta createRespuesta() {
+        return new Respuesta();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetProyectoPorIDResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService/", name = "getProyectoPorIDResponse")
+    public JAXBElement<GetProyectoPorIDResponse> createGetProyectoPorIDResponse(GetProyectoPorIDResponse value) {
+        return new JAXBElement<GetProyectoPorIDResponse>(_GetProyectoPorIDResponse_QNAME, GetProyectoPorIDResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetAdministradorResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService/", name = "getAdministradorResponse")
+    public JAXBElement<GetAdministradorResponse> createGetAdministradorResponse(GetAdministradorResponse value) {
+        return new JAXBElement<GetAdministradorResponse>(_GetAdministradorResponse_QNAME, GetAdministradorResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AdministradorDto }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService/", name = "AdministradorDto")
+    public JAXBElement<AdministradorDto> createAdministradorDto(AdministradorDto value) {
+        return new JAXBElement<AdministradorDto>(_AdministradorDto_QNAME, AdministradorDto.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link EliminarAdministrador }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService/", name = "eliminarAdministrador")
+    public JAXBElement<EliminarAdministrador> createEliminarAdministrador(EliminarAdministrador value) {
+        return new JAXBElement<EliminarAdministrador>(_EliminarAdministrador_QNAME, EliminarAdministrador.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GuardarAdministrador }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService/", name = "guardarAdministrador")
+    public JAXBElement<GuardarAdministrador> createGuardarAdministrador(GuardarAdministrador value) {
+        return new JAXBElement<GuardarAdministrador>(_GuardarAdministrador_QNAME, GuardarAdministrador.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link EliminarAdministradorResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService/", name = "eliminarAdministradorResponse")
+    public JAXBElement<EliminarAdministradorResponse> createEliminarAdministradorResponse(EliminarAdministradorResponse value) {
+        return new JAXBElement<EliminarAdministradorResponse>(_EliminarAdministradorResponse_QNAME, EliminarAdministradorResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GuardarAdministradorResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService/", name = "guardarAdministradorResponse")
+    public JAXBElement<GuardarAdministradorResponse> createGuardarAdministradorResponse(GuardarAdministradorResponse value) {
+        return new JAXBElement<GuardarAdministradorResponse>(_GuardarAdministradorResponse_QNAME, GuardarAdministradorResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetProyectoPorID }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService/", name = "getProyectoPorID")
+    public JAXBElement<GetProyectoPorID> createGetProyectoPorID(GetProyectoPorID value) {
+        return new JAXBElement<GetProyectoPorID>(_GetProyectoPorID_QNAME, GetProyectoPorID.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetAdministrador }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService/", name = "getAdministrador")
+    public JAXBElement<GetAdministrador> createGetAdministrador(GetAdministrador value) {
+        return new JAXBElement<GetAdministrador>(_GetAdministrador_QNAME, GetAdministrador.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ProyectoDto }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService/", name = "ProyectoDto")
+    public JAXBElement<ProyectoDto> createProyectoDto(ProyectoDto value) {
+        return new JAXBElement<ProyectoDto>(_ProyectoDto_QNAME, ProyectoDto.class, null, value);
     }
 
 }

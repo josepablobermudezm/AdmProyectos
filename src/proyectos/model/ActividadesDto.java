@@ -17,31 +17,18 @@ import proyectos.util.LocalDateAdapter;
  *
  * @author Jose Pablo Bermudez
  */
-@XmlRootElement(name = "ActividadesDto")
-@XmlAccessorType(XmlAccessType.PUBLIC_MEMBER)
 public class ActividadesDto {
     
-    @XmlTransient
     private Long ID;
-    @XmlTransient
     private String descripcion;
-    @XmlTransient
     private String encargado;
-    @XmlTransient
     private String estado;
-    @XmlTransient
     private LocalDate inicioReal;
-    @XmlTransient
     private LocalDate inicioEsperado;
-    @XmlTransient
     private LocalDate finalEsperado;
-    @XmlTransient
     private LocalDate finalReal;
-    @XmlTransient
     private Integer order;
-    @XmlTransient
     private Long version;
-    @XmlTransient
     private ProyectoDto proyecto;
 
     public ActividadesDto(Long ID, String descripcion, String encargado, String estado, LocalDate inicioReal, LocalDate inicioEsperado, LocalDate finalEsperado, LocalDate finalReal, Integer order, Long version, ProyectoDto proyecto) {

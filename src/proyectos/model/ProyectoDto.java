@@ -14,36 +14,21 @@ import javax.xml.bind.annotation.XmlTransient;
  *
  * @author Jose Pablo Bermudez
  */
-@XmlRootElement(name = "ProyectoDto")
-@XmlAccessorType(XmlAccessType.PUBLIC_MEMBER)
+
 public class ProyectoDto {
-    @XmlTransient
     Long ID;
-    @XmlTransient
     String nombre;
-    @XmlTransient
     String patrocinador;
-    @XmlTransient
     String liderUsuario;
-    @XmlTransient
     String liderTecnico;
-    @XmlTransient
     String inicioEsperado;
-    @XmlTransient
     String inicioReal;
-    @XmlTransient
     String finalEsperado;
-    @XmlTransient
     String finalReal;
-    @XmlTransient
     String estado;
-    @XmlTransient
     String correoUsuario;
-    @XmlTransient
     String correoTecnico;
-    @XmlTransient
     String correoPatrocinador;
-    @XmlTransient
     Long version;
 
     public ProyectoDto(){

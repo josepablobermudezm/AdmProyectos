@@ -15,33 +15,24 @@ import javax.xml.bind.annotation.XmlTransient;
  *
  * @author Jose Pablo Bermudez
  */
-@XmlRootElement(name = "AdministradorDto")
-@XmlAccessorType(XmlAccessType.PUBLIC_MEMBER)
+
 public class AdministradorDto {
-    @XmlTransient
     private Long ID;
-    @XmlTransient
     private String nombre;
-    @XmlTransient
     private String pApellido;
-    @XmlTransient
     private String sApellido;
-    @XmlTransient
     private String usuario;
-    @XmlTransient
     private String correo;
-    @XmlTransient
     private String clave;
-    @XmlTransient
     private Long admVersion;
-    @XmlTransient
     private String estado;
+    private String cedula;
 
     public AdministradorDto(){
         
     }
     
-    public AdministradorDto(Long ID, String nombre, String pApellido, String sApellido, String usuario, String correo, String clave, Long admVersion, String estado) {
+    public AdministradorDto(Long ID, String nombre, String pApellido, String sApellido,String cedula, String usuario, String correo, String clave, Long admVersion, String estado) {
         this.ID = ID;
         this.nombre = nombre;
         this.pApellido = pApellido;
@@ -51,14 +42,37 @@ public class AdministradorDto {
         this.clave = clave;
         this.admVersion = admVersion;
         this.estado = estado;
+        this.cedula = cedula;
     }
 
+    public AdministradorDto(webservice.AdministradorDto admin){
+        this.ID = admin.getID();
+        this.admVersion = admin.getVersion();
+        this.clave = admin.getClave();
+        this.correo = admin.getCorreo();
+        this.estado = admin.getEstado();
+        this.nombre = admin.getNombre();
+        this.pApellido = admin.getPApellido();
+        this.sApellido = admin.getSApellido();
+        this.usuario = admin.getUsuario();
+        this.cedula = admin.getCedula();
+        
+    }
+    
     public Long getID() {
         return ID;
     }
 
     public void setID(Long ID) {
         this.ID = ID;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
     }
 
     public String getNombre() {

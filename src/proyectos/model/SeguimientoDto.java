@@ -15,18 +15,11 @@ import javax.xml.bind.annotation.XmlTransient;
  *
  * @author Jose Pablo Bermudez
  */
-@XmlRootElement(name = "SeguimientoDto")
-@XmlAccessorType(XmlAccessType.PUBLIC_MEMBER)
 public class SeguimientoDto {
-    @XmlTransient
     Long ID;
-    @XmlTransient
     LocalDate fecha;
-    @XmlTransient
     Long avance;
-    @XmlTransient
     ProyectoDto proyecto;
-    @XmlTransient
     Long version;
 
     public SeguimientoDto(){

@@ -8,16 +8,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para helloResponse complex type.
+ * <p>Clase Java para getProyectoPorIDResponse complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="helloResponse">
+ * &lt;complexType name="getProyectoPorIDResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="return" type="{http://webService/}proyectoDto" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,23 +27,23 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "helloResponse", propOrder = {
+@XmlType(name = "getProyectoPorIDResponse", propOrder = {
     "_return"
 })
-public class HelloResponse {
+public class GetProyectoPorIDResponse {
 
     @XmlElement(name = "return")
-    protected String _return;
+    protected ProyectoDto _return;
 
     /**
      * Obtiene el valor de la propiedad return.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link ProyectoDto }
      *     
      */
-    public String getReturn() {
+    public ProyectoDto getReturn() {
         return _return;
     }
 
@@ -52,10 +52,10 @@ public class HelloResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link ProyectoDto }
      *     
      */
-    public void setReturn(String value) {
+    public void setReturn(ProyectoDto value) {
         this._return = value;
     }
 
