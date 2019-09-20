@@ -1,55 +1,142 @@
 <?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.4.3.payara-p2 (PAYARA-3579-ff11a82; 2019-03-07T10:51:27+0530) JAXWS-RI/2.3.2 JAXWS-API/2.3.2 JAXB-RI/2.3.2 JAXB-API/2.3.2 git-revision#unknown. --><xs:schema xmlns:tns="http://webService/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://webService/">
 
-<xs:element name="guardar" type="tns:guardar"/>
+<xs:element name="AdministradorDto" type="tns:administradorDto"/>
 
-<xs:element name="guardarResponse" type="tns:guardarResponse"/>
+<xs:element name="ProyectoDto" type="tns:proyectoDto"/>
 
-<xs:element name="hello" type="tns:hello"/>
+<xs:element name="eliminarAdministrador" type="tns:eliminarAdministrador"/>
 
-<xs:element name="helloResponse" type="tns:helloResponse"/>
+<xs:element name="eliminarAdministradorResponse" type="tns:eliminarAdministradorResponse"/>
 
-<xs:element name="tblProyecto" type="tns:tblProyecto"/>
+<xs:element name="getAdministrador" type="tns:getAdministrador"/>
 
-<xs:complexType name="guardar">
+<xs:element name="getAdministradorById" type="tns:getAdministradorById"/>
+
+<xs:element name="getAdministradorByIdResponse" type="tns:getAdministradorByIdResponse"/>
+
+<xs:element name="getAdministradorResponse" type="tns:getAdministradorResponse"/>
+
+<xs:element name="getProyectoPorID" type="tns:getProyectoPorID"/>
+
+<xs:element name="getProyectoPorIDResponse" type="tns:getProyectoPorIDResponse"/>
+
+<xs:element name="guardarAdministrador" type="tns:guardarAdministrador"/>
+
+<xs:element name="guardarAdministradorResponse" type="tns:guardarAdministradorResponse"/>
+
+<xs:complexType name="eliminarAdministrador">
 <xs:sequence>
-<xs:element name="usuario" type="tns:tblProyecto" minOccurs="0"/>
+<xs:element name="ID" type="xs:long" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="tblProyecto">
-<xs:sequence>
-<xs:element name="pryCorreopatrocinador" type="xs:string" minOccurs="0"/>
-<xs:element name="pryCorreotenico" type="xs:string" minOccurs="0"/>
-<xs:element name="pryCorreousuario" type="xs:string" minOccurs="0"/>
-<xs:element name="pryEstado" type="xs:string" minOccurs="0"/>
-<xs:element name="pryFinalesperado" type="xs:dateTime" minOccurs="0"/>
-<xs:element name="pryFinalreal" type="xs:dateTime" minOccurs="0"/>
-<xs:element name="pryId" type="xs:decimal" minOccurs="0"/>
-<xs:element name="pryInicioreal" type="xs:dateTime" minOccurs="0"/>
-<xs:element name="pryLiderusuario" type="xs:string" minOccurs="0"/>
-<xs:element name="pryNombre" type="xs:string" minOccurs="0"/>
-<xs:element name="pryPatrocinador" type="xs:string" minOccurs="0"/>
-<xs:element name="pryVersion" type="xs:integer" minOccurs="0"/>
-<xs:element name="pyrInicioesperado" type="xs:dateTime" minOccurs="0"/>
-<xs:element name="pyrLidertecnico" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="guardarResponse">
+<xs:complexType name="eliminarAdministradorResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="hello">
+<xs:complexType name="guardarAdministrador">
 <xs:sequence>
-<xs:element name="name" type="xs:string" minOccurs="0"/>
+<xs:element name="Administrador" type="tns:administradorDto" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="helloResponse">
+<xs:complexType name="administradorDto">
+<xs:sequence>
+<xs:element name="cedula" type="xs:string" minOccurs="0"/>
+<xs:element name="clave" type="xs:string" minOccurs="0"/>
+<xs:element name="correo" type="xs:string" minOccurs="0"/>
+<xs:element name="estado" type="xs:string" minOccurs="0"/>
+<xs:element name="ID" type="xs:long" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="usuario" type="xs:string" minOccurs="0"/>
+<xs:element name="version" type="xs:long" minOccurs="0"/>
+<xs:element name="pApellido" type="xs:string" minOccurs="0"/>
+<xs:element name="sApellido" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="guardarAdministradorResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:respuesta" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="respuesta">
+<xs:sequence>
+<xs:element name="codigoRespuesta" type="tns:codigoRespuesta" minOccurs="0"/>
+<xs:element name="estado" type="xs:boolean" minOccurs="0"/>
+<xs:element name="mensaje" type="xs:string" minOccurs="0"/>
+<xs:element name="mensajeInterno" type="xs:string" minOccurs="0"/>
+<xs:element name="resultado" type="xs:anyType" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getProyectoPorID">
+<xs:sequence>
+<xs:element name="id" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getProyectoPorIDResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:proyectoDto" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="proyectoDto">
+<xs:sequence>
+<xs:element name="correoLiderTecnico" type="xs:string" minOccurs="0"/>
+<xs:element name="correoLiderUsuario" type="xs:string" minOccurs="0"/>
+<xs:element name="correoPatrocinador" type="xs:string" minOccurs="0"/>
+<xs:element name="estado" type="xs:string" minOccurs="0"/>
+<xs:element name="finalEsperado" type="xs:string" minOccurs="0"/>
+<xs:element name="finalReal" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:long" minOccurs="0"/>
+<xs:element name="inicioEsperado" type="xs:string" minOccurs="0"/>
+<xs:element name="inicioReal" type="xs:string" minOccurs="0"/>
+<xs:element name="liderTectnico" type="xs:string" minOccurs="0"/>
+<xs:element name="liderUsuario" type="xs:string" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="patrocinador" type="xs:string" minOccurs="0"/>
+<xs:element name="version" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAdministrador">
+<xs:sequence>
+<xs:element name="Administrador" type="xs:string" minOccurs="0"/>
+<xs:element name="contrasenna" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAdministradorResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
+
+<xs:complexType name="getAdministradorById">
+<xs:sequence>
+<xs:element name="adminId" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAdministradorByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:administradorDto" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:simpleType name="codigoRespuesta">
+<xs:restriction base="xs:string">
+<xs:enumeration value="CORRECTO"/>
+<xs:enumeration value="ERROR_ACCESO"/>
+<xs:enumeration value="ERROR_PERMISOS"/>
+<xs:enumeration value="ERROR_NOENCONTRADO"/>
+<xs:enumeration value="ERROR_CLIENTE"/>
+<xs:enumeration value="ERROR_INTERNO"/>
+</xs:restriction>
+</xs:simpleType>
 </xs:schema>

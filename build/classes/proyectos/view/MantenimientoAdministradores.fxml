@@ -84,9 +84,9 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
+                  <JFXTextField fx:id="txtNombre" promptText="Nombre" GridPane.columnIndex="1" />
                   <JFXTextField fx:id="txtPapellido" labelFloat="true" prefHeight="29.0" prefWidth="250.0" promptText="Primer Apellido" GridPane.columnIndex="3" />
                   <JFXTextField fx:id="txtSapellido" labelFloat="true" prefHeight="29.0" prefWidth="250.0" promptText="Segundo Apellido" GridPane.columnIndex="5" />
-                  <JFXTextField fx:id="txtNombre" promptText="Nombre" GridPane.columnIndex="1" />
                </children>
             </GridPane>
             <GridPane layoutY="537.0" prefHeight="62.0" prefWidth="1033.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="537.0">
@@ -106,7 +106,7 @@
                <children>
                   <JFXTextField fx:id="txtCedula" labelFloat="true" prefHeight="29.0" prefWidth="250.0" promptText="Cédula" GridPane.columnIndex="1" />
                   <JFXTextField fx:id="txtUsuario" labelFloat="true" prefHeight="29.0" prefWidth="61.0" promptText="Usuario" GridPane.columnIndex="3" />
-                  <JFXTextField fx:id="txtContraseña" labelFloat="true" prefHeight="29.0" prefWidth="250.0" promptText="Contraseña" GridPane.columnIndex="5" />
+                  <JFXTextField fx:id="txtContrasenna" labelFloat="true" prefHeight="29.0" prefWidth="250.0" promptText="Contraseña" GridPane.columnIndex="5" />
                </children>
             </GridPane>
             <GridPane layoutY="618.0" prefHeight="62.0" prefWidth="1033.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="618.0">
@@ -123,7 +123,6 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <JFXTextField fx:id="txtCorreo" prefHeight="29.0" prefWidth="250.0" promptText="Correo" GridPane.columnIndex="2" />
                   <HBox prefHeight="72.0" prefWidth="443.0" spacing="20.0" GridPane.columnIndex="4">
                      <padding>
                         <Insets left="20.0" right="20.0" top="40.0" />
@@ -132,9 +131,10 @@
                         <JFXButton fx:id="btnEditar1" onAction="#editar" style="-fx-cursor: hand;" text="Editar" />
                         <JFXButton fx:id="btnEliminar1" onAction="#eliminar" style="-fx-cursor: hand;" text="Eliminar" />
                         <JFXButton onAction="#limpiarRegistro" style="-fx-cursor: hand;" text="Limpiar Registro" />
-                        <JFXButton onAction="#agregar" text="Agregar" />
+                        <JFXButton onAction="#agregar" style="-fx-cursor: hand;" text="Agregar" />
                      </children>
                   </HBox>
+                  <JFXTextField fx:id="txtCorreo" prefHeight="29.0" prefWidth="250.0" promptText="Correo" GridPane.columnIndex="2" />
                </children>
             </GridPane>
          </children>

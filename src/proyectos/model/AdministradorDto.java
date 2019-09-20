@@ -6,6 +6,7 @@
 package proyectos.model;
 
 import java.time.LocalDate;
+import javafx.beans.property.SimpleStringProperty;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -28,6 +29,18 @@ public class AdministradorDto {
     private String estado;
     private String cedula;
 
+    
+    public SimpleStringProperty IdS = new SimpleStringProperty("");
+    public SimpleStringProperty NombreS = new SimpleStringProperty("");
+    public SimpleStringProperty PapellidoS = new SimpleStringProperty("");
+    public SimpleStringProperty SapellidoS = new SimpleStringProperty("");
+    public SimpleStringProperty CedulaS = new SimpleStringProperty("");
+    public SimpleStringProperty CorreoS = new SimpleStringProperty("");
+    public SimpleStringProperty UsuarioS = new SimpleStringProperty("");
+    public SimpleStringProperty ContrasenaS = new SimpleStringProperty("");
+    public SimpleStringProperty EstadoS = new SimpleStringProperty("");
+    
+    
     public AdministradorDto(){
         
     }
@@ -56,23 +69,14 @@ public class AdministradorDto {
         this.sApellido = admin.getSApellido();
         this.usuario = admin.getUsuario();
         this.cedula = admin.getCedula();
-        
     }
-    
+
     public Long getID() {
         return ID;
     }
 
     public void setID(Long ID) {
         this.ID = ID;
-    }
-
-    public String getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
     }
 
     public String getNombre() {
@@ -137,6 +141,106 @@ public class AdministradorDto {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+    
+    
+    
+    /*public Long getIdS() {
+        if(IdS.get() != null){
+            if(!IdS.get().isEmpty()){
+                return Long.valueOf(IdS.get());
+            }
+        }
+        return null;
+    }
+
+    public void setIdS(Long Id) {
+        this.IdS.setValue(Id.toString());
+    }
+
+    public String getNombreS() {
+        return NombreS.get();
+    }
+
+    public void setNombreS(String Nombre) {
+        this.NombreS.setValue(Nombre);
+    }
+
+    public String getPapellidoS() {
+        return PapellidoS.get();
+    }
+
+    public void setPapellidoS(String Papellido) {
+        this.PapellidoS.setValue(Papellido);
+    }
+
+    public String getSapellidoS() {
+        return SapellidoS.get();
+    }
+
+    public void setSapellidoS(String Sapellido) {
+        this.SapellidoS.setValue(Sapellido);
+    }
+
+    public String getCedulaS() {
+        return CedulaS.get();
+    }
+
+    public void setCedulaS(String Cedula) {
+        this.CedulaS.setValue(Cedula);
+    }
+
+    public String getCorreoS() {
+        return CorreoS.get();
+    }
+
+    public void setCorreoS(String Correo) {
+        this.CorreoS.setValue(Correo);
+    }
+
+    public String getUsuarioS() {
+        return UsuarioS.get();
+    }
+
+    public void setUsuarioS(String Usuario) {
+        this.UsuarioS.setValue(Usuario);
+    }
+
+    public String getContrasenaS() {
+        return ContrasenaS.get();
+    }
+
+    public void setContrasenaS(String Contrasena) {
+        this.ContrasenaS.setValue(Contrasena);
+    }
+
+    public String getEstadoS() {
+        return EstadoS.get();
+    }
+
+    public void setEstadoS(String Estado) {
+        this.EstadoS.setValue(Estado);
+    }
+
+    public Long getVersionS() {
+        return admVersion;
+    }
+
+    public void setVersionS(Long Version) {
+        this.admVersion = Version;
+    }
+*/
+    @Override
+    public String toString() {
+        return "AdministradorDto{" + "Id=" + ID + ", Nombre=" + nombre + ", Papellido=" + pApellido + ", Sapellido=" + sApellido + ", Cedula=" + cedula + ", Correo=" + correo + ", Usuario=" + usuario + ", Contrasena=" + clave + ", Estado=" + estado + ", Version=" + admVersion + '}';
     }
     
 }

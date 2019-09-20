@@ -10,6 +10,10 @@
 
 <xs:element name="getAdministrador" type="tns:getAdministrador"/>
 
+<xs:element name="getAdministradorById" type="tns:getAdministradorById"/>
+
+<xs:element name="getAdministradorByIdResponse" type="tns:getAdministradorByIdResponse"/>
+
 <xs:element name="getAdministradorResponse" type="tns:getAdministradorResponse"/>
 
 <xs:element name="getProyectoPorID" type="tns:getProyectoPorID"/>
@@ -87,11 +91,11 @@
 <xs:element name="correoLiderUsuario" type="xs:string" minOccurs="0"/>
 <xs:element name="correoPatrocinador" type="xs:string" minOccurs="0"/>
 <xs:element name="estado" type="xs:string" minOccurs="0"/>
-<xs:element name="finalEsperado" type="xs:dateTime" minOccurs="0"/>
-<xs:element name="finalReal" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="finalEsperado" type="xs:string" minOccurs="0"/>
+<xs:element name="finalReal" type="xs:string" minOccurs="0"/>
 <xs:element name="id" type="xs:long" minOccurs="0"/>
-<xs:element name="inicioEsperado" type="xs:dateTime" minOccurs="0"/>
-<xs:element name="inicioReal" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="inicioEsperado" type="xs:string" minOccurs="0"/>
+<xs:element name="inicioReal" type="xs:string" minOccurs="0"/>
 <xs:element name="liderTectnico" type="xs:string" minOccurs="0"/>
 <xs:element name="liderUsuario" type="xs:string" minOccurs="0"/>
 <xs:element name="nombre" type="xs:string" minOccurs="0"/>
@@ -110,6 +114,18 @@
 <xs:complexType name="getAdministradorResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAdministradorById">
+<xs:sequence>
+<xs:element name="adminId" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAdministradorByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:administradorDto" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 

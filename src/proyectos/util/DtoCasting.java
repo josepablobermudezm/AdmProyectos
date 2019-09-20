@@ -5,7 +5,7 @@
  */
 package proyectos.util;
 
-import webservice.AdministradorDto;
+import proyectos.model.AdministradorDto;
 
 /**
  *
@@ -23,29 +23,10 @@ public class DtoCasting {
         administrador.setEstado(admin.getEstado());
         administrador.setID(admin.getID());
         administrador.setNombre(admin.getNombre());
-        administrador.setPApellido(admin.getPApellido());
-        administrador.setSApellido(admin.getSApellido());
+        administrador.setPApellido(admin.getpApellido());
+        administrador.setSApellido(admin.getsApellido());
         administrador.setUsuario(admin.getUsuario());
-        administrador.setVersion(admin.getVersion());        
+        administrador.setVersion(admin.getAdmVersion());        
         return administrador;
     }
-    
-    public proyectos.model.AdministradorDto castAdministrar2(webservice.AdministradorDto admin){
-    
-        proyectos.model.AdministradorDto admDto = new proyectos.model.AdministradorDto();
-        admDto.setCedula(admin.getCedula());
-        admDto.setClave(admin.getClave());
-        admDto.setCorreo(admin.getCorreo());
-        admDto.setEstado(admin.getEstado());
-        admDto.setID(admin.getID());
-        admDto.setNombre(admin.getNombre());
-        admDto.setpApellido(admin.getPApellido());
-        admDto.setsApellido(admin.getSApellido());
-        admDto.setUsuario(admin.getUsuario());
-        admDto.setAdmVersion(admin.getVersion());
-        
-        return admDto;
-    
-    }
-    
 }

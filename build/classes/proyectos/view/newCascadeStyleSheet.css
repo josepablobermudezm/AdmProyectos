@@ -30,14 +30,14 @@
 }
 
 .button{
-    -fx-background-color: #0033AA;
+    -fx-background-color: #012985;
     -jfx-button-type: RAISED;/*raised and flat*/
     -fx-text-fill: WHITE;
     -fx-text-height: bold;
     -jfx-rippler-fill: RED;
 }
 .button:hover {
-    -fx-background-color: #0022DD;
+    -fx-background-color: #0033a8;
     -jfx-button-type: RAISED;/*raised and flat*/
     -fx-text-fill: WHITE;
     -jfx-rippler-fill: RED;
@@ -56,29 +56,29 @@
 
 
 .table-view{
-   -fx-background-color: #0033AA;
+   -fx-background-color: #012985;
 }
 
 .table-view:focused{
-    -fx-background-color:#0033AA;
+    -fx-background-color:#012985;
 }
 
 
 .table-view .column-header-background{
-    -fx-background-color: #0033AA;
+    -fx-background-color: #012985;
 }
 
 .table-view .column-header-background .label{
-    -fx-background-color: #0033AA;
+    -fx-background-color: #012985;
     -fx-text-fill:white;
 }
 
 .table-view .column-header {
-    -fx-background-color: #0033AA;
+    -fx-background-color: #012985;
 }
 
 .table-view .table-cell{
-    -fx-text-fill: #0033AA;
+    -fx-text-fill: #012985;
 }
 
 .table-cell {     
@@ -103,8 +103,8 @@
 .table-view .cell{
    -fx-cell-size: 40;
   -fx-alignment: center-left;
-  -fx-background-color: #0033AA;
-  -fx-border-color: #0033AA;
+  -fx-background-color: #012985;
+  -fx-border-color: #012985;
   -fx-text-fill: white;
   -fx-alignment: CENTER_LEFT;
    
@@ -112,28 +112,28 @@
 /*celda selecionada*/
 .table-row-cell:selected {
    -fx-background-color: whitesmoke; 
-   -fx-text-background-color:  #0033AA;
+   -fx-text-background-color:  #012985;
 }
 /*fondo de la barra*/
 .table-view .scroll-bar:horizontal .track,
 .table-view .scroll-bar:vertical .track{
-	-fx-background-color: #0033AA;
-	-fx-border-color:#0033AA;
+	-fx-background-color: #012985;
+	-fx-border-color:#012985;
 }
 /*barra del tableview*/
 .table-view .scroll-bar:horizontal .thumb,
 .table-view .scroll-bar:vertical .thumb {
-    -fx-background-color:#0033AA;
+    -fx-background-color:#012985;
 	-fx-background-insets: 2, 0, 0;
 	-fx-background-radius: 2em;
 
 }
 .table-view .increment-button ,.table-view .decrement-button {
-    -fx-background-color:#0033AA;
-    -fx-border-color: #0033AA;
+    -fx-background-color:#012985;
+    -fx-border-color: #012985;
 }
 .jfx-hamburger StackPane {
-	-fx-background-color: #0033AA;
+	-fx-background-color: #012985;
 }
 .text-field{
     -fx-prompt-text-fill: black;

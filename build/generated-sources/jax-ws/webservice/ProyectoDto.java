@@ -3,9 +3,7 @@ package webservice;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -22,11 +20,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="correoLiderUsuario" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="correoPatrocinador" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="estado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="finalEsperado" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         &lt;element name="finalReal" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="finalEsperado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="finalReal" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="inicioEsperado" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         &lt;element name="inicioReal" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="inicioEsperado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="inicioReal" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="liderTectnico" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="liderUsuario" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -63,15 +61,11 @@ public class ProyectoDto {
     protected String correoLiderUsuario;
     protected String correoPatrocinador;
     protected String estado;
-    @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar finalEsperado;
-    @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar finalReal;
+    protected String finalEsperado;
+    protected String finalReal;
     protected Long id;
-    @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar inicioEsperado;
-    @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar inicioReal;
+    protected String inicioEsperado;
+    protected String inicioReal;
     protected String liderTectnico;
     protected String liderUsuario;
     protected String nombre;
@@ -179,10 +173,10 @@ public class ProyectoDto {
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
-    public XMLGregorianCalendar getFinalEsperado() {
+    public String getFinalEsperado() {
         return finalEsperado;
     }
 
@@ -191,10 +185,10 @@ public class ProyectoDto {
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
-    public void setFinalEsperado(XMLGregorianCalendar value) {
+    public void setFinalEsperado(String value) {
         this.finalEsperado = value;
     }
 
@@ -203,10 +197,10 @@ public class ProyectoDto {
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
-    public XMLGregorianCalendar getFinalReal() {
+    public String getFinalReal() {
         return finalReal;
     }
 
@@ -215,10 +209,10 @@ public class ProyectoDto {
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
-    public void setFinalReal(XMLGregorianCalendar value) {
+    public void setFinalReal(String value) {
         this.finalReal = value;
     }
 
@@ -251,10 +245,10 @@ public class ProyectoDto {
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
-    public XMLGregorianCalendar getInicioEsperado() {
+    public String getInicioEsperado() {
         return inicioEsperado;
     }
 
@@ -263,10 +257,10 @@ public class ProyectoDto {
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
-    public void setInicioEsperado(XMLGregorianCalendar value) {
+    public void setInicioEsperado(String value) {
         this.inicioEsperado = value;
     }
 
@@ -275,10 +269,10 @@ public class ProyectoDto {
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
-    public XMLGregorianCalendar getInicioReal() {
+    public String getInicioReal() {
         return inicioReal;
     }
 
@@ -287,10 +281,10 @@ public class ProyectoDto {
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
-    public void setInicioReal(XMLGregorianCalendar value) {
+    public void setInicioReal(String value) {
         this.inicioReal = value;
     }
 
