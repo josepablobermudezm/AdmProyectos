@@ -9,16 +9,20 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import proyectos.util.FlowController;
 
 /**
  * FXML Controller class
  *
  * @author Bran
  */
-public class PantallaInicioController implements Initializable {
+public class PantallaInicioController extends Controller  implements Initializable {
 
     @FXML
     private Label label_nombre001;
@@ -48,6 +52,10 @@ public class PantallaInicioController implements Initializable {
     private JFXTextField tField_Usuario001;
     @FXML
     private JFXTextField tField_pass001;
+    @FXML
+    private BorderPane bp_main;
+    @FXML
+    private AnchorPane APMain;
 
     /**
      * Initializes the controller class.
@@ -56,5 +64,18 @@ public class PantallaInicioController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @Override
+    public void initialize() {
+     }
+
+    @FXML
+    private void registarUsuario(ActionEvent event) {
+    }
+
+    @FXML
+    private void regresarLogin(ActionEvent event) {
+        FlowController.getInstance().goView("InicioSesion");
+    }
     
 }

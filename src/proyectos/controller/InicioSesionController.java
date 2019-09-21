@@ -14,15 +14,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import proyectos.util.AppContext;
+import proyectos.util.FlowController;
 
 /**
  * FXML Controller class
  *
  * @author Bran
  */
-public class InicioSesionController implements Initializable {
+public class InicioSesionController extends Controller  implements Initializable {
 
     @FXML
     private ImageView iView_cuenta001;
@@ -42,15 +45,27 @@ public class InicioSesionController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        IniciarObjetos();
     }    
 
     @FXML
     private void crearCuenta(MouseEvent event) {
+        FlowController.getInstance().goView("PantallaInicio");
     }
 
     @FXML
     private void iniciarSesion(ActionEvent event) {
+        
+        
+        
     }
+    public void IniciarObjetos(){
+        iView_Pass001.setImage(new Image("/proyectos/resources/lock.png"));
+        iView_cuenta001.setImage(new Image("/proyectos/resources/user.png"));
+    }
+
+    @Override
+    public void initialize() {
+     }
     
 }
