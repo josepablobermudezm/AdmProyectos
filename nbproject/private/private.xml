@@ -3,17 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Bran/Documents/GitHub/AdmProyectos/src/proyectos/util/FlowController.java</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/AdmProyectos/src/proyectos/view/PantallaInicio.fxml</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/AdmProyectos/src/proyectos/controller/InicioController.java</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/AdmProyectos/src/proyectos/controller/ActividadesProyectoController.java</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/AdmProyectos/src/proyectos/controller/DrawerContentController.java</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/AdmProyectos/src/proyectos/view/newCascadeStyleSheet.css</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/AdmProyectos/src/proyectos/view/Inicio.fxml</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/AdmProyectos/src/proyectos/controller/PantallaInicioController.java</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/AdmProyectos/src/proyectos/controller/InicioSesionController.java</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/AdmProyectos/src/proyectos/controller/MantenimientoAdministradores.java</file>
-            <file>file:/C:/Users/Bran/Documents/GitHub/AdmProyectos/src/proyectos/Proyectos.java</file>
+            <file>file:/C:/Users/ANNIA%20GONZALEZ/Documents/GitHub/AdmProyectos/src/proyectos/view/newCascadeStyleSheet.css</file>
+            <file>file:/C:/Users/ANNIA%20GONZALEZ/Documents/GitHub/AdmProyectos/src/proyectos/model/ProyectoDto.java</file>
+            <file>file:/C:/Users/ANNIA%20GONZALEZ/Documents/GitHub/AdmProyectos/src/proyectos/controller/MantenimientoAdministradores.java</file>
         </group>
     </open-files>
 </project-private>
