@@ -163,20 +163,18 @@
     /*-jfx-label-float: true;*/
     -fx-text-fill: white;
 }
-#txtUsuario1{
+
+
+.estiloText{
     -fx-prompt-text-fill: white;
     -jfx-focus-color: white;
     -jfx-unfocus-color: white;
     /*-jfx-label-float: true;*/
     -fx-text-fill: white;
+    
 }
-#txtClave1{
-    -fx-prompt-text-fill: white;
-    -jfx-focus-color: white;
-    -jfx-unfocus-color: white;
-    /*-jfx-label-float: true;*/
-    -fx-text-fill: white;
-}
+
+
 
 #button2{
     -fx-background-color: #083d99;

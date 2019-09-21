@@ -28,7 +28,7 @@ public class Proyectos extends Application {
         stage.getIcons().add(new Image("/proyectos/resources/icon.png"));
         
         FlowController.getInstance().InitializeFlow(stage, null);
-        FlowController.getInstance().goMain();
+        FlowController.getInstance().goViewInWindow("LogIn");  
     }
 
     /**

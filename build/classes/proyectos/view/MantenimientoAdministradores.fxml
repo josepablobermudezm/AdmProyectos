@@ -4,8 +4,6 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -46,30 +44,7 @@
                   <JFXButton fx:id="btnBuscar" onAction="#Filtrar" style="-fx-cursor: hand;" text="Buscar" GridPane.columnIndex="3" />
                </children>
             </GridPane>
-            <GridPane layoutY="149.0" prefHeight="280.0" prefWidth="1030.0" AnchorPane.bottomAnchor="371.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="149.0">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="509.0" minWidth="10.0" prefWidth="41.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="1002.0" minWidth="10.0" prefWidth="958.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="994.0" minWidth="0.0" prefWidth="44.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-               <children>
-                  <TableView fx:id="table" onMouseReleased="#DatosAdministradores" prefHeight="280.0" prefWidth="950.0" GridPane.columnIndex="1">
-                     <columns>
-                        <TableColumn fx:id="COL_NOMBRE_ADM" prefWidth="135.0" text="Nombre" />
-                        <TableColumn fx:id="COL_PAPELLIDO_ADM" prefWidth="135.0" text="Primer Apellido" />
-                        <TableColumn fx:id="COL_SAPELLIDO_ADM" prefWidth="135.0" text="Segundo Apellido" />
-                        <TableColumn fx:id="COL_CEDULA_ADM" prefWidth="135.0" text="Cédula" />
-                        <TableColumn fx:id="COL_USUARIO_ADM" prefWidth="135.0" text="Usuario" />
-                        <TableColumn fx:id="COL_CONTRASENA_ADM" prefWidth="135.0" text="Contraseña" />
-                        <TableColumn fx:id="COL_CORREO_ADM" prefWidth="142.0" text="Correo" />
-                     </columns>
-                  </TableView>
-               </children>
-            </GridPane>
-            <GridPane layoutY="452.0" prefHeight="62.0" prefWidth="1033.0" AnchorPane.bottomAnchor="286.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="452.0">
+            <GridPane layoutY="206.0" prefHeight="62.0" prefWidth="1033.0" AnchorPane.bottomAnchor="532.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="206.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="509.0" minWidth="10.0" prefWidth="30.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="509.0" minWidth="10.0" prefWidth="261.0" />
@@ -89,7 +64,7 @@
                   <JFXTextField fx:id="txtSapellido" labelFloat="true" prefHeight="29.0" prefWidth="250.0" promptText="Segundo Apellido" GridPane.columnIndex="5" />
                </children>
             </GridPane>
-            <GridPane layoutY="537.0" prefHeight="62.0" prefWidth="1033.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="537.0">
+            <GridPane layoutY="350.0" prefHeight="62.0" prefWidth="1033.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="350.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="509.0" minWidth="10.0" prefWidth="30.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="509.0" minWidth="10.0" prefWidth="261.0" />
@@ -109,7 +84,7 @@
                   <JFXTextField fx:id="txtContrasenna" labelFloat="true" prefHeight="29.0" prefWidth="250.0" promptText="Contraseña" GridPane.columnIndex="5" />
                </children>
             </GridPane>
-            <GridPane layoutY="618.0" prefHeight="62.0" prefWidth="1033.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="618.0">
+            <GridPane layoutY="490.0" prefHeight="62.0" prefWidth="1033.0" AnchorPane.bottomAnchor="248.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="490.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="509.0" minWidth="0.0" prefWidth="8.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="509.0" minWidth="0.0" prefWidth="24.0" />
@@ -123,6 +98,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
+                  <JFXTextField fx:id="txtCorreo" prefHeight="29.0" prefWidth="250.0" promptText="Correo" GridPane.columnIndex="2" />
                   <HBox prefHeight="72.0" prefWidth="443.0" spacing="20.0" GridPane.columnIndex="4">
                      <padding>
                         <Insets left="20.0" right="20.0" top="40.0" />
@@ -134,7 +110,6 @@
                         <JFXButton onAction="#agregar" style="-fx-cursor: hand;" text="Agregar" />
                      </children>
                   </HBox>
-                  <JFXTextField fx:id="txtCorreo" prefHeight="29.0" prefWidth="250.0" promptText="Correo" GridPane.columnIndex="2" />
                </children>
             </GridPane>
          </children>
