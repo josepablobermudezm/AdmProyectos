@@ -57,6 +57,17 @@ public class AdministradorDto {
         this.estado = estado;
         this.cedula = cedula;
     }
+    public AdministradorDto( String nombre, String pApellido, String sApellido,String cedula, String usuario, String correo, String clave) {
+        
+        this.nombre = nombre;
+        this.pApellido = pApellido;
+        this.sApellido = sApellido;
+        this.usuario = usuario;
+        this.correo = correo;
+        this.clave = clave;
+        this.cedula = cedula;
+    }
+    
 
     public AdministradorDto(webservice.AdministradorDto admin){
         this.ID = admin.getID();
