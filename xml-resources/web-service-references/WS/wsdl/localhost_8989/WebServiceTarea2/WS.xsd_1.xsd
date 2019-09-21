@@ -4,6 +4,10 @@
 
 <xs:element name="ProyectoDto" type="tns:proyectoDto"/>
 
+<xs:element name="ValidarUsuario" type="tns:ValidarUsuario"/>
+
+<xs:element name="ValidarUsuarioResponse" type="tns:ValidarUsuarioResponse"/>
+
 <xs:element name="eliminarAdministrador" type="tns:eliminarAdministrador"/>
 
 <xs:element name="eliminarAdministradorResponse" type="tns:eliminarAdministradorResponse"/>
@@ -70,6 +74,19 @@
 <xs:element name="mensaje" type="xs:string" minOccurs="0"/>
 <xs:element name="mensajeInterno" type="xs:string" minOccurs="0"/>
 <xs:element name="resultado" type="xs:anyType" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ValidarUsuario">
+<xs:sequence>
+<xs:element name="usuario" type="xs:string" minOccurs="0"/>
+<xs:element name="pass" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ValidarUsuarioResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:respuesta" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
