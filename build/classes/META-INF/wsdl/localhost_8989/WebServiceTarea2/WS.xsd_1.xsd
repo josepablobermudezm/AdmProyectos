@@ -4,15 +4,19 @@
 
 <xs:element name="ProyectoDto" type="tns:proyectoDto"/>
 
+<xs:element name="ValidarUsuario" type="tns:ValidarUsuario"/>
+
+<xs:element name="ValidarUsuarioResponse" type="tns:ValidarUsuarioResponse"/>
+
 <xs:element name="eliminarAdministrador" type="tns:eliminarAdministrador"/>
 
 <xs:element name="eliminarAdministradorResponse" type="tns:eliminarAdministradorResponse"/>
 
+<xs:element name="getAdmin" type="tns:getAdmin"/>
+
+<xs:element name="getAdminResponse" type="tns:getAdminResponse"/>
+
 <xs:element name="getAdministrador" type="tns:getAdministrador"/>
-
-<xs:element name="getAdministradorById" type="tns:getAdministradorById"/>
-
-<xs:element name="getAdministradorByIdResponse" type="tns:getAdministradorByIdResponse"/>
 
 <xs:element name="getAdministradorResponse" type="tns:getAdministradorResponse"/>
 
@@ -48,16 +52,16 @@
 
 <xs:complexType name="administradorDto">
 <xs:sequence>
-<xs:element name="cedula" type="xs:string" minOccurs="0"/>
-<xs:element name="clave" type="xs:string" minOccurs="0"/>
-<xs:element name="correo" type="xs:string" minOccurs="0"/>
-<xs:element name="estado" type="xs:string" minOccurs="0"/>
-<xs:element name="ID" type="xs:long" minOccurs="0"/>
-<xs:element name="nombre" type="xs:string" minOccurs="0"/>
-<xs:element name="usuario" type="xs:string" minOccurs="0"/>
-<xs:element name="version" type="xs:long" minOccurs="0"/>
-<xs:element name="pApellido" type="xs:string" minOccurs="0"/>
-<xs:element name="sApellido" type="xs:string" minOccurs="0"/>
+<xs:element name="adnCedula" type="xs:string" minOccurs="0"/>
+<xs:element name="adnContrasena" type="xs:string" minOccurs="0"/>
+<xs:element name="adnCorreo" type="xs:string" minOccurs="0"/>
+<xs:element name="adnEstado" type="xs:string" minOccurs="0"/>
+<xs:element name="adnId" type="xs:long" minOccurs="0"/>
+<xs:element name="adnNombre" type="xs:string" minOccurs="0"/>
+<xs:element name="adnPapellido" type="xs:string" minOccurs="0"/>
+<xs:element name="adnSapellido" type="xs:string" minOccurs="0"/>
+<xs:element name="adnUsuario" type="xs:string" minOccurs="0"/>
+<xs:element name="adnVersion" type="xs:long" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -90,6 +94,32 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="getAdmin">
+<xs:sequence>
+<xs:element name="usu" type="xs:string" minOccurs="0"/>
+<xs:element name="contra" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAdminResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:administradorDto" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ValidarUsuario">
+<xs:sequence>
+<xs:element name="usuario" type="xs:string" minOccurs="0"/>
+<xs:element name="pass" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ValidarUsuarioResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:respuesta" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="getProyectoPorID">
 <xs:sequence>
 <xs:element name="id" type="xs:int"/>
@@ -108,11 +138,11 @@
 <xs:element name="correoLiderUsuario" type="xs:string" minOccurs="0"/>
 <xs:element name="correoPatrocinador" type="xs:string" minOccurs="0"/>
 <xs:element name="estado" type="xs:string" minOccurs="0"/>
-<xs:element name="finalEsperado" type="xs:string" minOccurs="0"/>
-<xs:element name="finalReal" type="xs:string" minOccurs="0"/>
+<xs:element name="finalEsperado" type="tns:localDate" minOccurs="0"/>
+<xs:element name="finalReal" type="tns:localDate" minOccurs="0"/>
 <xs:element name="id" type="xs:long" minOccurs="0"/>
-<xs:element name="inicioEsperado" type="xs:string" minOccurs="0"/>
-<xs:element name="inicioReal" type="xs:string" minOccurs="0"/>
+<xs:element name="inicioEsperado" type="tns:localDate" minOccurs="0"/>
+<xs:element name="inicioReal" type="tns:localDate" minOccurs="0"/>
 <xs:element name="liderTectnico" type="xs:string" minOccurs="0"/>
 <xs:element name="liderUsuario" type="xs:string" minOccurs="0"/>
 <xs:element name="nombre" type="xs:string" minOccurs="0"/>
@@ -121,16 +151,8 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getAdministradorById">
-<xs:sequence>
-<xs:element name="adminId" type="xs:long" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getAdministradorByIdResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:administradorDto" minOccurs="0"/>
-</xs:sequence>
+<xs:complexType name="localDate" final="extension restriction">
+<xs:sequence/>
 </xs:complexType>
 
 <xs:complexType name="getAdministrador">

@@ -51,7 +51,7 @@ public class ProyectoDto {
         this.correoPatrocinador = correoPatrocinador;
         this.version = version;
     }
-    public ProyectoDto(webservice.ProyectoDto proyecto){
+    /*public ProyectoDto(webservice.ProyectoDto proyecto){
         this.ID = proyecto.getId();
         this.nombre = proyecto.getNombre();
         this.patrocinador = proyecto.getPatrocinador();
@@ -60,13 +60,13 @@ public class ProyectoDto {
         /*this.inicioEsperado = proyecto.getInicioEsperado();
         this.inicioReal = proyecto.getInicioReal();
         this.finalEsperado = proyecto.getFinalEsperado();
-        this.finalReal = proyecto.getFinalReal();*/
+        this.finalReal = proyecto.getFinalReal();
         this.estado = proyecto.getEstado();
         this.correoUsuario = proyecto.getCorreoLiderUsuario();
         this.correoTecnico = proyecto.getCorreoLiderTecnico();
         this.correoPatrocinador = proyecto.getCorreoPatrocinador();
         this.version = proyecto.getVersion(); 
-   }
+   }*/
 
     public Long getID() {
         return ID;

@@ -4,17 +4,11 @@
 <xsd:import namespace="http://webService/" schemaLocation="http://localhost:8989/WebServiceTarea2/WS?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="getProyectoPorID">
-<part name="parameters" element="tns:getProyectoPorID"/>
+<message name="getUsuario">
+<part name="parameters" element="tns:getUsuario"/>
 </message>
-<message name="getProyectoPorIDResponse">
-<part name="parameters" element="tns:getProyectoPorIDResponse"/>
-</message>
-<message name="getAdministradorById">
-<part name="parameters" element="tns:getAdministradorById"/>
-</message>
-<message name="getAdministradorByIdResponse">
-<part name="parameters" element="tns:getAdministradorByIdResponse"/>
+<message name="getUsuarioResponse">
+<part name="parameters" element="tns:getUsuarioResponse"/>
 </message>
 <message name="getAdministrador">
 <part name="parameters" element="tns:getAdministrador"/>
@@ -22,11 +16,11 @@
 <message name="getAdministradorResponse">
 <part name="parameters" element="tns:getAdministradorResponse"/>
 </message>
-<message name="getUsuario">
-<part name="parameters" element="tns:getUsuario"/>
+<message name="getAdmin">
+<part name="parameters" element="tns:getAdmin"/>
 </message>
-<message name="getUsuarioResponse">
-<part name="parameters" element="tns:getUsuarioResponse"/>
+<message name="getAdminResponse">
+<part name="parameters" element="tns:getAdminResponse"/>
 </message>
 <message name="guardarAdministrador">
 <part name="parameters" element="tns:guardarAdministrador"/>
@@ -40,22 +34,30 @@
 <message name="eliminarAdministradorResponse">
 <part name="parameters" element="tns:eliminarAdministradorResponse"/>
 </message>
+<message name="ValidarUsuario">
+<part name="parameters" element="tns:ValidarUsuario"/>
+</message>
+<message name="ValidarUsuarioResponse">
+<part name="parameters" element="tns:ValidarUsuarioResponse"/>
+</message>
+<message name="getProyectoPorID">
+<part name="parameters" element="tns:getProyectoPorID"/>
+</message>
+<message name="getProyectoPorIDResponse">
+<part name="parameters" element="tns:getProyectoPorIDResponse"/>
+</message>
 <portType name="WS">
-<operation name="getProyectoPorID">
-<input wsam:Action="http://webService/WS/getProyectoPorIDRequest" message="tns:getProyectoPorID"/>
-<output wsam:Action="http://webService/WS/getProyectoPorIDResponse" message="tns:getProyectoPorIDResponse"/>
-</operation>
-<operation name="getAdministradorById">
-<input wsam:Action="http://webService/WS/getAdministradorByIdRequest" message="tns:getAdministradorById"/>
-<output wsam:Action="http://webService/WS/getAdministradorByIdResponse" message="tns:getAdministradorByIdResponse"/>
+<operation name="getUsuario">
+<input wsam:Action="http://webService/WS/getUsuarioRequest" message="tns:getUsuario"/>
+<output wsam:Action="http://webService/WS/getUsuarioResponse" message="tns:getUsuarioResponse"/>
 </operation>
 <operation name="getAdministrador">
 <input wsam:Action="http://webService/WS/getAdministradorRequest" message="tns:getAdministrador"/>
 <output wsam:Action="http://webService/WS/getAdministradorResponse" message="tns:getAdministradorResponse"/>
 </operation>
-<operation name="getUsuario">
-<input wsam:Action="http://webService/WS/getUsuarioRequest" message="tns:getUsuario"/>
-<output wsam:Action="http://webService/WS/getUsuarioResponse" message="tns:getUsuarioResponse"/>
+<operation name="getAdmin">
+<input wsam:Action="http://webService/WS/getAdminRequest" message="tns:getAdmin"/>
+<output wsam:Action="http://webService/WS/getAdminResponse" message="tns:getAdminResponse"/>
 </operation>
 <operation name="guardarAdministrador">
 <input wsam:Action="http://webService/WS/guardarAdministradorRequest" message="tns:guardarAdministrador"/>
@@ -65,19 +67,18 @@
 <input wsam:Action="http://webService/WS/eliminarAdministradorRequest" message="tns:eliminarAdministrador"/>
 <output wsam:Action="http://webService/WS/eliminarAdministradorResponse" message="tns:eliminarAdministradorResponse"/>
 </operation>
+<operation name="ValidarUsuario">
+<input wsam:Action="http://webService/WS/ValidarUsuarioRequest" message="tns:ValidarUsuario"/>
+<output wsam:Action="http://webService/WS/ValidarUsuarioResponse" message="tns:ValidarUsuarioResponse"/>
+</operation>
+<operation name="getProyectoPorID">
+<input wsam:Action="http://webService/WS/getProyectoPorIDRequest" message="tns:getProyectoPorID"/>
+<output wsam:Action="http://webService/WS/getProyectoPorIDResponse" message="tns:getProyectoPorIDResponse"/>
+</operation>
 </portType>
 <binding name="WSPortBinding" type="tns:WS">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="getProyectoPorID">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="getAdministradorById">
+<operation name="getUsuario">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -95,7 +96,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="getUsuario">
+<operation name="getAdmin">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -114,6 +115,24 @@
 </output>
 </operation>
 <operation name="eliminarAdministrador">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="ValidarUsuario">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getProyectoPorID">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

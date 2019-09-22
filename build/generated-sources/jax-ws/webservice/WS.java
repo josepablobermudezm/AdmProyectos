@@ -26,33 +26,21 @@ public interface WS {
 
     /**
      * 
-     * @param id
+     * @param clave
+     * @param usuario
      * @return
-     *     returns webservice.ProyectoDto
+     *     returns webservice.Respuesta
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getProyectoPorID", targetNamespace = "http://webService/", className = "webservice.GetProyectoPorID")
-    @ResponseWrapper(localName = "getProyectoPorIDResponse", targetNamespace = "http://webService/", className = "webservice.GetProyectoPorIDResponse")
-    @Action(input = "http://webService/WS/getProyectoPorIDRequest", output = "http://webService/WS/getProyectoPorIDResponse")
-    public ProyectoDto getProyectoPorID(
-        @WebParam(name = "id", targetNamespace = "")
-        int id);
-
-    /**
-     * 
-     * @param adminId
-     * @return
-     *     returns webservice.AdministradorDto
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getAdministradorById", targetNamespace = "http://webService/", className = "webservice.GetAdministradorById")
-    @ResponseWrapper(localName = "getAdministradorByIdResponse", targetNamespace = "http://webService/", className = "webservice.GetAdministradorByIdResponse")
-    @Action(input = "http://webService/WS/getAdministradorByIdRequest", output = "http://webService/WS/getAdministradorByIdResponse")
-    public AdministradorDto getAdministradorById(
-        @WebParam(name = "adminId", targetNamespace = "")
-        Long adminId);
+    @RequestWrapper(localName = "getUsuario", targetNamespace = "http://webService/", className = "webservice.GetUsuario")
+    @ResponseWrapper(localName = "getUsuarioResponse", targetNamespace = "http://webService/", className = "webservice.GetUsuarioResponse")
+    @Action(input = "http://webService/WS/getUsuarioRequest", output = "http://webService/WS/getUsuarioResponse")
+    public Respuesta getUsuario(
+        @WebParam(name = "usuario", targetNamespace = "")
+        String usuario,
+        @WebParam(name = "clave", targetNamespace = "")
+        String clave);
 
     /**
      * 
@@ -74,21 +62,21 @@ public interface WS {
 
     /**
      * 
-     * @param clave
-     * @param usuario
+     * @param usu
+     * @param contra
      * @return
-     *     returns webservice.Respuesta
+     *     returns webservice.AdministradorDto
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getUsuario", targetNamespace = "http://webService/", className = "webservice.GetUsuario")
-    @ResponseWrapper(localName = "getUsuarioResponse", targetNamespace = "http://webService/", className = "webservice.GetUsuarioResponse")
-    @Action(input = "http://webService/WS/getUsuarioRequest", output = "http://webService/WS/getUsuarioResponse")
-    public Respuesta getUsuario(
-        @WebParam(name = "usuario", targetNamespace = "")
-        String usuario,
-        @WebParam(name = "clave", targetNamespace = "")
-        String clave);
+    @RequestWrapper(localName = "getAdmin", targetNamespace = "http://webService/", className = "webservice.GetAdmin")
+    @ResponseWrapper(localName = "getAdminResponse", targetNamespace = "http://webService/", className = "webservice.GetAdminResponse")
+    @Action(input = "http://webService/WS/getAdminRequest", output = "http://webService/WS/getAdminResponse")
+    public AdministradorDto getAdmin(
+        @WebParam(name = "usu", targetNamespace = "")
+        String usu,
+        @WebParam(name = "contra", targetNamespace = "")
+        String contra);
 
     /**
      * 
@@ -119,5 +107,38 @@ public interface WS {
     public String eliminarAdministrador(
         @WebParam(name = "ID", targetNamespace = "")
         Long id);
+
+    /**
+     * 
+     * @param pass
+     * @param usuario
+     * @return
+     *     returns webservice.Respuesta
+     */
+    @WebMethod(operationName = "ValidarUsuario")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "ValidarUsuario", targetNamespace = "http://webService/", className = "webservice.ValidarUsuario")
+    @ResponseWrapper(localName = "ValidarUsuarioResponse", targetNamespace = "http://webService/", className = "webservice.ValidarUsuarioResponse")
+    @Action(input = "http://webService/WS/ValidarUsuarioRequest", output = "http://webService/WS/ValidarUsuarioResponse")
+    public Respuesta validarUsuario(
+        @WebParam(name = "usuario", targetNamespace = "")
+        String usuario,
+        @WebParam(name = "pass", targetNamespace = "")
+        String pass);
+
+    /**
+     * 
+     * @param id
+     * @return
+     *     returns webservice.ProyectoDto
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getProyectoPorID", targetNamespace = "http://webService/", className = "webservice.GetProyectoPorID")
+    @ResponseWrapper(localName = "getProyectoPorIDResponse", targetNamespace = "http://webService/", className = "webservice.GetProyectoPorIDResponse")
+    @Action(input = "http://webService/WS/getProyectoPorIDRequest", output = "http://webService/WS/getProyectoPorIDResponse")
+    public ProyectoDto getProyectoPorID(
+        @WebParam(name = "id", targetNamespace = "")
+        int id);
 
 }

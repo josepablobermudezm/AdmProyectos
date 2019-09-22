@@ -3,20 +3,21 @@ package webservice;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para getAdministradorById complex type.
+ * <p>Clase Java para getAdminResponse complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="getAdministradorById">
+ * &lt;complexType name="getAdminResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="adminId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="return" type="{http://webService/}administradorDto" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -26,35 +27,36 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getAdministradorById", propOrder = {
-    "adminId"
+@XmlType(name = "getAdminResponse", propOrder = {
+    "_return"
 })
-public class GetAdministradorById {
+public class GetAdminResponse {
 
-    protected Long adminId;
+    @XmlElement(name = "return")
+    protected AdministradorDto _return;
 
     /**
-     * Obtiene el valor de la propiedad adminId.
+     * Obtiene el valor de la propiedad return.
      * 
      * @return
      *     possible object is
-     *     {@link Long }
+     *     {@link AdministradorDto }
      *     
      */
-    public Long getAdminId() {
-        return adminId;
+    public AdministradorDto getReturn() {
+        return _return;
     }
 
     /**
-     * Define el valor de la propiedad adminId.
+     * Define el valor de la propiedad return.
      * 
      * @param value
      *     allowed object is
-     *     {@link Long }
+     *     {@link AdministradorDto }
      *     
      */
-    public void setAdminId(Long value) {
-        this.adminId = value;
+    public void setReturn(AdministradorDto value) {
+        this._return = value;
     }
 
 }

@@ -3,7 +3,6 @@ package webservice;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -17,16 +16,16 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="cedula" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="clave" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="correo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="estado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="ID" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="usuario" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="version" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="pApellido" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="sApellido" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="adnCedula" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="adnContrasena" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="adnCorreo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="adnEstado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="adnId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="adnNombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="adnPapellido" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="adnSapellido" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="adnUsuario" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="adnVersion" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,269 +36,268 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "administradorDto", propOrder = {
-    "cedula",
-    "clave",
-    "correo",
-    "estado",
-    "id",
-    "nombre",
-    "usuario",
-    "version",
-    "pApellido",
-    "sApellido"
+    "adnCedula",
+    "adnContrasena",
+    "adnCorreo",
+    "adnEstado",
+    "adnId",
+    "adnNombre",
+    "adnPapellido",
+    "adnSapellido",
+    "adnUsuario",
+    "adnVersion"
 })
 public class AdministradorDto {
 
-    protected String cedula;
-    protected String clave;
-    protected String correo;
-    protected String estado;
-    @XmlElement(name = "ID")
-    protected Long id;
-    protected String nombre;
-    protected String usuario;
-    protected Long version;
-    protected String pApellido;
-    protected String sApellido;
+    protected String adnCedula;
+    protected String adnContrasena;
+    protected String adnCorreo;
+    protected String adnEstado;
+    protected Long adnId;
+    protected String adnNombre;
+    protected String adnPapellido;
+    protected String adnSapellido;
+    protected String adnUsuario;
+    protected Long adnVersion;
 
     /**
-     * Obtiene el valor de la propiedad cedula.
+     * Obtiene el valor de la propiedad adnCedula.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getCedula() {
-        return cedula;
+    public String getAdnCedula() {
+        return adnCedula;
     }
 
     /**
-     * Define el valor de la propiedad cedula.
+     * Define el valor de la propiedad adnCedula.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setCedula(String value) {
-        this.cedula = value;
+    public void setAdnCedula(String value) {
+        this.adnCedula = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad clave.
+     * Obtiene el valor de la propiedad adnContrasena.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getClave() {
-        return clave;
+    public String getAdnContrasena() {
+        return adnContrasena;
     }
 
     /**
-     * Define el valor de la propiedad clave.
+     * Define el valor de la propiedad adnContrasena.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setClave(String value) {
-        this.clave = value;
+    public void setAdnContrasena(String value) {
+        this.adnContrasena = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad correo.
+     * Obtiene el valor de la propiedad adnCorreo.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getCorreo() {
-        return correo;
+    public String getAdnCorreo() {
+        return adnCorreo;
     }
 
     /**
-     * Define el valor de la propiedad correo.
+     * Define el valor de la propiedad adnCorreo.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setCorreo(String value) {
-        this.correo = value;
+    public void setAdnCorreo(String value) {
+        this.adnCorreo = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad estado.
+     * Obtiene el valor de la propiedad adnEstado.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getEstado() {
-        return estado;
+    public String getAdnEstado() {
+        return adnEstado;
     }
 
     /**
-     * Define el valor de la propiedad estado.
+     * Define el valor de la propiedad adnEstado.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setEstado(String value) {
-        this.estado = value;
+    public void setAdnEstado(String value) {
+        this.adnEstado = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad id.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
-     */
-    public Long getID() {
-        return id;
-    }
-
-    /**
-     * Define el valor de la propiedad id.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
-     */
-    public void setID(Long value) {
-        this.id = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad nombre.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNombre() {
-        return nombre;
-    }
-
-    /**
-     * Define el valor de la propiedad nombre.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNombre(String value) {
-        this.nombre = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad usuario.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getUsuario() {
-        return usuario;
-    }
-
-    /**
-     * Define el valor de la propiedad usuario.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setUsuario(String value) {
-        this.usuario = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad version.
+     * Obtiene el valor de la propiedad adnId.
      * 
      * @return
      *     possible object is
      *     {@link Long }
      *     
      */
-    public Long getVersion() {
-        return version;
+    public Long getAdnId() {
+        return adnId;
     }
 
     /**
-     * Define el valor de la propiedad version.
+     * Define el valor de la propiedad adnId.
      * 
      * @param value
      *     allowed object is
      *     {@link Long }
      *     
      */
-    public void setVersion(Long value) {
-        this.version = value;
+    public void setAdnId(Long value) {
+        this.adnId = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad pApellido.
+     * Obtiene el valor de la propiedad adnNombre.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getPApellido() {
-        return pApellido;
+    public String getAdnNombre() {
+        return adnNombre;
     }
 
     /**
-     * Define el valor de la propiedad pApellido.
+     * Define el valor de la propiedad adnNombre.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setPApellido(String value) {
-        this.pApellido = value;
+    public void setAdnNombre(String value) {
+        this.adnNombre = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad sApellido.
+     * Obtiene el valor de la propiedad adnPapellido.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getSApellido() {
-        return sApellido;
+    public String getAdnPapellido() {
+        return adnPapellido;
     }
 
     /**
-     * Define el valor de la propiedad sApellido.
+     * Define el valor de la propiedad adnPapellido.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setSApellido(String value) {
-        this.sApellido = value;
+    public void setAdnPapellido(String value) {
+        this.adnPapellido = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad adnSapellido.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getAdnSapellido() {
+        return adnSapellido;
+    }
+
+    /**
+     * Define el valor de la propiedad adnSapellido.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAdnSapellido(String value) {
+        this.adnSapellido = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad adnUsuario.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getAdnUsuario() {
+        return adnUsuario;
+    }
+
+    /**
+     * Define el valor de la propiedad adnUsuario.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAdnUsuario(String value) {
+        this.adnUsuario = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad adnVersion.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getAdnVersion() {
+        return adnVersion;
+    }
+
+    /**
+     * Define el valor de la propiedad adnVersion.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setAdnVersion(Long value) {
+        this.adnVersion = value;
     }
 
 }

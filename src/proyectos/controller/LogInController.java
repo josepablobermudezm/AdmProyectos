@@ -9,19 +9,29 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import static javafx.scene.control.Alert.AlertType.ERROR;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javax.persistence.NoResultException;
+import proyectos.model.AdministradorDto;
 import proyectos.service.AdministradorService;
+import proyectos.util.AppContext;
 import proyectos.util.FlowController;
+import proyectos.util.Formato;
 import proyectos.util.Mensaje;
 import proyectos.util.Respuesta;
 
@@ -43,17 +53,23 @@ public class LogInController extends Controller {
     @FXML
     private ImageView imguser;
     @FXML
-    private JFXTextField txtUsuario1;
+    private JFXTextField txtUsuario;
     @FXML
     private ImageView imgPassword;
     @FXML
-    private JFXPasswordField txtClave1;
+    private JFXPasswordField txtClave;
     @FXML
     private JFXButton button2;
-
+    //private AdministradorDto admin;
+    List<Node> requeridos = new ArrayList<>();
+    AdministradorDto admin;
     @Override
     public void initialize() {
         
+        Formato();
+        //admin = new AdministradorDto();
+        admin = new AdministradorDto();
+        indicarRequeridos();
         Image imglogo;
         try {
             imglogo = new Image("/proyectos/resources/logo.png");
@@ -83,7 +99,16 @@ public class LogInController extends Controller {
         } catch (Exception e) {
         }
     }
-
+    
+    public void indicarRequeridos() {
+        requeridos.clear();
+        requeridos.addAll(Arrays.asList(txtUsuario, txtClave));
+    }
+    
+     public void Formato(){
+        txtUsuario.setTextFormatter(Formato.getInstance().maxLengthFormat(30));
+        txtClave.setTextFormatter(Formato.getInstance().maxLengthFormat(15));
+    }
 
     @FXML
     private void restablecerContrasenna(MouseEvent event) {
@@ -103,20 +128,35 @@ public class LogInController extends Controller {
     }
     
     public void Login(){
-
-        /*if (txtUsuario1.getText() == null || txtUsuario1.getText().isEmpty()) {
-                new Mensaje().showModal(Alert.AlertType.WARNING, "Validación de usuario", this.getStage(), "Es necesario digitar un usuario para ingresar al sistema.");
-            }else if (txtClave1.getText() == null || txtClave1.getText().isEmpty()) {
-                new Mensaje().showModal(Alert.AlertType.WARNING, "Validación de usuario", this.getStage(), "Es necesario digitar la clave para ingresar al sistema.");
-            }else{
-                AdministradorService administradorService = new AdministradorService();
-                Respuesta respuesta = administradorService.getAdministradorUsuClave(txtUsuario1.getText(), txtClave1.getText());
-                if (respuesta.getEstado()) {
-                
-                this.getStage().close();
-            }
-        }*/
-        FlowController.getInstance().initialize();
+        Mensaje msj = new Mensaje();
+        if(txtUsuario.getText() == null || txtClave.getText() == null){ 
+            msj.show(ERROR,"Error al iniciar secion", "Usuario o Contraseña vacios!");
+        }else{
+            Boolean b =  evaluarPalabra(txtClave.getText(),txtUsuario.getText());
+            if(b == false){
+                msj.show(ERROR,"Error al iniciar secion", "Usuario o Contraseña incorrectos!");
+            } else {
+                AdministradorDto adm = admin;
+                AppContext.getInstance().setAdmin(adm);
                 FlowController.getInstance().goMain();
+            }
+        }
+    }
+    public Boolean evaluarPalabra(String password, String usu){
+        boolean cargado = false;
+        try {
+            AdministradorService adminServ = new AdministradorService();
+            AdministradorDto adminAux = adminServ.cargarAdmin(usu, password);
+            if(adminAux!=null){
+                this.admin = adminAux;
+                cargado = true;
+            } else {
+                cargado = false;
+            }
+        } catch (NoResultException | NullPointerException ex) {
+            cargado = false;
+            System.out.println("Ha ocurrido un problema cargando el usuario");
+        }
+        return cargado;
     }
 }

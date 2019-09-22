@@ -15,18 +15,18 @@ public class DtoCasting {
     
     //webservice es la carpeta de las clases que se generan solas
     //El proposito de esta clase de hacer como una copia del objeto
-    public webservice.AdministradorDto castAdministrador(AdministradorDto admin){
+    public webservice.AdministradorDto castAdmin(AdministradorDto admin){
         webservice.AdministradorDto administrador = new webservice.AdministradorDto();
-        administrador.setCedula(admin.getCedula());
-        administrador.setClave(admin.getClave());
-        administrador.setCorreo(admin.getCorreo());
-        administrador.setEstado(admin.getEstado());
-        administrador.setID(admin.getID());
-        administrador.setNombre(admin.getNombre());
-        administrador.setPApellido(admin.getpApellido());
-        administrador.setSApellido(admin.getsApellido());
-        administrador.setUsuario(admin.getUsuario());
-        administrador.setVersion(admin.getAdmVersion());        
+        administrador.setAdnCedula(admin.getAdnCedula());
+        administrador.setAdnContrasena(admin.getAdnContrasena());
+        administrador.setAdnCorreo(admin.getAdnCorreo());
+        administrador.setAdnEstado(admin.getAdnEstado());
+        administrador.setAdnId(admin.getAdnId());
+        administrador.setAdnNombre(admin.getAdnNombre());
+        administrador.setAdnPapellido(admin.getAdnPapellido());
+        administrador.setAdnSapellido(admin.getAdnSapellido());
+        administrador.setAdnUsuario(admin.getAdnUsuario());
+        administrador.setAdnVersion((admin.getAdnVersion()!=null)?admin.getAdnVersion()+1:1);        
         return administrador;
     }
 }
