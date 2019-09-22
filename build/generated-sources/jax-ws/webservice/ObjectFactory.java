@@ -26,9 +26,13 @@ public class ObjectFactory {
 
     private final static QName _GetProyectoPorIDResponse_QNAME = new QName("http://webService/", "getProyectoPorIDResponse");
     private final static QName _GetAdministradorResponse_QNAME = new QName("http://webService/", "getAdministradorResponse");
+    private final static QName _GuardarProyecto_QNAME = new QName("http://webService/", "guardarProyecto");
     private final static QName _GetAdministradorById_QNAME = new QName("http://webService/", "getAdministradorById");
     private final static QName _GetAdministradorByIdResponse_QNAME = new QName("http://webService/", "getAdministradorByIdResponse");
     private final static QName _EliminarAdministradorResponse_QNAME = new QName("http://webService/", "eliminarAdministradorResponse");
+    private final static QName _GuardarProyectoResponse_QNAME = new QName("http://webService/", "guardarProyectoResponse");
+    private final static QName _ValidarUsuario_QNAME = new QName("http://webService/", "ValidarUsuario");
+    private final static QName _ValidarUsuarioResponse_QNAME = new QName("http://webService/", "ValidarUsuarioResponse");
     private final static QName _GetAdministrador_QNAME = new QName("http://webService/", "getAdministrador");
     private final static QName _ProyectoDto_QNAME = new QName("http://webService/", "ProyectoDto");
     private final static QName _GetUsuario_QNAME = new QName("http://webService/", "getUsuario");
@@ -119,6 +123,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GuardarProyecto }
+     * 
+     */
+    public GuardarProyecto createGuardarProyecto() {
+        return new GuardarProyecto();
+    }
+
+    /**
      * Create an instance of {@link GetProyectoPorIDResponse }
      * 
      */
@@ -127,11 +139,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ValidarUsuarioResponse }
+     * 
+     */
+    public ValidarUsuarioResponse createValidarUsuarioResponse() {
+        return new ValidarUsuarioResponse();
+    }
+
+    /**
      * Create an instance of {@link GetAdministrador }
      * 
      */
     public GetAdministrador createGetAdministrador() {
         return new GetAdministrador();
+    }
+
+    /**
+     * Create an instance of {@link ValidarUsuario }
+     * 
+     */
+    public ValidarUsuario createValidarUsuario() {
+        return new ValidarUsuario();
     }
 
     /**
@@ -156,6 +184,22 @@ public class ObjectFactory {
      */
     public EliminarAdministradorResponse createEliminarAdministradorResponse() {
         return new EliminarAdministradorResponse();
+    }
+
+    /**
+     * Create an instance of {@link GuardarProyectoResponse }
+     * 
+     */
+    public GuardarProyectoResponse createGuardarProyectoResponse() {
+        return new GuardarProyectoResponse();
+    }
+
+    /**
+     * Create an instance of {@link LocalDate }
+     * 
+     */
+    public LocalDate createLocalDate() {
+        return new LocalDate();
     }
 
     /**
@@ -185,6 +229,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GuardarProyecto }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService/", name = "guardarProyecto")
+    public JAXBElement<GuardarProyecto> createGuardarProyecto(GuardarProyecto value) {
+        return new JAXBElement<GuardarProyecto>(_GuardarProyecto_QNAME, GuardarProyecto.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetAdministradorById }{@code >}}
      * 
      */
@@ -209,6 +262,33 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://webService/", name = "eliminarAdministradorResponse")
     public JAXBElement<EliminarAdministradorResponse> createEliminarAdministradorResponse(EliminarAdministradorResponse value) {
         return new JAXBElement<EliminarAdministradorResponse>(_EliminarAdministradorResponse_QNAME, EliminarAdministradorResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GuardarProyectoResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService/", name = "guardarProyectoResponse")
+    public JAXBElement<GuardarProyectoResponse> createGuardarProyectoResponse(GuardarProyectoResponse value) {
+        return new JAXBElement<GuardarProyectoResponse>(_GuardarProyectoResponse_QNAME, GuardarProyectoResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ValidarUsuario }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService/", name = "ValidarUsuario")
+    public JAXBElement<ValidarUsuario> createValidarUsuario(ValidarUsuario value) {
+        return new JAXBElement<ValidarUsuario>(_ValidarUsuario_QNAME, ValidarUsuario.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ValidarUsuarioResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService/", name = "ValidarUsuarioResponse")
+    public JAXBElement<ValidarUsuarioResponse> createValidarUsuarioResponse(ValidarUsuarioResponse value) {
+        return new JAXBElement<ValidarUsuarioResponse>(_ValidarUsuarioResponse_QNAME, ValidarUsuarioResponse.class, null, value);
     }
 
     /**

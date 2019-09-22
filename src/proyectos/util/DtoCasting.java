@@ -5,7 +5,12 @@
  */
 package proyectos.util;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import proyectos.model.AdministradorDto;
+import proyectos.model.ProyectoDto;
 
 /**
  *
@@ -28,5 +33,26 @@ public class DtoCasting {
         administrador.setUsuario(admin.getUsuario());
         administrador.setVersion(admin.getAdmVersion());        
         return administrador;
+    }
+    public webservice.ProyectoDto castProyecto(ProyectoDto proyectoDto){
+        webservice.ProyectoDto proyectoDto1 = new webservice.ProyectoDto();
+        proyectoDto1.setId(proyectoDto.getID());
+        proyectoDto1.setCorreoLiderTecnico(proyectoDto.getCorreoTecnico());
+        proyectoDto1.setCorreoLiderUsuario(proyectoDto.getCorreoUsuario());
+        proyectoDto1.setCorreoPatrocinador(proyectoDto.getCorreoPatrocinador());
+        proyectoDto1.setEstado(proyectoDto.getEstado());
+        proyectoDto1.setFinalEsperado(proyectoDto.getFinalEsperado().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        proyectoDto1.setInicioEsperado(proyectoDto.getInicioEsperado());
+        proyectoDto1.setInicioReal(proyectoDto.getInicioReal());
+        proyectoDto1.setLiderTectnico(proyectoDto.getLiderTecnico());
+        proyectoDto1.setLiderUsuario(proyectoDto.getLiderUsuario());
+        proyectoDto1.setNombre(proyectoDto.getNombre());
+        proyectoDto1.setPatrocinador(proyectoDto.getPatrocinador());
+        proyectoDto1.setVersion(proyectoDto.getVersion());
+        return proyectoDto1;
+    }
+    public Date ConvertirLocalDate(LocalDate localdate){
+        return(java.sql.Date.valueOf(localdate));
+        
     }
 }

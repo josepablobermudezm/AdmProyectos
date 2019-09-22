@@ -20,11 +20,11 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="correoLiderUsuario" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="correoPatrocinador" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="estado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="finalEsperado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="finalReal" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="finalEsperado" type="{http://webService/}localDate" minOccurs="0"/>
+ *         &lt;element name="finalReal" type="{http://webService/}localDate" minOccurs="0"/>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="inicioEsperado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="inicioReal" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="inicioEsperado" type="{http://webService/}localDate" minOccurs="0"/>
+ *         &lt;element name="inicioReal" type="{http://webService/}localDate" minOccurs="0"/>
  *         &lt;element name="liderTectnico" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="liderUsuario" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -61,11 +61,11 @@ public class ProyectoDto {
     protected String correoLiderUsuario;
     protected String correoPatrocinador;
     protected String estado;
-    protected String finalEsperado;
-    protected String finalReal;
+    protected LocalDate finalEsperado;
+    protected LocalDate finalReal;
     protected Long id;
-    protected String inicioEsperado;
-    protected String inicioReal;
+    protected LocalDate inicioEsperado;
+    protected LocalDate inicioReal;
     protected String liderTectnico;
     protected String liderUsuario;
     protected String nombre;
@@ -173,10 +173,10 @@ public class ProyectoDto {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link LocalDate }
      *     
      */
-    public String getFinalEsperado() {
+    public LocalDate getFinalEsperado() {
         return finalEsperado;
     }
 
@@ -185,10 +185,10 @@ public class ProyectoDto {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link LocalDate }
      *     
      */
-    public void setFinalEsperado(String value) {
+    public void setFinalEsperado(LocalDate value) {
         this.finalEsperado = value;
     }
 
@@ -197,10 +197,10 @@ public class ProyectoDto {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link LocalDate }
      *     
      */
-    public String getFinalReal() {
+    public LocalDate getFinalReal() {
         return finalReal;
     }
 
@@ -209,10 +209,10 @@ public class ProyectoDto {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link LocalDate }
      *     
      */
-    public void setFinalReal(String value) {
+    public void setFinalReal(LocalDate value) {
         this.finalReal = value;
     }
 
@@ -245,10 +245,10 @@ public class ProyectoDto {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link LocalDate }
      *     
      */
-    public String getInicioEsperado() {
+    public LocalDate getInicioEsperado() {
         return inicioEsperado;
     }
 
@@ -257,10 +257,10 @@ public class ProyectoDto {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link LocalDate }
      *     
      */
-    public void setInicioEsperado(String value) {
+    public void setInicioEsperado(LocalDate value) {
         this.inicioEsperado = value;
     }
 
@@ -269,10 +269,10 @@ public class ProyectoDto {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link LocalDate }
      *     
      */
-    public String getInicioReal() {
+    public LocalDate getInicioReal() {
         return inicioReal;
     }
 
@@ -281,10 +281,10 @@ public class ProyectoDto {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link LocalDate }
      *     
      */
-    public void setInicioReal(String value) {
+    public void setInicioReal(LocalDate value) {
         this.inicioReal = value;
     }
 

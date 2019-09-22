@@ -5,10 +5,13 @@
  */
 package proyectos.model;
 
+import java.time.LocalDate;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import proyectos.util.LocalDateAdapter;
 
 /**
  *
@@ -21,10 +24,14 @@ public class ProyectoDto {
     String patrocinador;
     String liderUsuario;
     String liderTecnico;
-    String inicioEsperado;
-    String inicioReal;
-    String finalEsperado;
-    String finalReal;
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    LocalDate inicioEsperado;
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    LocalDate inicioReal;
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    LocalDate finalEsperado;
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    LocalDate finalReal;
     String estado;
     String correoUsuario;
     String correoTecnico;
@@ -35,7 +42,7 @@ public class ProyectoDto {
         
     }
     
-    public ProyectoDto(Long ID, String nombre, String patrocinador, String liderUsuario, String liderTecnico, String inicioEsperado, String inicioReal, String finalEsperado, String finalReal, String estado, String correoUsuario, String correoTecnico, String correoPatrocinador, Long version) {
+    public ProyectoDto(Long ID, String nombre, String patrocinador, String liderUsuario, String liderTecnico,LocalDate inicioEsperado, LocalDate inicioReal, LocalDate finalEsperado, LocalDate finalReal, String estado, String correoUsuario, String correoTecnico, String correoPatrocinador, Long version) {
         this.ID = ID;
         this.nombre = nombre;
         this.patrocinador = patrocinador;
@@ -107,36 +114,36 @@ public class ProyectoDto {
     public void setLiderTecnico(String liderTecnico) {
         this.liderTecnico = liderTecnico;
     }
-
-    public String getInicioEsperado() {
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    public LocalDate getInicioEsperado() {
         return inicioEsperado;
     }
-
-    public void setInicioEsperado(String inicioEsperado) {
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    public void setInicioEsperado(LocalDate inicioEsperado) {
         this.inicioEsperado = inicioEsperado;
     }
-
-    public String getInicioReal() {
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    public LocalDate getInicioReal() {
         return inicioReal;
     }
-
-    public void setInicioReal(String inicioReal) {
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    public void setInicioReal(LocalDate inicioReal) {
         this.inicioReal = inicioReal;
     }
-
-    public String getFinalEsperado() {
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    public LocalDate getFinalEsperado() {
         return finalEsperado;
     }
-
-    public void setFinalEsperado(String finalEsperado) {
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    public void setFinalEsperado(LocalDate finalEsperado) {
         this.finalEsperado = finalEsperado;
     }
-
-    public String getFinalReal() {
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    public LocalDate getFinalReal() {
         return finalReal;
     }
-
-    public void setFinalReal(String finalReal) {
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    public void setFinalReal(LocalDate finalReal) {
         this.finalReal = finalReal;
     }
 
