@@ -24,28 +24,20 @@ public class AdministradorService {
     WS webService = service.getWSPort();
     DtoCasting dtoCasting = new DtoCasting();
     
-    public Respuesta getAdministradorUsuClave(String usuario, String clave){
-        try{
-            //Consulto al Service por un Administrador
-            webservice.Respuesta resp = webService.getUsuario(usuario, clave);
-            if(!resp.isEstado()){
-                // Respuesta erronea si la respuesta del servidor también lo fue
-                return new Respuesta(Boolean.FALSE, resp.getMensaje(), resp.getMensajeInterno());
-            }
-            // Obtengo un nuevo AdministradorDto a base del que el servidor devuelve y lo inserta en una nueva respuesta
-            return new Respuesta(Boolean.TRUE, "", "", "AdministradorDto", new AdministradorDto((webservice.AdministradorDto)resp.getResultado()));
-        }catch (Exception ex){
-            Logger.getLogger(AdministradorService.class.getName()).log(Level.SEVERE, "Error al obtener el Usuario.", ex);
-            if(ex.getCause() != null && ex.getCause().getClass() == ConnectException.class){
-                return new Respuesta(false, "Error al obtener el Usuario. No se pudo hacer conexión con el servidor: ", "getAdministradorUsuClave " + ex.getMessage());
-            }
-            return new Respuesta(false, "Error al obtener el Usuario.", "getAdministradorUsuClave " + ex.getMessage());
+    public AdministradorDto cargarAdmin(String usu, String pass){
+        webservice.AdministradorDto adminWsAux = webService.getAdmin(usu, pass);
+        AdministradorDto adminDto ;
+        if(adminWsAux!=null){
+            adminDto = new AdministradorDto(adminWsAux);
+        } else {
+            adminDto = null;
         }
+        return adminDto;
     }
     
     public Respuesta guardarAdministrador(AdministradorDto admin) {
         try {
-            webservice.AdministradorDto administrador = dtoCasting.castAdministrador(admin);
+            webservice.AdministradorDto administrador = dtoCasting.castAdmin(admin);
             webservice.Respuesta resp = webService.guardarAdministrador(administrador);
             if (!resp.isEstado()) {
                 return new Respuesta(false, resp.getMensaje(), resp.getMensajeInterno(), "", "");
@@ -67,7 +59,7 @@ public class AdministradorService {
             return new Respuesta(false, "Error guardando el Usuario.", "guardarUsuario " + ex.getMessage());
         }
     }
-     public AdministradorDto getAdministrador(Long id){
+    /*public AdministradorDto getAdministrador(Long id){
         webservice.AdministradorDto adminWsDto = webService.getAdministradorById(id);
         AdministradorDto adminDto;
         if(adminWsDto!=null){
@@ -76,6 +68,6 @@ public class AdministradorService {
             adminDto = null;
         }
         return adminDto;
-    }
+    }*/
     
 }
