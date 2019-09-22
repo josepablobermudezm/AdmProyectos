@@ -118,7 +118,7 @@ public class MantenimientoAdministradores extends Controller {
             String usuario = txtUsuario.getText();
             String clave = txtContrasenna.getText();
             Long version = new Long(1);
-            administradorDto = new AdministradorDto(null, nombre, papellido, sapellido, cedula, usuario, correo, clave, version, "A");
+            //administradorDto = new AdministradorDto(null, nombre, papellido, sapellido, cedula, usuario, correo, clave, version, "A");
             resp = administradorService.guardarAdministrador(administradorDto);
             administradorDto = (AdministradorDto) resp.getResultado("Administrador");
             //resp = AdministradorService.activarAdministrador(AdministradorDto.getContrasennaTemp());
