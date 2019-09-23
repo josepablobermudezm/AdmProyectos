@@ -5,10 +5,6 @@
  */
 package proyectos.util;
 
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 import proyectos.model.AdministradorDto;
 import proyectos.model.ProyectoDto;
 
@@ -34,25 +30,21 @@ public class DtoCasting {
         administrador.setAdnVersion((admin.getAdnVersion()!=null)?admin.getAdnVersion()+1:1);        
         return administrador;
     }
-    public webservice.ProyectoDto castProyecto(ProyectoDto proyectoDto){
-        webservice.ProyectoDto proyectoDto1 = new webservice.ProyectoDto();
-        proyectoDto1.setId(proyectoDto.getID());
-        proyectoDto1.setCorreoLiderTecnico(proyectoDto.getCorreoTecnico());
-        proyectoDto1.setCorreoLiderUsuario(proyectoDto.getCorreoUsuario());
-        proyectoDto1.setCorreoPatrocinador(proyectoDto.getCorreoPatrocinador());
-        proyectoDto1.setEstado(proyectoDto.getEstado());
-        proyectoDto1.setFinalEsperado(proyectoDto.getFinalEsperado().atStartOfDay(ZoneId.systemDefault()).toInstant());
-        proyectoDto1.setInicioEsperado(proyectoDto.getInicioEsperado());
-        proyectoDto1.setInicioReal(proyectoDto.getInicioReal());
-        proyectoDto1.setLiderTectnico(proyectoDto.getLiderTecnico());
-        proyectoDto1.setLiderUsuario(proyectoDto.getLiderUsuario());
-        proyectoDto1.setNombre(proyectoDto.getNombre());
-        proyectoDto1.setPatrocinador(proyectoDto.getPatrocinador());
-        proyectoDto1.setVersion(proyectoDto.getVersion());
-        return proyectoDto1;
-    }
-    public Date ConvertirLocalDate(LocalDate localdate){
-        return(java.sql.Date.valueOf(localdate));
-        
+    public webservice.ProyectoDto castPro(ProyectoDto pro){
+        webservice.ProyectoDto proyectoDto = new webservice.ProyectoDto();
+       proyectoDto.setProCorreopatrocinador(pro.getProCorreopatrocinador());
+        proyectoDto.setProCorreotecnico(pro.getProCorreotecnico());
+        proyectoDto.setProCorreousuario(pro.getProCorreousuario());
+        proyectoDto.setProFechafinal(pro.getProFechafinal());
+        proyectoDto.setProFechafinreal(pro.getProFechafinreal());
+        proyectoDto.setProFechainicio(pro.getProFechainicio());
+        proyectoDto.setProFechainireal(pro.getProFechainireal());
+        proyectoDto.setProId(pro.getProId());
+        proyectoDto.setProLidertecnico(pro.getProLidertecnico());
+        proyectoDto.setProLiderusuario(pro.getProLiderusuario());
+        proyectoDto.setProNombre(pro.getProNombre());
+        proyectoDto.setProPatrocinador(pro.getProPatrocinador());
+        proyectoDto.setProVersion((pro.getProVersion()!=null)?pro.getProVersion()+1:1);
+        return proyectoDto;
     }
 }
