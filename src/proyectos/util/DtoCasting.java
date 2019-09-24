@@ -32,19 +32,23 @@ public class DtoCasting {
     }
     public webservice.ProyectoDto castPro(ProyectoDto pro){
         webservice.ProyectoDto proyectoDto = new webservice.ProyectoDto();
-       proyectoDto.setProCorreopatrocinador(pro.getProCorreopatrocinador());
+        proyectoDto.setProCorreopatrocinador(pro.getProCorreopatrocinador());
         proyectoDto.setProCorreotecnico(pro.getProCorreotecnico());
         proyectoDto.setProCorreousuario(pro.getProCorreousuario());
-        proyectoDto.setProFechafinal(pro.getProFechafinal());
-        proyectoDto.setProFechafinreal(pro.getProFechafinreal());
-        proyectoDto.setProFechainicio(pro.getProFechainicio());
-        proyectoDto.setProFechainireal(pro.getProFechainireal());
+        proyectoDto.setProFechafinal(pro.getProFechafinal().toString());
+        proyectoDto.setProFechafinreal(pro.getProFechafinreal().toString());
+        proyectoDto.setProFechainicio(pro.getProFechainicio().toString());
+        proyectoDto.setProFechainireal(pro.getProFechainireal().toString());
         proyectoDto.setProId(pro.getProId());
         proyectoDto.setProLidertecnico(pro.getProLidertecnico());
         proyectoDto.setProLiderusuario(pro.getProLiderusuario());
         proyectoDto.setProNombre(pro.getProNombre());
         proyectoDto.setProPatrocinador(pro.getProPatrocinador());
-        proyectoDto.setProVersion((pro.getProVersion()!=null)?pro.getProVersion()+1:1);
+        proyectoDto.setProEstado(pro.getProEstado().equals("Planificado")?"P":
+        pro.getProEstado().equals("En Curso")?"C":pro.getProEstado().equals("Finalizado")?"F":"S");
+        proyectoDto.setProVersion((pro.getProVersion()!=null)?pro.getProVersion()+ 1:1);
+//        proyectoDto.setProAdmin(new DtoCasting().castAdmin((AdministradorDto)AppContext.getInstance().get("AdministradorDto")));
+       
         return proyectoDto;
     }
 }
