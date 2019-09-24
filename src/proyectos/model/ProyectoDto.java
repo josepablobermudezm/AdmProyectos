@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -26,23 +27,23 @@ import javax.xml.bind.annotation.XmlTransient;
 
 public class ProyectoDto {
 
-    private SimpleStringProperty proId;
-    private SimpleStringProperty proNombre;
-    private SimpleStringProperty proPatrocinador;
-    private SimpleStringProperty proLiderusuario;
-    private SimpleStringProperty proLidertecnico;
-    private SimpleStringProperty proCorreopatrocinador;
-    private SimpleStringProperty proCorreousuario;
-    private SimpleStringProperty proCorreotecnico;
-    private SimpleObjectProperty<LocalDate> proFechainireal;
-    private SimpleObjectProperty<LocalDate> proFechafinreal;
-    private SimpleObjectProperty<LocalDate> proFechainicio;
-    private SimpleObjectProperty<LocalDate> proFechafinal;
-    private SimpleObjectProperty<String> proEstado;
-    private SimpleLongProperty proVersion;
-
-    private ObservableList<SeguimientoDto> seguimientos = FXCollections.observableArrayList();
-    private ObservableList<ActividadesDto> actividades = FXCollections.observableArrayList();
+    public SimpleStringProperty proId;
+    public SimpleStringProperty proNombre;
+    public SimpleStringProperty proPatrocinador;
+    public SimpleStringProperty proLiderusuario;
+    public SimpleStringProperty proLidertecnico;
+    public SimpleStringProperty proCorreopatrocinador;
+    public SimpleStringProperty proCorreousuario;
+    public SimpleStringProperty proCorreotecnico;
+    public ObjectProperty<LocalDate> proFechainireal;
+    public ObjectProperty<LocalDate> proFechafinreal;
+    public ObjectProperty<LocalDate> proFechainicio;
+    public ObjectProperty<LocalDate> proFechafinal;
+    public ObjectProperty<String> proEstado;
+    public SimpleStringProperty proVersion;
+    private List<ActividadesDto> actividadList;
+    private List<SeguimientoDto> seguimientoList;
+    private AdministradorDto proAdministrador;
 
     public ProyectoDto() {
         this.proId = new SimpleStringProperty();
@@ -53,15 +54,15 @@ public class ProyectoDto {
         this.proCorreopatrocinador = new SimpleStringProperty();
         this.proCorreousuario = new SimpleStringProperty();
         this.proCorreotecnico = new SimpleStringProperty();
-        this.proFechainireal = new SimpleObjectProperty<LocalDate>();
-        this.proFechafinreal = new SimpleObjectProperty<LocalDate>();
-        this.proFechainicio = new SimpleObjectProperty<LocalDate>();
-        this.proFechafinal = new SimpleObjectProperty<LocalDate>();
-        this.proEstado = new SimpleObjectProperty("P");
-        this.proVersion = new SimpleLongProperty();
+        this.proFechainireal = new SimpleObjectProperty();
+        this.proFechafinreal = new SimpleObjectProperty();
+        this.proFechainicio = new SimpleObjectProperty();
+        this.proFechafinal = new SimpleObjectProperty();
+        this.proEstado = new SimpleObjectProperty();
+        this.proVersion = new SimpleStringProperty();
     }
 
-    public ProyectoDto(webservice.ProyectoDto proyect){
+    public ProyectoDto(webservice.ProyectoDto proyect) {
         this();
         this.proId.setValue(proyect.getProId() == null ? "" : proyect.getProId().toString());
         this.proNombre.setValue(proyect.getProNombre());
@@ -71,17 +72,31 @@ public class ProyectoDto {
         this.proCorreopatrocinador.setValue(proyect.getProCorreopatrocinador());
         this.proCorreousuario.setValue(proyect.getProCorreousuario());
         this.proCorreotecnico.setValue(proyect.getProCorreotecnico());
-        setProFechainireal(proyect.getProFechainireal());
-        setProFechafinreal(proyect.getProFechafinreal());
-        setProFechainicio(proyect.getProFechainicio());
-        setProFechafinal(proyect.getProFechafinal());
-        this.proEstado.setValue(proyect.getProEstado());
-        this.proVersion.setValue(proyect.getProVersion());
+        if (proyect.getProFechafinal() != null) {
+            LocalDate fechFinal = LocalDate.parse(proyect.getProFechafinal(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            this.proFechafinal.set(fechFinal);
+        }
+        if (proyect.getProFechafinreal() != null) {
+            LocalDate fechFinalReal = LocalDate.parse(proyect.getProFechafinreal(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            this.proFechafinreal.set(fechFinalReal);
+        }
+        if (proyect.getProFechainicio() != null) {
+            LocalDate fechIni = LocalDate.parse(proyect.getProFechainicio(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            this.proFechainicio.set(fechIni);
+        }
+        if (proyect.getProFechainireal() != null) {
+            LocalDate fechIniReal = LocalDate.parse(proyect.getProFechainireal(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            this.proFechainireal.set(fechIniReal);
+        }
+
+        this.proEstado.setValue(proyect.getProEstado().equals("P")?"Planificado":
+        proyect.getProEstado().equals("C")?"En Curso":proyect.getProEstado().equals("F")?"Finalizado":"Suspendido");
+        this.proVersion.setValue(proyect.getProVersion().toString());
         // Faltan listas del Service
         // Actividades - Seguimientos
     }
 
-    public ProyectoDto(Long proId, String proNombre, String proPatrocinador, String proLiderusuario, String proLidertecnico, String proCorreopatrocinador, String proCorreousuario, String proCorreotecnico, LocalDate proFechainireal, LocalDate proFechafinreal, LocalDate proFechainicio, LocalDate proFechafinal, String proEstado, Long proVersion) {
+     public ProyectoDto(Long proId, String proNombre, String proPatrocinador, String proLiderusuario, String proLidertecnico, String proCorreopatrocinador, String proCorreousuario, String proCorreotecnico, LocalDate proFechainireal, LocalDate proFechafinreal, LocalDate proFechainicio, LocalDate proFechafinal, String proEstado, Long proVersion) {
         this();
         this.proId.setValue(proId == null ? null : proId.toString());
         this.proNombre.setValue(proNombre);
@@ -96,7 +111,7 @@ public class ProyectoDto {
         this.proFechainicio.setValue(proFechainicio);
         this.proFechafinal.setValue(proFechafinal);
         this.proEstado.setValue(proEstado);
-        this.proVersion.setValue(proVersion);
+        this.proVersion.setValue(proVersion.toString());
     }
 
     public Long getProId() {
@@ -168,36 +183,37 @@ public class ProyectoDto {
         this.proCorreotecnico.setValue(proCorreotecnico);
     }
 
-    public String getProFechainireal() {
-        if(proFechainireal.get() != null){
-            return proFechainireal.get().toString();
-        }
-        return null;
+    public LocalDate getProFechainireal() {
+        return proFechainireal.get();
     }
 
-    public void setProFechainireal(String proFechainireal) {
-        this.proFechainireal.setValue(null);
-        if(proFechainireal != null){
-            if(!proFechainireal.isEmpty()){
-                this.proFechainireal.setValue(LocalDate.parse(proFechainireal, DateTimeFormatter.ISO_DATE));
-            }
-        }
+    public void setProFechainireal(LocalDate proFechainireal) {
+        this.proFechainireal.setValue(proFechainireal);
+
     }
 
-    public String getProFechafinreal() {
-        if(proFechafinreal.get() != null){
-            return proFechafinreal.get().toString();
-        }
-        return null;
+    public LocalDate getProFechafinreal() {
+        return proFechafinreal.get();
     }
 
-    public void setProFechafinreal(String proFechafinreal) {
-        this.proFechafinreal.setValue(null);
-        if(proFechafinreal != null){
-            if(!proFechafinreal.isEmpty()){
-                this.proFechafinreal.setValue(LocalDate.parse(proFechafinreal, DateTimeFormatter.ISO_DATE));
-            }
-        }
+    public void setProFechafinreal(LocalDate proFechafinreal) {
+        this.proFechafinreal.setValue(proFechafinreal);
+    }
+
+    public LocalDate getProFechainicio() {
+        return this.proFechainicio.get();
+    }
+
+    public void setProFechainicio(LocalDate proFechainicio) {
+        this.proFechainicio.setValue(proFechainicio);
+    }
+
+    public LocalDate getProFechafinal() {
+        return this.proFechafinal.get();
+    }
+
+    public void setProFechafinal(LocalDate proFechafinal) {
+        this.proFechafinal.setValue(proFechafinal);
     }
 
     public String getProEstado() {
@@ -207,51 +223,48 @@ public class ProyectoDto {
     public void setProEstado(String proEstado) {
         this.proEstado.setValue(proEstado);
     }
-
-    public String getProFechainicio() {
-        if(proFechainicio.get() != null){
-            return this.proFechainicio.get().toString();
-        }
-        return null;
+    
+    public List<ActividadesDto> getActividadList() {
+        return actividadList;
     }
 
-    public void setProFechainicio(String proFechainicio) {
-        this.proFechainicio.setValue(null);
-        if(proFechainicio != null){
-            if(!proFechainicio.isEmpty()){
-                this.proFechainicio.setValue(LocalDate.parse(proFechainicio, DateTimeFormatter.ISO_DATE));
-            }
-        }
+    public void setActividadList(List<ActividadesDto> actividadList) {
+        this.actividadList = actividadList;
     }
 
-    public String getProFechafinal() {
-        if(proFechafinal.get() != null){
-            return this.proFechafinal.get().toString();
-        }
-        return null;
+    public List<SeguimientoDto> getSeguimientoList() {
+        return seguimientoList;
     }
 
-    public void setProFechafinal(String proFechafinal) {
-        this.proFechafinal.setValue(null);
-        if(proFechafinal != null){
-            if(!proFechafinal.isEmpty()){
-                this.proFechafinal.setValue(LocalDate.parse(proFechafinal, DateTimeFormatter.ISO_DATE));
-            }
-        }
+    public void setSeguimientoList(List<SeguimientoDto> seguimientoList) {
+        this.seguimientoList = seguimientoList;
+    }
+
+    public AdministradorDto getProAdministrador() {
+        return proAdministrador;
+    }
+
+    public void setProAdministrador(AdministradorDto proAdministrador) {
+        this.proAdministrador = proAdministrador;
     }
 
     public Long getProVersion() {
-        return proVersion.get();
+        if (proVersion.get() != null) {
+            if (!proVersion.get().isEmpty()) {
+                return Long.valueOf(proVersion.get());
+            }
+        }
+        return null;
     }
 
     public void setProVersion(Long proVersion) {
-        this.proVersion.setValue(proVersion);
+        this.proVersion.setValue(proVersion.toString());
     }
-
+    
+/*
     public ObservableList<SeguimientoDto> getSeguimientos() {
         return seguimientos;
     }
-/*
     public List<ws.admin.ac.cr.controller.SeguimientoDto> getSeguimientosService() {
         List<ws.admin.ac.cr.controller.SeguimientoDto> segs = new ArrayList<>();
         try {
@@ -265,18 +278,8 @@ public class ProyectoDto {
             return segs;
         }
     }
-*/
-    public void setSeguimientos(ObservableList<SeguimientoDto> seguimientos) {
-        this.seguimientos = seguimientos;
-    }
-    
-    // setFromServidor
-
-    public ObservableList<ActividadesDto> getActividades() {
-        return actividades;
-    }
-
-    /*public List<ws.admin.ac.cr.controller.ActividadDto> getActividadesService() {
+   
+   public List<ws.admin.ac.cr.controller.ActividadDto> getActividadesService() {
         List<ws.admin.ac.cr.controller.ActividadDto> acts = new ArrayList<>();
         try {
             CastingDto cast = new CastingDto();
@@ -288,12 +291,11 @@ public class ProyectoDto {
             System.err.println("Error Pasar Actividades a servidor ProyectoDto getActividadesService() " + ex.getMessage());
             return acts;
         }
-    }*/
-
-    public void setActividades(ObservableList<ActividadesDto> actividades) {
+    }
+    public void setActividades(ObservableList<ActividadDto> actividades) {
         this.actividades = actividades;
     }
-
-    
+*/
     // setFromServidor
+
 }
