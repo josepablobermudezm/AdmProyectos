@@ -8,25 +8,18 @@ package proyectos.controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.ResourceBundle;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
-import static javafx.scene.control.Alert.AlertType.ERROR;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javax.persistence.NoResultException;
 import proyectos.model.AdministradorDto;
 import proyectos.service.AdministradorService;
 import proyectos.util.AppContext;
@@ -62,14 +55,14 @@ public class LogInController extends Controller {
     private JFXButton button2;
     //private AdministradorDto admin;
     List<Node> requeridos = new ArrayList<>();
-    AdministradorDto admin;
+    private AdministradorDto admin;
     @Override
     public void initialize() {
         
-        Formato();
-        //admin = new AdministradorDto();
+         Formato();
         admin = new AdministradorDto();
-        indicarRequeridos();
+        //bindAdmin();
+        //indicarRequeridos();
         Image imglogo;
         try {
             imglogo = new Image("/proyectos/resources/logo.png");
@@ -100,16 +93,21 @@ public class LogInController extends Controller {
         }
     }
     
-    public void indicarRequeridos() {
+    /*public void indicarRequeridos() {
         requeridos.clear();
         requeridos.addAll(Arrays.asList(txtUsuario, txtClave));
-    }
+    }*/
     
      public void Formato(){
         txtUsuario.setTextFormatter(Formato.getInstance().maxLengthFormat(30));
         txtClave.setTextFormatter(Formato.getInstance().maxLengthFormat(15));
     }
 
+    /*private void bindAdmin(){
+        txtClave.textProperty().bindBidirectional(admin.);
+        txtUsuario.textProperty().bindBidirectional(admin.adnSapellidoP);
+    }*/
+     
     @FXML
     private void restablecerContrasenna(MouseEvent event) {
         
@@ -124,11 +122,23 @@ public class LogInController extends Controller {
 
     @FXML
     private void ingresar(ActionEvent event) {
-        Login();
+        /*if(!txtUsuario.getText().isEmpty() && !txtClave.getText().isEmpty()){
+            Respuesta respuesta = new AdministradorService().getAdministradorUsuClave(txtUsuario.getText(), txtClave.getText());
+            if(respuesta.getEstado()){
+                AppContext.getInstance().set("AdministradorDto", (AdministradorDto) respuesta.getResultado("AdministradorDto"));
+                */FlowController.getInstance().goMain();
+                this.getStage().close();
+            /*}else{
+                new Mensaje().showModal(Alert.AlertType.ERROR, "Iniciar Sesión", this.getStage(), respuesta.getMensaje());
+            }
+        }else{
+            new Mensaje().showModal(Alert.AlertType.ERROR, "Iniciar Sesión", this.getStage(), "Usuario y Clave deben de ser obligatorios.");
+        }*/
     }
     
-    public void Login(){
-        Mensaje msj = new Mensaje();
+    
+    public void Login(){}
+        /*Mensaje msj = new Mensaje();
         if(txtUsuario.getText() == null || txtClave.getText() == null){ 
             msj.show(ERROR,"Error al iniciar secion", "Usuario o Contraseña vacios!");
         }else{
@@ -140,13 +150,13 @@ public class LogInController extends Controller {
                 AppContext.getInstance().setAdmin(adm);
                 FlowController.getInstance().goMain();
             }
-        }
-    }
-    public Boolean evaluarPalabra(String password, String usu){
+        }*/
+        
+    /*public Boolean evaluarPalabra(String contra, String usu){
         boolean cargado = false;
         try {
             AdministradorService adminServ = new AdministradorService();
-            AdministradorDto adminAux = adminServ.cargarAdmin(usu, password);
+            AdministradorDto adminAux = adminServ.cargarAdmin(usu, contra);
             if(adminAux!=null){
                 this.admin = adminAux;
                 cargado = true;
@@ -158,5 +168,5 @@ public class LogInController extends Controller {
             System.out.println("Ha ocurrido un problema cargando el usuario");
         }
         return cargado;
-    }
+    }*/
 }
