@@ -26,6 +26,21 @@ public interface WS {
 
     /**
      * 
+     * @param actividad
+     * @return
+     *     returns webservice.Respuesta
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "guardarActividad", targetNamespace = "http://webService/", className = "webservice.GuardarActividad")
+    @ResponseWrapper(localName = "guardarActividadResponse", targetNamespace = "http://webService/", className = "webservice.GuardarActividadResponse")
+    @Action(input = "http://webService/WS/guardarActividadRequest", output = "http://webService/WS/guardarActividadResponse")
+    public Respuesta guardarActividad(
+        @WebParam(name = "actividad", targetNamespace = "")
+        ActividadesDto actividad);
+
+    /**
+     * 
      * @param id
      * @return
      *     returns webservice.Respuesta
@@ -74,21 +89,6 @@ public interface WS {
 
     /**
      * 
-     * @param id
-     * @return
-     *     returns webservice.Respuesta
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getAdministrador", targetNamespace = "http://webService/", className = "webservice.GetAdministrador")
-    @ResponseWrapper(localName = "getAdministradorResponse", targetNamespace = "http://webService/", className = "webservice.GetAdministradorResponse")
-    @Action(input = "http://webService/WS/getAdministradorRequest", output = "http://webService/WS/getAdministradorResponse")
-    public Respuesta getAdministrador(
-        @WebParam(name = "ID", targetNamespace = "")
-        Long id);
-
-    /**
-     * 
      * @param proyecto
      * @return
      *     returns webservice.Respuesta
@@ -114,6 +114,51 @@ public interface WS {
     @ResponseWrapper(localName = "eliminarProyectoResponse", targetNamespace = "http://webService/", className = "webservice.EliminarProyectoResponse")
     @Action(input = "http://webService/WS/eliminarProyectoRequest", output = "http://webService/WS/eliminarProyectoResponse")
     public Respuesta eliminarProyecto(
+        @WebParam(name = "ID", targetNamespace = "")
+        Long id);
+
+    /**
+     * 
+     * @param seguimiento
+     * @return
+     *     returns webservice.Respuesta
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "guardarSeguimiento", targetNamespace = "http://webService/", className = "webservice.GuardarSeguimiento")
+    @ResponseWrapper(localName = "guardarSeguimientoResponse", targetNamespace = "http://webService/", className = "webservice.GuardarSeguimientoResponse")
+    @Action(input = "http://webService/WS/guardarSeguimientoRequest", output = "http://webService/WS/guardarSeguimientoResponse")
+    public Respuesta guardarSeguimiento(
+        @WebParam(name = "seguimiento", targetNamespace = "")
+        SeguimientoDto seguimiento);
+
+    /**
+     * 
+     * @param id
+     * @return
+     *     returns webservice.Respuesta
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "eliminarActividad", targetNamespace = "http://webService/", className = "webservice.EliminarActividad")
+    @ResponseWrapper(localName = "eliminarActividadResponse", targetNamespace = "http://webService/", className = "webservice.EliminarActividadResponse")
+    @Action(input = "http://webService/WS/eliminarActividadRequest", output = "http://webService/WS/eliminarActividadResponse")
+    public Respuesta eliminarActividad(
+        @WebParam(name = "ID", targetNamespace = "")
+        Long id);
+
+    /**
+     * 
+     * @param id
+     * @return
+     *     returns webservice.Respuesta
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "eliminarSeguimiento", targetNamespace = "http://webService/", className = "webservice.EliminarSeguimiento")
+    @ResponseWrapper(localName = "eliminarSeguimientoResponse", targetNamespace = "http://webService/", className = "webservice.EliminarSeguimientoResponse")
+    @Action(input = "http://webService/WS/eliminarSeguimientoRequest", output = "http://webService/WS/eliminarSeguimientoResponse")
+    public Respuesta eliminarSeguimiento(
         @WebParam(name = "ID", targetNamespace = "")
         Long id);
 

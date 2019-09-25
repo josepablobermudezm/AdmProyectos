@@ -36,7 +36,7 @@ public class ResumenSeguimientoController extends Controller  {
     
     @Override
     public void initialize() {
-        webservice.WS_Service service = new webservice.WS_Service();
+        /*webservice.WS_Service service = new webservice.WS_Service();
         
         QName portQName = new QName("http://webService/" , "WSPort");
         String req = "<guardar  xmlns=\"http://webService/\"><usuario>ENTER VALUE</usuario></guardar>";
@@ -48,7 +48,7 @@ public class ResumenSeguimientoController extends Controller  {
             Source result = sourceDispatch.invoke(new StreamSource(new StringReader(req)));
         } catch (Exception ex) {
             // TODO handle custom exceptions here
-        }
+        }*/
         
 
     }

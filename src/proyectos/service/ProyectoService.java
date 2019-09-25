@@ -32,11 +32,11 @@ public class ProyectoService {
             if (!resp.isEstado()) {
                 return new Respuesta(false, resp.getMensaje(), resp.getMensajeInterno(), "", "");
             }
-            AdministradorDto admin = (AdministradorDto) AppContext.getInstance().get("AdministradorDto");
+            /*AdministradorDto admin = (AdministradorDto) AppContext.getInstance().get("AdministradorDto");
             AdministradorService adminService = new AdministradorService();
             Respuesta respuesta = adminService.getAdministrador(admin.getAdnId());
             admin = (AdministradorDto) respuesta.getResultado("AdministradorDto");
-            AppContext.getInstance().set("AdministradorDto", admin);
+            AppContext.getInstance().set("AdministradorDto", admin);*/
             return new Respuesta(true, resp.getMensaje(), resp.getMensajeInterno(), "Proyecto", new ProyectoDto((webservice.ProyectoDto) resp.getResultado()));
         } catch (Exception ex) {
             Logger.getLogger(AdministradorService.class.getName()).log(Level.SEVERE, "Error guardando el Proyecto.", ex);

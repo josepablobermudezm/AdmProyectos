@@ -8,16 +8,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para getAdministrador complex type.
+ * <p>Clase Java para eliminarSeguimientoResponse complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="getAdministrador">
+ * &lt;complexType name="eliminarSeguimientoResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="ID" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="return" type="{http://webService/}respuesta" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,36 +27,36 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getAdministrador", propOrder = {
-    "id"
+@XmlType(name = "eliminarSeguimientoResponse", propOrder = {
+    "_return"
 })
-public class GetAdministrador {
+public class EliminarSeguimientoResponse {
 
-    @XmlElement(name = "ID")
-    protected Long id;
+    @XmlElement(name = "return")
+    protected Respuesta _return;
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Obtiene el valor de la propiedad return.
      * 
      * @return
      *     possible object is
-     *     {@link Long }
+     *     {@link Respuesta }
      *     
      */
-    public Long getID() {
-        return id;
+    public Respuesta getReturn() {
+        return _return;
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Define el valor de la propiedad return.
      * 
      * @param value
      *     allowed object is
-     *     {@link Long }
+     *     {@link Respuesta }
      *     
      */
-    public void setID(Long value) {
-        this.id = value;
+    public void setReturn(Respuesta value) {
+        this._return = value;
     }
 
 }

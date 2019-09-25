@@ -56,7 +56,7 @@ public class AdministradorDto {
         this.adnUsuarioP.setValue(admin.getAdnUsuario());
         this.adnVersion.setValue(admin.getAdnVersion().toString());
 
-        if(admin.getProyectos()!=null && !admin.getProyectos().isEmpty()){
+        /*if(admin.getProyectos()!=null && !admin.getProyectos().isEmpty()){
             this.proyectos =  new ArrayList();
             admin.getProyectos().stream().forEach(pro->{
                 proyectos.add(new ProyectoDto(pro));
@@ -65,7 +65,7 @@ public class AdministradorDto {
         }
         else{
             this.proyectos =  new ArrayList();
-        }
+        }*/
 
         
     }

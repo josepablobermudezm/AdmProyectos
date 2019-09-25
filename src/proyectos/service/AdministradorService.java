@@ -73,7 +73,7 @@ public class AdministradorService {
             return new Respuesta(false, "Error Eliminando el Administrador.", "eliminarAdministrador " + ex.getMessage());
         }
     }
-    public Respuesta getAdministrador(Long ID){
+    /*public Respuesta getAdministrador(Long ID){
         try{
             webservice.Respuesta resp = webService.getAdministrador(ID);
             if(!resp.isEstado()){
@@ -87,5 +87,5 @@ public class AdministradorService {
             }
             return new Respuesta(false, "Error al obtener el Usuario.", "getAdministradorUsuClave " + ex.getMessage());
         }
-    }
+    }*/
 }

@@ -13,9 +13,9 @@ import proyectos.model.AdministradorDto;
 import proyectos.model.ProyectoDto;
 import proyectos.util.AppContext;
 import proyectos.util.DtoCasting;
-import proyectos.util.Respuesta;
+import proyectos.util.Respuesta;/*
 import webservice.WS;
-import webservice.WS_Service;
+import webservice.WS_Service;*/
 
 /**
  *
