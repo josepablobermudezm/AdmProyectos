@@ -10,20 +10,11 @@ import proyectos.model.AdministradorDto;
 
 public class AppContext {
 
-    private static AppContext INSTANCE = null;
+   private static AppContext INSTANCE = null;
     private static HashMap<String, Object> context = new HashMap<>();
-    AdministradorDto admin;
-    
+     
     private AppContext() {
         cargarPropiedades();
-    }
-
-    public AdministradorDto getAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(AdministradorDto admin) {
-        this.admin = admin;
     }
 
     private static void createInstance() {
@@ -76,4 +67,7 @@ public class AppContext {
         context.put(parameter, null);
     }
 
+    public void initialize(){
+        context.clear();
+    }
 }

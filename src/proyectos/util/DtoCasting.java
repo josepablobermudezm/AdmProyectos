@@ -30,6 +30,22 @@ public class DtoCasting {
         administrador.setAdnVersion((admin.getAdnVersion()!=null)?admin.getAdnVersion()+1:1);        
         return administrador;
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public webservice.ProyectoDto castPro(ProyectoDto pro){
         webservice.ProyectoDto proyectoDto = new webservice.ProyectoDto();
         proyectoDto.setProCorreopatrocinador(pro.getProCorreopatrocinador());

@@ -151,12 +151,12 @@ public class RegistroController extends Controller {
        if(req.isEmpty()){
             if(new Mensaje().showConfirmation("Información de Registro", this.getStage(), "¿Deseas registrar al Adminstrador?")){
                 Respuesta respuesta = new AdministradorService().guardarAdministrador(admin);
-                if(respuesta.getEstado()){
+                /*if(respuesta.getEstado()){
                     nuevoAdministrador();
                     new Mensaje().showModal(Alert.AlertType.INFORMATION, "Información de Registro", this.getStage(), "Administrador registrado exitosamente.");
                 }else{
                     new Mensaje().showModal(Alert.AlertType.ERROR, "Información de Registro", this.getStage(), "Error de Registro: "+respuesta.getMensaje());
-                }
+                }*/
             }
         }else{
             new Mensaje().showModal(Alert.AlertType.WARNING, "Registrar Administrador", this.getStage(), req);

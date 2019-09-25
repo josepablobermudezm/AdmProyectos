@@ -17,6 +17,7 @@ import javafx.scene.control.ToggleGroup;
  */
 public final class BindingUtils {
 
+   
     static ChangeListener<Toggle> changeListener = (ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) -> {
     };
 

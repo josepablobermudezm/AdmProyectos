@@ -122,18 +122,19 @@ public class LogInController extends Controller {
 
     @FXML
     private void ingresar(ActionEvent event) {
-        /*if(!txtUsuario.getText().isEmpty() && !txtClave.getText().isEmpty()){
+         if(!txtUsuario.getText().isEmpty() && !txtClave.getText().isEmpty()){
             Respuesta respuesta = new AdministradorService().getAdministradorUsuClave(txtUsuario.getText(), txtClave.getText());
             if(respuesta.getEstado()){
-                AppContext.getInstance().set("AdministradorDto", (AdministradorDto) respuesta.getResultado("AdministradorDto"));
-                */FlowController.getInstance().goMain();
+                AdministradorDto admin = (AdministradorDto) respuesta.getResultado("AdministradorDto");
+                AppContext.getInstance().set("AdministradorDto", admin);
+                FlowController.getInstance().goMain();
                 this.getStage().close();
-            /*}else{
+            }else{
                 new Mensaje().showModal(Alert.AlertType.ERROR, "Iniciar Sesión", this.getStage(), respuesta.getMensaje());
             }
         }else{
             new Mensaje().showModal(Alert.AlertType.ERROR, "Iniciar Sesión", this.getStage(), "Usuario y Clave deben de ser obligatorios.");
-        }*/
+        }
     }
     
     

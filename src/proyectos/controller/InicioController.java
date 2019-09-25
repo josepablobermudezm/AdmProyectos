@@ -25,6 +25,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import proyectos.model.AdministradorDto;
+import proyectos.util.AppContext;
 
 /**
  *
@@ -63,7 +65,7 @@ public class InicioController extends Controller {
             omg.setImage(omg1);
         } catch (Exception e) {
         }
-        
+        AdministradorDto adm = (AdministradorDto) AppContext.getInstance().get("AdministradorDto");
         try {
         VBox box = FXMLLoader.load(getClass().getResource("/proyectos/view/drawerContent.fxml"));
         drawer.setSidePane(box);

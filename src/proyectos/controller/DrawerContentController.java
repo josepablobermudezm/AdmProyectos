@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import proyectos.model.AdministradorDto;
 import proyectos.util.FlowController;
 
 /**
@@ -39,7 +40,10 @@ public class DrawerContentController extends Controller {
 
     @FXML
     private void exit(ActionEvent event) {
-        System.exit(0);
+        FlowController.getMainStage().close();
+        FlowController.getInstance().initialize();
+        AppContext.getInstance().initialize();
+        FlowController.getInstance().goViewInWindowTransparent("LogIn");
     }
 
    
@@ -52,6 +56,9 @@ public class DrawerContentController extends Controller {
             image.setImage(img);
         } catch (Exception e) {
         }
+        
+        
+        AdministradorDto adm = (AdministradorDto) AppContext.getInstance().get("AdministradorDto");
 /*
         Image img7;
         try {
@@ -93,22 +100,30 @@ public class DrawerContentController extends Controller {
     }  
     @FXML
     private void Administradores(ActionEvent event) {
-        FlowController.getInstance().goView("MantenimientoAdministradores");
+        //FlowController.getInstance().goView("MantenimientoAdministradores");
+        FlowController.getInstance().initialize();
+        FlowController.getInstance().goView("MantenimientoAdministradores", "Center", "");
     }
 
     @FXML
     private void btnProyectos(ActionEvent event) {
-        FlowController.getInstance().goView("MantenimientoProyectos");
+        //FlowController.getInstance().goView("MantenimientoProyectos");
+        FlowController.getInstance().initialize();
+        FlowController.getInstance().goView("MantenimientoProyectos", "Center", "");
     }
 
     @FXML
     private void btnResumen(ActionEvent event) {
-        FlowController.getInstance().goView("ResumenSeguimiento");
+        //FlowController.getInstance().goView("ResumenSeguimiento");
+        FlowController.getInstance().initialize();
+        FlowController.getInstance().goView("ResumenSeguimiento", "Center", "");
     }
     
     @FXML
     private void btnActividades(ActionEvent event) {
-       FlowController.getInstance().goView("ActividadesProyecto");
+       //FlowController.getInstance().goView("ActividadesProyecto");
+       FlowController.getInstance().initialize();
+       FlowController.getInstance().goView("ActividadesProyecto", "Center", "");
     }
 
 }
