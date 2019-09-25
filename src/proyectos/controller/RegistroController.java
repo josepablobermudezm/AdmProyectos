@@ -153,6 +153,7 @@ public class RegistroController extends Controller {
         if(req.isEmpty()){
             if(new Mensaje().showConfirmation("Información de Registro", this.getStage(), "¿Deseas registrar al Adminstrador?")){
                 Respuesta respuesta = new AdministradorService().guardarAdministrador(admin);
+                AppContext.getInstance().setAdmin(admin);
                 if(respuesta.getEstado()){
                     nuevoAdministrador();
                     new Mensaje().showModal(Alert.AlertType.INFORMATION, "Información de Registro", this.getStage(), "Administrador registrado exitosamente.");

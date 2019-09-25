@@ -5,8 +5,11 @@
  */
 package proyectos.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 /**
  *
  * @author Jose Pablo Bermudez
@@ -22,49 +25,47 @@ public class AdministradorDto {
     public SimpleStringProperty adnCorreoP;
     public SimpleStringProperty adnUsuarioP;
     public SimpleStringProperty adnContrasenaP;
-    public SimpleStringProperty adnEstadoP;
+    public SimpleBooleanProperty adnEstadoP;
     public SimpleStringProperty adnVersion;
 
+    private List<ProyectoDto> proyectos = FXCollections.observableArrayList();
     
     public AdministradorDto() {
-        adnIdP = new SimpleStringProperty();
-        adnNombreP = new SimpleStringProperty();
-        adnPapellidoP = new SimpleStringProperty();
-        adnSapellidoP = new SimpleStringProperty();
-        adnCedulaP = new SimpleStringProperty();
-        adnCorreoP = new SimpleStringProperty();
-        adnUsuarioP = new SimpleStringProperty();
-        adnContrasenaP = new SimpleStringProperty();
-        adnEstadoP = new SimpleStringProperty();
-        adnVersion = new SimpleStringProperty();
-
+        adnIdP = new SimpleStringProperty("");
+        adnNombreP = new SimpleStringProperty("");
+        adnPapellidoP = new SimpleStringProperty("");
+        adnSapellidoP = new SimpleStringProperty("");
+        adnCedulaP = new SimpleStringProperty("");
+        adnCorreoP = new SimpleStringProperty("");
+        adnUsuarioP = new SimpleStringProperty("");
+        adnContrasenaP = new SimpleStringProperty("");
+        adnEstadoP = new SimpleBooleanProperty(true);
+        adnVersion = new SimpleStringProperty("");
     }
 
     public AdministradorDto(webservice.AdministradorDto admin) {
+        this();
         this.adnCedulaP.setValue(admin.getAdnCedula());
         this.adnContrasenaP.setValue(admin.getAdnContrasena());
         this.adnCorreoP.setValue(admin.getAdnCorreo());
-        this.adnEstadoP.setValue(admin.getAdnEstado());
+        this.adnEstadoP.setValue(admin.getAdnEstado().equals("A") ? true : false);
         this.adnIdP.setValue(admin.getAdnId().toString());
         this.adnNombreP.setValue(admin.getAdnNombre());
         this.adnPapellidoP.setValue(admin.getAdnPapellido());
         this.adnSapellidoP.setValue(admin.getAdnSapellido());
         this.adnUsuarioP.setValue(admin.getAdnUsuario());
         this.adnVersion.setValue(admin.getAdnVersion().toString());
-    }
-
-    public AdministradorDto(AdministradorDto admin){
-        this();
-        this.adnCedulaP.set(admin.getAdnCedula());
-        this.adnContrasenaP.set(admin.getAdnContrasena());
-        this.adnCorreoP.set(admin.getAdnCorreo()); 
-        this.adnEstadoP.set(admin.getAdnEstado());
-        this.adnIdP.set(admin.getAdnId().toString());
-        this.adnNombreP.set(admin.getAdnNombre());
-        this.adnPapellidoP.set(admin.getAdnPapellido());
-        this.adnSapellidoP.set(admin.getAdnSapellido());
-        this.adnUsuarioP.set(admin.getAdnUsuario());
-        this.adnVersion.set(admin.getAdnVersion().toString());
+        if(admin.getProyectos()!=null && !admin.getProyectos().isEmpty()){
+            this.proyectos =  new ArrayList();
+            admin.getProyectos().stream().forEach(pro->{
+                proyectos.add(new ProyectoDto(pro));
+            });
+            
+        }
+        else{
+            this.proyectos =  new ArrayList();
+        }
+        
     }
     
     public Long getAdnId() {
@@ -100,6 +101,14 @@ public class AdministradorDto {
         return adnSapellidoP.get();
     }
 
+    public List<ProyectoDto> getProyectos() {
+        return proyectos;
+    }
+
+    public void setProyectos(List<ProyectoDto> proyectos) {
+        this.proyectos = proyectos;
+    }
+    
     public void setAdnSapellido(String adnSapellido) {
         this.adnSapellidoP.setValue(adnSapellido);
     }
@@ -136,6 +145,7 @@ public class AdministradorDto {
         this.adnContrasenaP.setValue(adnContrasena);
     }
 
+    
     public Long getAdnVersion() {
         if (adnVersion.get() != null) {
             if (!adnVersion.get().isEmpty()) {
@@ -150,17 +160,36 @@ public class AdministradorDto {
     }
 
     public String getAdnEstado() {
-        return adnEstadoP.get();
+        return adnEstadoP.get() == true ? "A" : "I";
     }
 
     public void setAdnEstado(String adnEstado) {
-        this.adnEstadoP.setValue(adnEstado);
+        this.adnEstadoP.setValue(adnEstado == "A" ? true : false);
     }
 
+   /* public ObservableList<AdminPorProyectoDto> getProyectos() {
+        return proyectos;
+    }
+    
+    public List<ws.admin.ac.cr.controller.AdminPorProyectoDto> getProyectosServices(){
+        List<ws.admin.ac.cr.controller.AdminPorProyectoDto> prs = new ArrayList<>();
+        for(AdminPorProyectoDto a : proyectos){
+            ws.admin.ac.cr.controller.AdminPorProyectoDto adm = new CastingDto().castAdminPorProyecto(a);
+            //adm.setAxpAdministrador(new CastingDto().castAdmin(this));
+            prs.add(new CastingDto().castAdminPorProyecto(a));
+        }
+        return prs;
+    }
+    public void setProyectos(ObservableList<AdminPorProyectoDto> proyectos) {
+        this.proyectos = proyectos;
+    }
+    
+    // Set List Servidor
     @Override
     public String toString() {
         //return "AdministradorDto{" + "adnId=" + adnId + ", adnNombre=" + adnNombre + ", adnPapellido=" + adnPapellido + ", adnSapellido=" + adnSapellido + ", adnCedula=" + adnCedula + ", adnCorreo=" + adnCorreo + ", adnUsuario=" + adnUsuario + ", adnContrasena=" + adnContrasena + ", adnEstado=" + adnEstado + ", adnVersion=" + adnVersion + '}';
         return "NEL Perro";
-    }
+    }*/
+
     
 }

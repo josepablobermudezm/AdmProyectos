@@ -16,20 +16,21 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="correoLiderTecnico" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="correoLiderUsuario" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="correoPatrocinador" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="estado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="finalEsperado" type="{http://webService/}localDate" minOccurs="0"/>
- *         &lt;element name="finalReal" type="{http://webService/}localDate" minOccurs="0"/>
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="inicioEsperado" type="{http://webService/}localDate" minOccurs="0"/>
- *         &lt;element name="inicioReal" type="{http://webService/}localDate" minOccurs="0"/>
- *         &lt;element name="liderTectnico" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="liderUsuario" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="patrocinador" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="version" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="proAdmin" type="{http://webService/}administradorDto" minOccurs="0"/>
+ *         &lt;element name="proCorreopatrocinador" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="proCorreotecnico" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="proCorreousuario" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="proEstado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="proFechafinal" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="proFechafinreal" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="proFechainicio" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="proFechainireal" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="proId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="proLidertecnico" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="proLiderusuario" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="proNombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="proPatrocinador" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="proVersion" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -40,372 +41,398 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "proyectoDto", propOrder = {
-    "correoLiderTecnico",
-    "correoLiderUsuario",
-    "correoPatrocinador",
-    "estado",
-    "finalEsperado",
-    "finalReal",
-    "id",
-    "inicioEsperado",
-    "inicioReal",
-    "liderTectnico",
-    "liderUsuario",
-    "nombre",
-    "patrocinador",
-    "version"
+    "proAdmin",
+    "proCorreopatrocinador",
+    "proCorreotecnico",
+    "proCorreousuario",
+    "proEstado",
+    "proFechafinal",
+    "proFechafinreal",
+    "proFechainicio",
+    "proFechainireal",
+    "proId",
+    "proLidertecnico",
+    "proLiderusuario",
+    "proNombre",
+    "proPatrocinador",
+    "proVersion"
 })
 public class ProyectoDto {
 
-    protected String correoLiderTecnico;
-    protected String correoLiderUsuario;
-    protected String correoPatrocinador;
-    protected String estado;
-    protected LocalDate finalEsperado;
-    protected LocalDate finalReal;
-    protected Long id;
-    protected LocalDate inicioEsperado;
-    protected LocalDate inicioReal;
-    protected String liderTectnico;
-    protected String liderUsuario;
-    protected String nombre;
-    protected String patrocinador;
-    protected Long version;
+    protected AdministradorDto proAdmin;
+    protected String proCorreopatrocinador;
+    protected String proCorreotecnico;
+    protected String proCorreousuario;
+    protected String proEstado;
+    protected String proFechafinal;
+    protected String proFechafinreal;
+    protected String proFechainicio;
+    protected String proFechainireal;
+    protected Long proId;
+    protected String proLidertecnico;
+    protected String proLiderusuario;
+    protected String proNombre;
+    protected String proPatrocinador;
+    protected Long proVersion;
 
     /**
-     * Obtiene el valor de la propiedad correoLiderTecnico.
+     * Obtiene el valor de la propiedad proAdmin.
+     * 
+     * @return
+     *     possible object is
+     *     {@link AdministradorDto }
+     *     
+     */
+    public AdministradorDto getProAdmin() {
+        return proAdmin;
+    }
+
+    /**
+     * Define el valor de la propiedad proAdmin.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link AdministradorDto }
+     *     
+     */
+    public void setProAdmin(AdministradorDto value) {
+        this.proAdmin = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad proCorreopatrocinador.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getCorreoLiderTecnico() {
-        return correoLiderTecnico;
+    public String getProCorreopatrocinador() {
+        return proCorreopatrocinador;
     }
 
     /**
-     * Define el valor de la propiedad correoLiderTecnico.
+     * Define el valor de la propiedad proCorreopatrocinador.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setCorreoLiderTecnico(String value) {
-        this.correoLiderTecnico = value;
+    public void setProCorreopatrocinador(String value) {
+        this.proCorreopatrocinador = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad correoLiderUsuario.
+     * Obtiene el valor de la propiedad proCorreotecnico.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getCorreoLiderUsuario() {
-        return correoLiderUsuario;
+    public String getProCorreotecnico() {
+        return proCorreotecnico;
     }
 
     /**
-     * Define el valor de la propiedad correoLiderUsuario.
+     * Define el valor de la propiedad proCorreotecnico.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setCorreoLiderUsuario(String value) {
-        this.correoLiderUsuario = value;
+    public void setProCorreotecnico(String value) {
+        this.proCorreotecnico = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad correoPatrocinador.
+     * Obtiene el valor de la propiedad proCorreousuario.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getCorreoPatrocinador() {
-        return correoPatrocinador;
+    public String getProCorreousuario() {
+        return proCorreousuario;
     }
 
     /**
-     * Define el valor de la propiedad correoPatrocinador.
+     * Define el valor de la propiedad proCorreousuario.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setCorreoPatrocinador(String value) {
-        this.correoPatrocinador = value;
+    public void setProCorreousuario(String value) {
+        this.proCorreousuario = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad estado.
+     * Obtiene el valor de la propiedad proEstado.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getEstado() {
-        return estado;
+    public String getProEstado() {
+        return proEstado;
     }
 
     /**
-     * Define el valor de la propiedad estado.
+     * Define el valor de la propiedad proEstado.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setEstado(String value) {
-        this.estado = value;
+    public void setProEstado(String value) {
+        this.proEstado = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad finalEsperado.
-     * 
-     * @return
-     *     possible object is
-     *     {@link LocalDate }
-     *     
-     */
-    public LocalDate getFinalEsperado() {
-        return finalEsperado;
-    }
-
-    /**
-     * Define el valor de la propiedad finalEsperado.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link LocalDate }
-     *     
-     */
-    public void setFinalEsperado(LocalDate value) {
-        this.finalEsperado = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad finalReal.
-     * 
-     * @return
-     *     possible object is
-     *     {@link LocalDate }
-     *     
-     */
-    public LocalDate getFinalReal() {
-        return finalReal;
-    }
-
-    /**
-     * Define el valor de la propiedad finalReal.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link LocalDate }
-     *     
-     */
-    public void setFinalReal(LocalDate value) {
-        this.finalReal = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad id.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
-     */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * Define el valor de la propiedad id.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
-     */
-    public void setId(Long value) {
-        this.id = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad inicioEsperado.
-     * 
-     * @return
-     *     possible object is
-     *     {@link LocalDate }
-     *     
-     */
-    public LocalDate getInicioEsperado() {
-        return inicioEsperado;
-    }
-
-    /**
-     * Define el valor de la propiedad inicioEsperado.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link LocalDate }
-     *     
-     */
-    public void setInicioEsperado(LocalDate value) {
-        this.inicioEsperado = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad inicioReal.
-     * 
-     * @return
-     *     possible object is
-     *     {@link LocalDate }
-     *     
-     */
-    public LocalDate getInicioReal() {
-        return inicioReal;
-    }
-
-    /**
-     * Define el valor de la propiedad inicioReal.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link LocalDate }
-     *     
-     */
-    public void setInicioReal(LocalDate value) {
-        this.inicioReal = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad liderTectnico.
+     * Obtiene el valor de la propiedad proFechafinal.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getLiderTectnico() {
-        return liderTectnico;
+    public String getProFechafinal() {
+        return proFechafinal;
     }
 
     /**
-     * Define el valor de la propiedad liderTectnico.
+     * Define el valor de la propiedad proFechafinal.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setLiderTectnico(String value) {
-        this.liderTectnico = value;
+    public void setProFechafinal(String value) {
+        this.proFechafinal = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad liderUsuario.
+     * Obtiene el valor de la propiedad proFechafinreal.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getLiderUsuario() {
-        return liderUsuario;
+    public String getProFechafinreal() {
+        return proFechafinreal;
     }
 
     /**
-     * Define el valor de la propiedad liderUsuario.
+     * Define el valor de la propiedad proFechafinreal.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setLiderUsuario(String value) {
-        this.liderUsuario = value;
+    public void setProFechafinreal(String value) {
+        this.proFechafinreal = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad nombre.
+     * Obtiene el valor de la propiedad proFechainicio.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getNombre() {
-        return nombre;
+    public String getProFechainicio() {
+        return proFechainicio;
     }
 
     /**
-     * Define el valor de la propiedad nombre.
+     * Define el valor de la propiedad proFechainicio.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setNombre(String value) {
-        this.nombre = value;
+    public void setProFechainicio(String value) {
+        this.proFechainicio = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad patrocinador.
+     * Obtiene el valor de la propiedad proFechainireal.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getPatrocinador() {
-        return patrocinador;
+    public String getProFechainireal() {
+        return proFechainireal;
     }
 
     /**
-     * Define el valor de la propiedad patrocinador.
+     * Define el valor de la propiedad proFechainireal.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setPatrocinador(String value) {
-        this.patrocinador = value;
+    public void setProFechainireal(String value) {
+        this.proFechainireal = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad version.
+     * Obtiene el valor de la propiedad proId.
      * 
      * @return
      *     possible object is
      *     {@link Long }
      *     
      */
-    public Long getVersion() {
-        return version;
+    public Long getProId() {
+        return proId;
     }
 
     /**
-     * Define el valor de la propiedad version.
+     * Define el valor de la propiedad proId.
      * 
      * @param value
      *     allowed object is
      *     {@link Long }
      *     
      */
-    public void setVersion(Long value) {
-        this.version = value;
+    public void setProId(Long value) {
+        this.proId = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad proLidertecnico.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getProLidertecnico() {
+        return proLidertecnico;
+    }
+
+    /**
+     * Define el valor de la propiedad proLidertecnico.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setProLidertecnico(String value) {
+        this.proLidertecnico = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad proLiderusuario.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getProLiderusuario() {
+        return proLiderusuario;
+    }
+
+    /**
+     * Define el valor de la propiedad proLiderusuario.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setProLiderusuario(String value) {
+        this.proLiderusuario = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad proNombre.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getProNombre() {
+        return proNombre;
+    }
+
+    /**
+     * Define el valor de la propiedad proNombre.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setProNombre(String value) {
+        this.proNombre = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad proPatrocinador.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getProPatrocinador() {
+        return proPatrocinador;
+    }
+
+    /**
+     * Define el valor de la propiedad proPatrocinador.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setProPatrocinador(String value) {
+        this.proPatrocinador = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad proVersion.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getProVersion() {
+        return proVersion;
+    }
+
+    /**
+     * Define el valor de la propiedad proVersion.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setProVersion(Long value) {
+        this.proVersion = value;
     }
 
 }

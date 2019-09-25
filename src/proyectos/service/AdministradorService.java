@@ -24,17 +24,24 @@ public class AdministradorService {
     WS webService = service.getWSPort();
     DtoCasting dtoCasting = new DtoCasting();
     
-    public AdministradorDto cargarAdmin(String usu, String pass){
-        webservice.AdministradorDto adminWsAux = webService.getAdmin(usu, pass);
-        AdministradorDto adminDto ;
-        if(adminWsAux!=null){
-            adminDto = new AdministradorDto(adminWsAux);
-        } else {
-            adminDto = null;
+    public Respuesta getAdministradorUsuClave(String usuario, String clave){
+        try{
+            //Consulto al Service por un Administrador
+            webservice.Respuesta resp = webService.getUsuario(usuario, clave);
+            if(!resp.isEstado()){
+                // Respuesta erronea si la respuesta del servidor también lo fue
+                return new Respuesta(Boolean.FALSE, resp.getMensaje(), resp.getMensajeInterno());
+            }
+            // Obtengo un nuevo AdministradorDto a base del que el servidor devuelve y lo inserta en una nueva respuesta
+            return new Respuesta(Boolean.TRUE, "", "", "AdministradorDto", new AdministradorDto((webservice.AdministradorDto)resp.getResultado()));
+        }catch (Exception ex){
+            Logger.getLogger(AdministradorService.class.getName()).log(Level.SEVERE, "Error al obtener el Usuario.", ex);
+            if(ex.getCause() != null && ex.getCause().getClass() == ConnectException.class){
+                return new Respuesta(false, "Error al obtener el Usuario. No se pudo hacer conexión con el servidor: ", "getAdministradorUsuClave " + ex.getMessage());
+            }
+            return new Respuesta(false, "Error al obtener el Usuario.", "getAdministradorUsuClave " + ex.getMessage());
         }
-        return adminDto;
     }
-    
     public Respuesta guardarAdministrador(AdministradorDto admin) {
         try {
             webservice.AdministradorDto administrador = dtoCasting.castAdmin(admin);
@@ -52,11 +59,14 @@ public class AdministradorService {
     }
      public Respuesta eliminarAdministrador(Long Id) {
         try {
-            String mensaje = webService.eliminarAdministrador(Id);
-            return new Respuesta(true, mensaje, "");
+            webservice.Respuesta resp = webService.eliminarAdministrador(Id);
+            return new Respuesta(resp.isEstado(), resp.getMensaje(), resp.getMensajeInterno());
         } catch (Exception ex) {
             Logger.getLogger(AdministradorService.class.getName()).log(Level.SEVERE, "Error guardando el Usuario.", ex);
-            return new Respuesta(false, "Error guardando el Usuario.", "guardarUsuario " + ex.getMessage());
+            if(ex.getCause() != null && ex.getCause().getClass() == ConnectException.class){
+                return new Respuesta(false, "Error. No se pudo hacer conexión con el servidor: ", "eliminarAdministrador " + ex.getMessage());
+            }
+            return new Respuesta(false, "Error Eliminando el Administrador.", "eliminarAdministrador " + ex.getMessage());
         }
     }
     /*public AdministradorDto getAdministrador(Long id){

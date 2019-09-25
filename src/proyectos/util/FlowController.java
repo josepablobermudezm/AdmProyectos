@@ -21,6 +21,7 @@ import javafx.stage.WindowEvent;
 import proyectos.Proyectos;
 import proyectos.controller.Controller;
 import javafx.scene.image.Image;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -64,6 +65,8 @@ public class FlowController {
         this.idioma = idioma;
     }
 
+    
+    
     private FXMLLoader getLoader(String name) {
         FXMLLoader loader = loaders.get(name);
         if (loader == null) {
@@ -83,10 +86,33 @@ public class FlowController {
         return loader;
     }
 
+    public void goViewInWindowTransparent(String viewName) {
+        FXMLLoader loader = getLoader(viewName);
+        Controller controller = loader.getController();
+        Stage stage = new Stage();
+        controller.setStage(stage);
+        controller.initialize();
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.getIcons().add(new Image(Proyectos.class.getResourceAsStream("resources/icon.png")));
+        stage.setTitle("Proyect Manager");
+//        stage.setMinWidth(630);
+//        stage.setMinHeight(420);
+        stage.setOnHidden((WindowEvent event) -> {
+        });
+        Parent root = loader.getRoot();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.show();
+
+    }
+    
     public void goMain() {
         try {
 
             this.mainStage.setScene(new Scene(FXMLLoader.load(Proyectos.class.getResource("view/Inicio.fxml"), this.idioma)));
+            this.mainStage.setTitle("Administrador De Proyectos");
+            this.mainStage.getIcons().add(new Image(Proyectos.class.getResourceAsStream("resources/icon.png")));
             this.mainStage.show();
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(FlowController.class.getName()).log(Level.SEVERE, "Error inicializando la vista base.", ex);

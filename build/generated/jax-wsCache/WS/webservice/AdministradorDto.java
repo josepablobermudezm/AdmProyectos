@@ -1,8 +1,11 @@
 
 package webservice;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -26,6 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="adnSapellido" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="adnUsuario" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="adnVersion" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="proyectos" type="{http://webService/}proyectoDto" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -45,7 +49,8 @@ import javax.xml.bind.annotation.XmlType;
     "adnPapellido",
     "adnSapellido",
     "adnUsuario",
-    "adnVersion"
+    "adnVersion",
+    "proyectos"
 })
 public class AdministradorDto {
 
@@ -59,6 +64,8 @@ public class AdministradorDto {
     protected String adnSapellido;
     protected String adnUsuario;
     protected Long adnVersion;
+    @XmlElement(nillable = true)
+    protected List<ProyectoDto> proyectos;
 
     /**
      * Obtiene el valor de la propiedad adnCedula.
@@ -298,6 +305,35 @@ public class AdministradorDto {
      */
     public void setAdnVersion(Long value) {
         this.adnVersion = value;
+    }
+
+    /**
+     * Gets the value of the proyectos property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the proyectos property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getProyectos().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link ProyectoDto }
+     * 
+     * 
+     */
+    public List<ProyectoDto> getProyectos() {
+        if (proyectos == null) {
+            proyectos = new ArrayList<ProyectoDto>();
+        }
+        return this.proyectos;
     }
 
 }
