@@ -41,8 +41,8 @@ public class ProyectoDto {
     public ObjectProperty<LocalDate> proFechafinal;
     public ObjectProperty<String> proEstado;
     public SimpleStringProperty proVersion;
-    private List<ActividadesDto> actividadList;
-    private List<SeguimientoDto> seguimientoList;
+    //private List<ActividadesDto> actividadList;
+    //private List<SeguimientoDto> seguimientoList;
     private AdministradorDto proAdministrador;
 
     public ProyectoDto() {
@@ -227,7 +227,7 @@ public class ProyectoDto {
     public void setProEstado(String proEstado) {
         this.proEstado.setValue(proEstado);
     }
-    
+    /*
     public List<ActividadesDto> getActividadList() {
         return actividadList;
     }
@@ -242,7 +242,7 @@ public class ProyectoDto {
 
     public void setSeguimientoList(List<SeguimientoDto> seguimientoList) {
         this.seguimientoList = seguimientoList;
-    }
+    }*/
 
     public AdministradorDto getProAdministrador() {
         return proAdministrador;

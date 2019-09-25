@@ -1,16 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.4.3.payara-p2 (PAYARA-3579-ff11a82; 2019-03-07T10:51:27+0530) JAXWS-RI/2.3.2 JAXWS-API/2.3.2 JAXB-RI/2.3.2 JAXB-API/2.3.2 git-revision#unknown. --><xs:schema xmlns:tns="http://webService/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://webService/">
 
-<xs:element name="ActividadesDto" type="tns:actividadesDto"/>
-
 <xs:element name="AdministradorDto" type="tns:administradorDto"/>
 
 <xs:element name="ProyectoDto" type="tns:proyectoDto"/>
-
-<xs:element name="SeguimientoDto" type="tns:seguimientoDto"/>
-
-<xs:element name="eliminarActividad" type="tns:eliminarActividad"/>
-
-<xs:element name="eliminarActividadResponse" type="tns:eliminarActividadResponse"/>
 
 <xs:element name="eliminarAdministrador" type="tns:eliminarAdministrador"/>
 
@@ -20,17 +12,13 @@
 
 <xs:element name="eliminarProyectoResponse" type="tns:eliminarProyectoResponse"/>
 
-<xs:element name="eliminarSeguimiento" type="tns:eliminarSeguimiento"/>
+<xs:element name="getAdministrador" type="tns:getAdministrador"/>
 
-<xs:element name="eliminarSeguimientoResponse" type="tns:eliminarSeguimientoResponse"/>
+<xs:element name="getAdministradorResponse" type="tns:getAdministradorResponse"/>
 
 <xs:element name="getUsuario" type="tns:getUsuario"/>
 
 <xs:element name="getUsuarioResponse" type="tns:getUsuarioResponse"/>
-
-<xs:element name="guardarActividad" type="tns:guardarActividad"/>
-
-<xs:element name="guardarActividadResponse" type="tns:guardarActividadResponse"/>
 
 <xs:element name="guardarAdministrador" type="tns:guardarAdministrador"/>
 
@@ -39,32 +27,6 @@
 <xs:element name="guardarProyecto" type="tns:guardarProyecto"/>
 
 <xs:element name="guardarProyectoResponse" type="tns:guardarProyectoResponse"/>
-
-<xs:element name="guardarSeguimiento" type="tns:guardarSeguimiento"/>
-
-<xs:element name="guardarSeguimientoResponse" type="tns:guardarSeguimientoResponse"/>
-
-<xs:complexType name="eliminarSeguimiento">
-<xs:sequence>
-<xs:element name="ID" type="xs:long" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="eliminarSeguimientoResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:respuesta" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="respuesta">
-<xs:sequence>
-<xs:element name="codigoRespuesta" type="tns:codigoRespuesta" minOccurs="0"/>
-<xs:element name="estado" type="xs:boolean" minOccurs="0"/>
-<xs:element name="mensaje" type="xs:string" minOccurs="0"/>
-<xs:element name="mensajeInterno" type="xs:string" minOccurs="0"/>
-<xs:element name="resultado" type="xs:anyType" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
 
 <xs:complexType name="guardarProyecto">
 <xs:sequence>
@@ -114,6 +76,16 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="respuesta">
+<xs:sequence>
+<xs:element name="codigoRespuesta" type="tns:codigoRespuesta" minOccurs="0"/>
+<xs:element name="estado" type="xs:boolean" minOccurs="0"/>
+<xs:element name="mensaje" type="xs:string" minOccurs="0"/>
+<xs:element name="mensajeInterno" type="xs:string" minOccurs="0"/>
+<xs:element name="resultado" type="xs:anyType" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="eliminarAdministrador">
 <xs:sequence>
 <xs:element name="ID" type="xs:long" minOccurs="0"/>
@@ -121,18 +93,6 @@
 </xs:complexType>
 
 <xs:complexType name="eliminarAdministradorResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:respuesta" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="eliminarActividad">
-<xs:sequence>
-<xs:element name="ID" type="xs:long" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="eliminarActividadResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:respuesta" minOccurs="0"/>
 </xs:sequence>
@@ -175,51 +135,13 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="guardarSeguimiento">
+<xs:complexType name="getAdministrador">
 <xs:sequence>
-<xs:element name="seguimiento" type="tns:seguimientoDto" minOccurs="0"/>
+<xs:element name="ID" type="xs:long" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="seguimientoDto">
-<xs:sequence>
-<xs:element name="avance" type="xs:int" minOccurs="0"/>
-<xs:element name="fecha" type="xs:dateTime" minOccurs="0"/>
-<xs:element name="id" type="xs:long" minOccurs="0"/>
-<xs:element name="proyecto" type="tns:proyectoDto" minOccurs="0"/>
-<xs:element name="version" type="xs:long" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="guardarSeguimientoResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:respuesta" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="guardarActividad">
-<xs:sequence>
-<xs:element name="actividad" type="tns:actividadesDto" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="actividadesDto">
-<xs:sequence>
-<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
-<xs:element name="encargado" type="xs:string" minOccurs="0"/>
-<xs:element name="estado" type="xs:string" minOccurs="0"/>
-<xs:element name="finalEsperado" type="xs:string" minOccurs="0"/>
-<xs:element name="finalReal" type="xs:string" minOccurs="0"/>
-<xs:element name="id" type="xs:long" minOccurs="0"/>
-<xs:element name="inicioEsperado" type="xs:string" minOccurs="0"/>
-<xs:element name="inicioReal" type="xs:string" minOccurs="0"/>
-<xs:element name="orden" type="xs:int" minOccurs="0"/>
-<xs:element name="proyecto" type="tns:proyectoDto" minOccurs="0"/>
-<xs:element name="version" type="xs:long" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="guardarActividadResponse">
+<xs:complexType name="getAdministradorResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:respuesta" minOccurs="0"/>
 </xs:sequence>
