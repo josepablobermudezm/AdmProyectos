@@ -39,230 +39,60 @@ import proyectos.util.Respuesta;
  *
  * @author Jose Pablo Bermudez
  */
-public class MantenimientoProyectosController extends Controller  {
+public class MantenimientoAdministradores extends Controller  {
 
     @FXML
+    private ImageView omg;
+    @FXML
     private Label Titulo;
-    private TableView<ProyectoDto> table;
-    @FXML
-    private JFXButton btnEditar1;
-    @FXML
-    private JFXButton btnEliminar1;
-    @FXML
-    private JFXButton btnAgregar1;
     @FXML
     private JFXTextField txtFiltroEmpleado;
     @FXML
     private JFXButton btnBuscar;
     @FXML
-    private JFXTextField txtNombreProyecto;
+    private JFXTextField txtNombre;
     @FXML
-    private JFXRadioButton btnSuspendido;
+    private JFXTextField txtPapellido;
     @FXML
-    private JFXRadioButton btnEnCurso;
+    private JFXTextField txtSapellido;
     @FXML
-    private JFXRadioButton btnFinalizado;
+    private JFXTextField txtCedula;
     @FXML
-    private JFXTextField txtPatrocinador;
+    private JFXTextField txtUsuario;
     @FXML
-    private JFXTextField txtLiderUsuario;
+    private JFXTextField txtContrasenna;
     @FXML
-    private JFXTextField txtLiderTecnico;
+    private JFXTextField txtCorreo;
     @FXML
-    private JFXTextField txtCorreoLiderTecnico;
+    private JFXButton btnEditar1;
     @FXML
-    private JFXTextField txtCorreoPatrocinador;
-    @FXML
-    private JFXTextField txtCorreoLiderUsuario;
-    ProyectoDto proyecto;
-    private List<JFXTextField> ProyetoList = new ArrayList();
-    private String estadoString = "C";
-    Mensaje msj = new Mensaje();
-    @FXML
-    private JFXDatePicker FechaInicialEsperada;
-    @FXML
-    private JFXDatePicker FechaInicialReal;
-    @FXML
-    private JFXDatePicker fechaFinalReal;
-    @FXML
-    private JFXDatePicker FechaFinalEsperada;
-    @FXML
-    private ToggleGroup estado1;
-    List<Node> requeridos = new ArrayList<>();
-    @FXML
-    private JFXRadioButton btnPlanificado;
-    @FXML
-    private JFXListView<ProyectoDto> lvProyectos;
-    //private ObservableList<ProyectoDto> proyectos = FXCollections.observableArrayList();
+    private JFXButton btnEliminar1;
+
+    
     @Override
     public void initialize() {
-        txtLiderTecnico.requestFocus();
-        proyecto = new ProyectoDto();
-        //proyectos = FXCollections.observableArrayList(((ProyectoDto)AppContext.getInstance().get("ProyectoDto")).getProNombre());
-        
-        fillList();
-        Formato();
-        btnEnCurso.setOnMouseClicked((MouseEvent event) -> {
-            estadoString = "C";
-        });
-        btnFinalizado.setOnMouseClicked((MouseEvent event) -> {
-            estadoString = "F";
-        });
-        btnSuspendido.setOnMouseClicked((MouseEvent event) -> {
-            estadoString = "S";
-        });
-        btnEnCurso.setSelected(true);
-        
-    }
-    
-    private void fillList() { // llenar la lista campos con los text field   
-        ProyetoList.add(txtCorreoLiderTecnico);
-        ProyetoList.add(txtCorreoLiderUsuario);
-        ProyetoList.add(txtCorreoPatrocinador);
-        ProyetoList.add(txtLiderTecnico);
-        ProyetoList.add(txtLiderUsuario);
-        ProyetoList.add(txtNombreProyecto);
-        ProyetoList.add(txtPatrocinador);
-    }
-    
-    
-     private void clearAll() { // Limpiar todos los textfields   
-        txtCorreoLiderTecnico.clear();
-        txtCorreoLiderUsuario.clear();
-        txtCorreoPatrocinador.clear();
-        txtLiderTecnico.clear();
-        txtLiderUsuario.clear();
-        txtNombreProyecto.clear();
-        txtPatrocinador.clear();
-    }
-     
-    
-    public void Formato(){
-        txtCorreoLiderTecnico.setTextFormatter(Formato.getInstance().maxLengthFormat(50));
-        txtCorreoLiderUsuario.setTextFormatter(Formato.getInstance().maxLengthFormat(50));
-        txtCorreoPatrocinador.setTextFormatter(Formato.getInstance().maxLengthFormat(50));
-        txtLiderTecnico.setTextFormatter(Formato.getInstance().maxLengthFormat(50));
-        txtLiderUsuario.setTextFormatter(Formato.getInstance().maxLengthFormat(50));
-        txtNombreProyecto.setTextFormatter(Formato.getInstance().maxLengthFormat(50));
-        txtPatrocinador.setTextFormatter(Formato.getInstance().maxLengthFormat(50));
-        //txtUserName.setTextFormatter(Formato.getInstance().maxLengthFormat(30));
-        //txtPass.setTextFormatter(Formato.getInstance().maxLengthFormat(15));
-    }
-    
-    @FXML
-    private void editar(ActionEvent event) {
         
         
-        
-    }
-
-    @FXML
-    private void eliminar(ActionEvent event) {
-        
-        
-        
-    }
-
-    @FXML
-    private void limpiarRegistro(ActionEvent event) {
-        System.out.println(estadoString);
-        
-    }
-
-    @FXML
-    private void agregar(ActionEvent event) {
-        proyecto.setProCorreopatrocinador("juan@gmail.com");
-        proyecto.setProCorreotecnico("jose@gmail.com");
-        proyecto.setProCorreousuario("pedro@gmail.com");
-        proyecto.setProFechafinal(LocalDate.now());
-        proyecto.setProFechafinreal(LocalDate.now());
-        proyecto.setProFechainicio(LocalDate.now());
-        proyecto.setProFechainireal(LocalDate.now());
-        proyecto.setProId(null);
-        proyecto.setProLidertecnico("jose");
-        proyecto.setProLiderusuario("pedro");
-        proyecto.setProNombre("proyecto");
-        proyecto.setProPatrocinador("juan");
-        proyecto.setProVersion(new Long(1));
-        proyecto.setProEstado("En Curso");
-        Respuesta respuesta = new ProyectoService().guardarProyecto(proyecto);
-    }
-
-    private void bindProyecto() {
-        txtCorreoLiderTecnico.textProperty().bindBidirectional(proyecto.proCorreotecnico);
-        txtCorreoLiderUsuario.textProperty().bindBidirectional(proyecto.proCorreousuario);
-        txtCorreoPatrocinador.textProperty().bindBidirectional(proyecto.proCorreopatrocinador);
-        txtLiderTecnico.textProperty().bindBidirectional(proyecto.proLidertecnico);
-        txtLiderUsuario.textProperty().bindBidirectional(proyecto.proLiderusuario);
-        txtNombreProyecto.textProperty().bindBidirectional(proyecto.proNombre);
-        txtPatrocinador.textProperty().bindBidirectional(proyecto.proPatrocinador);
-        fechaFinalReal.valueProperty().bindBidirectional(proyecto.proFechafinal);
-        FechaInicialReal.valueProperty().bindBidirectional(proyecto.proFechainireal);
-        FechaInicialEsperada.valueProperty().bindBidirectional(proyecto.proFechainicio);
-        FechaFinalEsperada.valueProperty().bindBidirectional(proyecto.proFechafinal);
-    }
-
-    private void unbindProyecto(){
-        txtCorreoLiderTecnico.textProperty().unbindBidirectional(proyecto.proCorreotecnico);
-        txtCorreoLiderUsuario.textProperty().unbindBidirectional(proyecto.proCorreousuario);
-        txtCorreoPatrocinador.textProperty().unbindBidirectional(proyecto.proCorreopatrocinador);
-        txtLiderTecnico.textProperty().unbindBidirectional(proyecto.proLidertecnico);
-        txtLiderUsuario.textProperty().unbindBidirectional(proyecto.proLiderusuario);
-        txtNombreProyecto.textProperty().unbindBidirectional(proyecto.proNombre);
-        txtPatrocinador.textProperty().unbindBidirectional(proyecto.proPatrocinador);
-        FechaFinalEsperada.valueProperty().unbind();
-        FechaInicialEsperada.valueProperty().unbind();
-        FechaInicialReal.valueProperty().unbind();
-        fechaFinalReal.valueProperty().unbind();
-    }
-    
-     private void nuevoProyecto() {
-        unbindProyecto();
-        proyecto = new ProyectoDto();
-        //bindAdmin(true);
-        //txt.clear();
-        //cbEstado.getSelectionModel().clearSelection();
     }
 
     @FXML
     private void Filtrar(ActionEvent event) {
     }
 
-    boolean registroCorrecto() {
-        return !txtCorreoLiderTecnico.getText().isEmpty() && !txtCorreoLiderUsuario.getText().isEmpty()
-               && !txtCorreoPatrocinador.getText().isEmpty() && !txtLiderTecnico.getText().isEmpty()
-               && !txtLiderUsuario.getText().isEmpty() && !txtPatrocinador.getText().isEmpty()
-               && !txtNombreProyecto.getText().isEmpty() 
-               && !FechaFinalEsperada.getValue().toString().isEmpty() && !FechaInicialEsperada.getValue().toString().isEmpty()
-               && !FechaInicialReal.getValue().toString().isEmpty() && !fechaFinalReal.getValue().toString().isEmpty();
-    }
-    
-    void limpiarValores() {
-        txtCorreoLiderTecnico.clear();
-        txtCorreoLiderUsuario.clear();
-        txtCorreoPatrocinador.clear();
-        txtLiderTecnico.clear();
-        txtLiderUsuario.clear();
-        txtPatrocinador.clear();
-        txtNombreProyecto.clear();
-        btnEnCurso.setSelected(false);
-        btnFinalizado.setSelected(false);
-        btnSuspendido.setSelected(false);
-        table.getSelectionModel().clearSelection();
+    @FXML
+    private void editar(ActionEvent event) {
     }
 
+    @FXML
+    private void eliminar(ActionEvent event) {
+    }
 
-    //metodos extra
-    //metodo para dar formato a los distintos elementos
-    public void iniciarObjetos(){
-        txtCorreoLiderTecnico.setTextFormatter(Formato.getInstance().maxLengthFormat(20));
-        txtCorreoLiderUsuario.setTextFormatter(Formato.getInstance().maxLengthFormat(20));
-        txtCorreoPatrocinador.setTextFormatter(Formato.getInstance().maxLengthFormat(20));
-   
-        txtLiderTecnico.setTextFormatter(Formato.getInstance().letrasFormat(20));
-        txtLiderUsuario.setTextFormatter(Formato.getInstance().letrasFormat(20));
-        txtNombreProyecto.setTextFormatter(Formato.getInstance().maxLengthFormat(20));
-        txtPatrocinador.setTextFormatter(Formato.getInstance().letrasFormat(20));
+    @FXML
+    private void limpiarRegistro(ActionEvent event) {
+    }
+
+    @FXML
+    private void agregar(ActionEvent event) {
     }
 
 }

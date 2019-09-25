@@ -26,6 +26,21 @@ public interface WS {
 
     /**
      * 
+     * @param id
+     * @return
+     *     returns webservice.Respuesta
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getAdministrador", targetNamespace = "http://webService/", className = "webservice.GetAdministrador")
+    @ResponseWrapper(localName = "getAdministradorResponse", targetNamespace = "http://webService/", className = "webservice.GetAdministradorResponse")
+    @Action(input = "http://webService/WS/getAdministradorRequest", output = "http://webService/WS/getAdministradorResponse")
+    public Respuesta getAdministrador(
+        @WebParam(name = "ID", targetNamespace = "")
+        Long id);
+
+    /**
+     * 
      * @param clave
      * @param usuario
      * @return
@@ -159,6 +174,21 @@ public interface WS {
     @ResponseWrapper(localName = "eliminarProyectoResponse", targetNamespace = "http://webService/", className = "webservice.EliminarProyectoResponse")
     @Action(input = "http://webService/WS/eliminarProyectoRequest", output = "http://webService/WS/eliminarProyectoResponse")
     public Respuesta eliminarProyecto(
+        @WebParam(name = "ID", targetNamespace = "")
+        Long id);
+
+    /**
+     * 
+     * @param id
+     * @return
+     *     returns webservice.Respuesta
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getProyecto", targetNamespace = "http://webService/", className = "webservice.GetProyecto")
+    @ResponseWrapper(localName = "getProyectoResponse", targetNamespace = "http://webService/", className = "webservice.GetProyectoResponse")
+    @Action(input = "http://webService/WS/getProyectoRequest", output = "http://webService/WS/getProyectoResponse")
+    public Respuesta getProyecto(
         @WebParam(name = "ID", targetNamespace = "")
         Long id);
 

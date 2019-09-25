@@ -4,6 +4,12 @@
 <xsd:import namespace="http://webService/" schemaLocation="http://localhost:8989/WebServiceTarea2/WS?xsd=1"/>
 </xsd:schema>
 </types>
+<message name="getAdministrador">
+<part name="parameters" element="tns:getAdministrador"/>
+</message>
+<message name="getAdministradorResponse">
+<part name="parameters" element="tns:getAdministradorResponse"/>
+</message>
 <message name="getUsuario">
 <part name="parameters" element="tns:getUsuario"/>
 </message>
@@ -58,7 +64,17 @@
 <message name="eliminarProyectoResponse">
 <part name="parameters" element="tns:eliminarProyectoResponse"/>
 </message>
+<message name="getProyecto">
+<part name="parameters" element="tns:getProyecto"/>
+</message>
+<message name="getProyectoResponse">
+<part name="parameters" element="tns:getProyectoResponse"/>
+</message>
 <portType name="WS">
+<operation name="getAdministrador">
+<input wsam:Action="http://webService/WS/getAdministradorRequest" message="tns:getAdministrador"/>
+<output wsam:Action="http://webService/WS/getAdministradorResponse" message="tns:getAdministradorResponse"/>
+</operation>
 <operation name="getUsuario">
 <input wsam:Action="http://webService/WS/getUsuarioRequest" message="tns:getUsuario"/>
 <output wsam:Action="http://webService/WS/getUsuarioResponse" message="tns:getUsuarioResponse"/>
@@ -95,9 +111,22 @@
 <input wsam:Action="http://webService/WS/eliminarProyectoRequest" message="tns:eliminarProyecto"/>
 <output wsam:Action="http://webService/WS/eliminarProyectoResponse" message="tns:eliminarProyectoResponse"/>
 </operation>
+<operation name="getProyecto">
+<input wsam:Action="http://webService/WS/getProyectoRequest" message="tns:getProyecto"/>
+<output wsam:Action="http://webService/WS/getProyectoResponse" message="tns:getProyectoResponse"/>
+</operation>
 </portType>
 <binding name="WSPortBinding" type="tns:WS">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="getAdministrador">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="getUsuario">
 <soap:operation soapAction=""/>
 <input>
@@ -171,6 +200,15 @@
 </output>
 </operation>
 <operation name="eliminarProyecto">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getProyecto">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
