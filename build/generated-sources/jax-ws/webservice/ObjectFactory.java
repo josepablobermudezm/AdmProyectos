@@ -45,6 +45,7 @@ public class ObjectFactory {
     private final static QName _GuardarAdministrador_QNAME = new QName("http://webService/", "guardarAdministrador");
     private final static QName _EliminarActividadResponse_QNAME = new QName("http://webService/", "eliminarActividadResponse");
     private final static QName _GuardarAdministradorResponse_QNAME = new QName("http://webService/", "guardarAdministradorResponse");
+    private final static QName _Respuesta_QNAME = new QName("http://webService/", "Respuesta");
     private final static QName _GetUsuarioResponse_QNAME = new QName("http://webService/", "getUsuarioResponse");
 
     /**
@@ -108,6 +109,14 @@ public class ObjectFactory {
      */
     public EliminarActividadResponse createEliminarActividadResponse() {
         return new EliminarActividadResponse();
+    }
+
+    /**
+     * Create an instance of {@link Respuesta }
+     * 
+     */
+    public Respuesta createRespuesta() {
+        return new Respuesta();
     }
 
     /**
@@ -228,14 +237,6 @@ public class ObjectFactory {
      */
     public GuardarProyectoResponse createGuardarProyectoResponse() {
         return new GuardarProyectoResponse();
-    }
-
-    /**
-     * Create an instance of {@link Respuesta }
-     * 
-     */
-    public Respuesta createRespuesta() {
-        return new Respuesta();
     }
 
     /**
@@ -425,6 +426,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://webService/", name = "guardarAdministradorResponse")
     public JAXBElement<GuardarAdministradorResponse> createGuardarAdministradorResponse(GuardarAdministradorResponse value) {
         return new JAXBElement<GuardarAdministradorResponse>(_GuardarAdministradorResponse_QNAME, GuardarAdministradorResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Respuesta }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService/", name = "Respuesta")
+    public JAXBElement<Respuesta> createRespuesta(Respuesta value) {
+        return new JAXBElement<Respuesta>(_Respuesta_QNAME, Respuesta.class, null, value);
     }
 
     /**

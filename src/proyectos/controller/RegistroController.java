@@ -146,21 +146,27 @@ public class RegistroController extends Controller {
             ms.showModal(Alert.AlertType.INFORMATION, "Informacion de guardado", this.getStage(), resp.getMensaje());
             FlowController.getInstance().initialize();
             FlowController.getInstance().goViewInStage("LogIn", this.getStage());
-        } */
+        } *//*
         String req = validarRequeridos();
        if(req.isEmpty()){
             if(new Mensaje().showConfirmation("Información de Registro", this.getStage(), "¿Deseas registrar al Adminstrador?")){
-                Respuesta respuesta = new AdministradorService().guardarAdministrador(admin);
+              */  
                 /*if(respuesta.getEstado()){
                     nuevoAdministrador();
                     new Mensaje().showModal(Alert.AlertType.INFORMATION, "Información de Registro", this.getStage(), "Administrador registrado exitosamente.");
                 }else{
                     new Mensaje().showModal(Alert.AlertType.ERROR, "Información de Registro", this.getStage(), "Error de Registro: "+respuesta.getMensaje());
                 }*/
-            }
+            /*}
         }else{
             new Mensaje().showModal(Alert.AlertType.WARNING, "Registrar Administrador", this.getStage(), req);
-        }
+        }*/
+       
+       
+       
+       
+       
+       Respuesta respuesta = new AdministradorService().guardarAdministrador(admin);
     }
     boolean registroCorrecto() {
         return !txtCedula.getText().isEmpty() && !txtClave.getText().isEmpty() && !txtCorreo.getText().isEmpty()

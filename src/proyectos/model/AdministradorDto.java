@@ -30,18 +30,7 @@ public class AdministradorDto {
 
     private List<ProyectoDto> proyectos = FXCollections.observableArrayList();
     
-    public AdministradorDto() {
-        adnIdP = new SimpleStringProperty("");
-        adnNombreP = new SimpleStringProperty("");
-        adnPapellidoP = new SimpleStringProperty("");
-        adnSapellidoP = new SimpleStringProperty("");
-        adnCedulaP = new SimpleStringProperty("");
-        adnCorreoP = new SimpleStringProperty("");
-        adnUsuarioP = new SimpleStringProperty("");
-        adnContrasenaP = new SimpleStringProperty("");
-        adnEstadoP = new SimpleBooleanProperty(true);
-        adnVersion = new SimpleStringProperty("");
-    }
+    
 
     public AdministradorDto(webservice.AdministradorDto admin) {
         this();
@@ -135,6 +124,18 @@ public class AdministradorDto {
         this.adnContrasenaP.setValue(adnContrasena);
     }
 
+    public AdministradorDto() {
+        adnIdP = new SimpleStringProperty("");
+        adnNombreP = new SimpleStringProperty("");
+        adnPapellidoP = new SimpleStringProperty("");
+        adnSapellidoP = new SimpleStringProperty("");
+        adnCedulaP = new SimpleStringProperty("");
+        adnCorreoP = new SimpleStringProperty("");
+        adnUsuarioP = new SimpleStringProperty("");
+        adnContrasenaP = new SimpleStringProperty("");
+        adnEstadoP = new SimpleBooleanProperty(true);
+        adnVersion = new SimpleStringProperty("");
+    }
     
     public Long getAdnVersion() {
         if (adnVersion.get() != null) {

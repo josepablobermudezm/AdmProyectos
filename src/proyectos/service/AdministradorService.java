@@ -51,13 +51,11 @@ public class AdministradorService {
             if (!resp.isEstado()) {
                 return new Respuesta(false, resp.getMensaje(), resp.getMensajeInterno(), "", "");
             }
-            return new Respuesta(true, resp.getMensaje(), resp.getMensajeInterno(), "AdministradorDto", (AdministradorDto)(new AdministradorDto((webservice.AdministradorDto)resp.getResultado())));
+            //return new Respuesta(true, resp.getMensaje(), resp.getMensajeInterno(), "AdministradorDto", (AdministradorDto)(new AdministradorDto((webservice.AdministradorDto)resp.getResultado())));
+            return new Respuesta(true, "Guardado exitosamente", resp.getMensajeInterno(), "AdministradorDto", (AdministradorDto)(new AdministradorDto((webservice.AdministradorDto)resp.getResultado())));
         } catch (Exception ex) {
             Logger.getLogger(AdministradorService.class.getName()).log(Level.SEVERE, "Error guardando el Usuario.", ex);
-            if(ex.getCause() != null && ex.getCause().getClass() == ConnectException.class){
-                return new Respuesta(false, "Error. No se pudo hacer conexión con el servidor: ", "guardarAdministrador " + ex.getMessage());
-            }
-            return new Respuesta(false, "Error guardando el Usuario.", "guardarAdministrador " + ex.getMessage());
+            return new Respuesta(false, "Error guardando el Administrador.", "guardarAdministrador " + ex.getMessage());
         }
     }
     
