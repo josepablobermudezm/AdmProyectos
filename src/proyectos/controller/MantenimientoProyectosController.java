@@ -17,11 +17,21 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import static javafx.scene.control.Alert.AlertType.CONFIRMATION;
 import static javafx.scene.control.Alert.AlertType.ERROR;
+
 import javafx.scene.control.ContentDisplay;
+
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -36,8 +46,11 @@ import proyectos.model.AdministradorDto;
 import proyectos.model.ProyectoDto;
 import proyectos.service.AdministradorService;
 import proyectos.service.ProyectoService;
+
 import proyectos.util.AppContext;
 import proyectos.util.FlowController;
+
+
 import proyectos.util.Formato;
 import proyectos.util.Mensaje;
 import proyectos.util.Respuesta;
@@ -51,6 +64,10 @@ public class MantenimientoProyectosController extends Controller  {
 
     @FXML
     private Label Titulo;
+
+
+    @FXML
+
     private TableView<ProyectoDto> table;
     @FXML
     private JFXButton btnEditar1;
@@ -65,6 +82,10 @@ public class MantenimientoProyectosController extends Controller  {
     @FXML
     private JFXTextField txtNombreProyecto;
     private JFXRadioButton btnSuspendido;
+
+
+    @FXML
+
     private JFXRadioButton btnEnCurso;
     private JFXRadioButton btnFinalizado;
     @FXML
@@ -84,6 +105,7 @@ public class MantenimientoProyectosController extends Controller  {
     private String estadoString = "C";
     Mensaje msj = new Mensaje();
     @FXML
+
     private JFXDatePicker FechaInicialEsperada;
     @FXML
     private JFXDatePicker FechaInicialReal;
@@ -118,6 +140,64 @@ public class MantenimientoProyectosController extends Controller  {
         cbEstado.getSelectionModel().selectFirst();
         
         
+
+    private TableColumn<ProyectoDto, String> COL_NOMBRE_PRO;
+    @FXML
+    private TableColumn<ProyectoDto, String> COL_LIDER_TECNICO_PRO;
+    @FXML
+    private TableColumn<ProyectoDto, String> COL_CORREO_LIDERTECNICO_PRO;
+    @FXML
+    private TableColumn<ProyectoDto, String> COL_PATROCINADOR_PRO;
+    @FXML
+    private TableColumn<ProyectoDto, String> COL_CORREO_PATROCINADOR_PRO;
+    @FXML
+    private TableColumn<ProyectoDto, String> COL_LIDERUSUARIO_PRO;
+    @FXML
+    private TableColumn<ProyectoDto, String> COL_CORREO_LIDERUSUARIO_PRO;
+    ProyectoDto proyecto;
+    private List<JFXTextField> ProyetoList = new ArrayList();
+    private String estadoString = "C";
+    Mensaje msj = new Mensaje();
+    @FXML
+    private JFXDatePicker FechaInicialEsperada;
+    @FXML
+    private JFXDatePicker FechaInicialReal;
+    @FXML
+    private JFXDatePicker fechaFinalReal;
+    @FXML
+    private JFXDatePicker FechaFinalEsperada;
+    @FXML
+    private ToggleGroup estado1;
+    List<Node> requeridos = new ArrayList<>();
+    @Override
+    public void initialize() {
+        txtLiderTecnico.requestFocus();
+        proyecto = new ProyectoDto();
+/*
+        COL_NOMBRE_PRO.setCellValueFactory(value -> new SimpleStringProperty(value.getValue().getNombre()));
+        COL_LIDER_TECNICO_PRO.setCellValueFactory(value -> new SimpleStringProperty(value.getValue().getpApellido()));
+        COL_CORREO_LIDERTECNICO_PRO.setCellValueFactory(value -> new SimpleStringProperty(value.getValue().getsApellido()));
+        COL_PATROCINADOR_PRO.setCellValueFactory(value -> new SimpleStringProperty(value.getValue().getCedula()));
+        COL_CORREO_PATROCINADOR_PRO.setCellValueFactory(value -> new SimpleStringProperty(value.getValue().getCorreo()));
+        COL_LIDERUSUARIO_PRO.setCellValueFactory(value -> new SimpleStringProperty(value.getValue().getGenero()));
+        COL_CORREO_LIDERUSUARIO_PRO.setCellValueFactory(value -> new SimpleStringProperty((value.getValue().getFechaNacimiento()!=null)?value.getValue().getFechaNacimiento().toString():"NULO"));
+        
+        items = FXCollections.observableArrayList(pacientes);
+        table.setItems(items);*/
+        fillList();
+        Formato();
+        btnEnCurso.setOnMouseClicked((MouseEvent event) -> {
+            estadoString = "C";
+        });
+        btnFinalizado.setOnMouseClicked((MouseEvent event) -> {
+            estadoString = "F";
+        });
+        btnSuspendido.setOnMouseClicked((MouseEvent event) -> {
+            estadoString = "S";
+        });
+        btnEnCurso.setSelected(true);
+        
+
     }
     
     private void fillList() { // llenar la lista campos con los text field   
@@ -175,6 +255,7 @@ public class MantenimientoProyectosController extends Controller  {
     }
 
     @FXML
+
     private void agregar(ActionEvent event) {/*
         proyecto.setProCorreopatrocinador("juan@gmail.com");
         proyecto.setProCorreotecnico("jose@gmail.com");
@@ -219,6 +300,33 @@ public class MantenimientoProyectosController extends Controller  {
     private void bindProyecto(Boolean nuevo) {
         if (!nuevo) {
             txtID.textProperty().bind(proyecto.proId);
+
+    private void agregar(ActionEvent event) {
+        
+        if(registroCorrecto()){     
+            /*proyecto.setProCorreopatrocinador(txtCorreoPatrocinador.getText());
+            proyecto.setProCorreotecnico(txtCorreoLiderTecnico.getText());
+            proyecto.setProCorreousuario(txtCorreoLiderUsuario.getText());
+            */
+            proyecto.setProFechafinal(FechaFinalEsperada.getValue().toString());
+            proyecto.setProFechafinreal(fechaFinalReal.getValue().toString());
+            proyecto.setProFechainicio(FechaInicialReal.getValue().toString());
+            proyecto.setProEstado(estadoString);
+            proyecto.setProFechainireal(FechaInicialReal.getValue().toString());
+            /*proyecto.setProLidertecnico(txtLiderTecnico.getText());
+            proyecto.setProLiderusuario(txtLiderUsuario.getText());
+            proyecto.setProPatrocinador(txtPatrocinador.getText());
+            proyecto.setProNombre(txtNombreProyecto.getText());*/
+            proyecto.setProVersion(new Long(1));
+            if(new Mensaje().showConfirmation("Información de Registro", this.getStage(), "¿Deseas registrar el Proyecto?")){
+                Respuesta respuesta = new ProyectoService().guardarProyecto(proyecto);
+                 if(respuesta.getEstado()){
+                    nuevoProyecto();
+                    new Mensaje().showModal(Alert.AlertType.INFORMATION, "Información de Registro", this.getStage(), "Proyecto registrado exitosamente.");
+                }else{
+                    new Mensaje().showModal(Alert.AlertType.ERROR, "Información de Registro", this.getStage(), "Error de Registro: "+respuesta.getMensaje());
+                }
+            }
         }
         txtCorreoLiderTecnico.textProperty().bindBidirectional(proyecto.proCorreotecnico);
         txtCorreoLiderUsuario.textProperty().bindBidirectional(proyecto.proCorreousuario);
@@ -256,9 +364,37 @@ public class MantenimientoProyectosController extends Controller  {
                 fechaFinalReal, cbEstado));
     }
 
+    private void bindAdmin(){
+        txtCorreoLiderTecnico.textProperty().bindBidirectional(proyecto.proCorreotecnico);
+        txtCorreoLiderUsuario.textProperty().bindBidirectional(proyecto.proCorreousuario);
+        txtCorreoPatrocinador.textProperty().bindBidirectional(proyecto.proCorreopatrocinador);
+        txtLiderTecnico.textProperty().bindBidirectional(proyecto.proLidertecnico);
+        txtLiderUsuario.textProperty().bindBidirectional(proyecto.proLiderusuario);
+        txtNombreProyecto.textProperty().bindBidirectional(proyecto.proNombre);
+        txtPatrocinador.textProperty().bindBidirectional(proyecto.proPatrocinador);
+    }
+
+    private void unbindAdmin(){
+        txtCorreoLiderTecnico.textProperty().unbindBidirectional(proyecto.proCorreotecnico);
+        txtCorreoLiderUsuario.textProperty().unbindBidirectional(proyecto.proCorreousuario);
+        txtCorreoPatrocinador.textProperty().unbindBidirectional(proyecto.proCorreopatrocinador);
+        txtLiderTecnico.textProperty().unbindBidirectional(proyecto.proLidertecnico);
+        txtLiderUsuario.textProperty().unbindBidirectional(proyecto.proLiderusuario);
+        txtNombreProyecto.textProperty().unbindBidirectional(proyecto.proNombre);
+        txtPatrocinador.textProperty().unbindBidirectional(proyecto.proPatrocinador);
+    }
+    
+    private void nuevoProyecto(){
+        unbindAdmin();
+        proyecto = new ProyectoDto();
+        bindAdmin();
+        txtLiderTecnico.requestFocus();
+    }
+    
     @FXML
     private void Filtrar(ActionEvent event) {
     }
+
 
     public String validarRequeridos() {
         Boolean validos = true;
@@ -301,6 +437,29 @@ public class MantenimientoProyectosController extends Controller  {
         bindProyecto(true);
         txtID.clear();
         cbEstado.getSelectionModel().clearSelection();
+
+    boolean registroCorrecto() {
+        return !txtCorreoLiderTecnico.getText().isEmpty() && !txtCorreoLiderUsuario.getText().isEmpty()
+               && !txtCorreoPatrocinador.getText().isEmpty() && !txtLiderTecnico.getText().isEmpty()
+               && !txtLiderUsuario.getText().isEmpty() && !txtPatrocinador.getText().isEmpty()
+               && !txtNombreProyecto.getText().isEmpty() 
+               && !FechaFinalEsperada.getValue().toString().isEmpty() && !FechaInicialEsperada.getValue().toString().isEmpty()
+               && !FechaInicialReal.getValue().toString().isEmpty() && !fechaFinalReal.getValue().toString().isEmpty();
+    }
+    
+    void limpiarValores() {
+        txtCorreoLiderTecnico.clear();
+        txtCorreoLiderUsuario.clear();
+        txtCorreoPatrocinador.clear();
+        txtLiderTecnico.clear();
+        txtLiderUsuario.clear();
+        txtPatrocinador.clear();
+        txtNombreProyecto.clear();
+        btnEnCurso.setSelected(false);
+        btnFinalizado.setSelected(false);
+        btnSuspendido.setSelected(false);
+        table.getSelectionModel().clearSelection();
+
     }
     
    /* public class ListCel extends ListCell<ProyectoDto> {
@@ -345,4 +504,26 @@ public class MantenimientoProyectosController extends Controller  {
     
     
 }*/
+
+
+    @FXML
+    private void DatosProyecto(MouseEvent event) {
+        
+        
+    
+    }
+    //metodos extra
+    //metodo para dar formato a los distintos elementos
+    public void iniciarObjetos(){
+        txtCorreoLiderTecnico.setTextFormatter(Formato.getInstance().maxLengthFormat(20));
+        txtCorreoLiderUsuario.setTextFormatter(Formato.getInstance().maxLengthFormat(20));
+        txtCorreoPatrocinador.setTextFormatter(Formato.getInstance().maxLengthFormat(20));
+   
+        txtLiderTecnico.setTextFormatter(Formato.getInstance().letrasFormat(20));
+        txtLiderUsuario.setTextFormatter(Formato.getInstance().letrasFormat(20));
+        txtNombreProyecto.setTextFormatter(Formato.getInstance().maxLengthFormat(20));
+        txtPatrocinador.setTextFormatter(Formato.getInstance().letrasFormat(20));
+    }
+
+
 }

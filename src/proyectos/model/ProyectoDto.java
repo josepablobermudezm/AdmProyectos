@@ -89,7 +89,12 @@ public class ProyectoDto {
             this.proFechainireal.set(fechIniReal);
         }
 
+
         this.proEstado.setValue(proyect.getProEstado());
+
+        this.proEstado.setValue(proyect.getProEstado().equals("P")?"Planificado":
+        proyect.getProEstado().equals("C")?"En Curso":proyect.getProEstado().equals("F")?"Finalizado":"Suspendido");
+
         this.proVersion.setValue(proyect.getProVersion().toString());
         // Faltan listas del Service
         // Actividades - Seguimientos
@@ -297,4 +302,8 @@ public class ProyectoDto {
 */
     // setFromServidor
 
+
 }
+
+}
+
