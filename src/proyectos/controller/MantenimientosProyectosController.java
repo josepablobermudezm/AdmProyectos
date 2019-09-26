@@ -127,9 +127,9 @@ public class MantenimientosProyectosController  extends Controller implements In
     
     @FXML
     private void guardar(ActionEvent event) {
-        //String req = validarRequeridos();
-        //if (req.isEmpty()) {
-            /*if (new Mensaje().showConfirmation("Guardar Proyecto", this.getStage(), "¿Deseas guardar el proyecto?")) {
+        String req = validarRequeridos();
+        if (req.isEmpty()) {
+            if (new Mensaje().showConfirmation("Guardar Proyecto", this.getStage(), "¿Deseas guardar el proyecto?")) {
                 Respuesta respuesta = new ProyectoService().guardarProyecto(proyecto);
                 if (respuesta.getEstado()) {
                     Proyectos.getItems().clear();
@@ -141,11 +141,11 @@ public class MantenimientosProyectosController  extends Controller implements In
                 } else {
                     new Mensaje().showModal(Alert.AlertType.ERROR, "Información de Registro", this.getStage(), "Error de guardado: " + respuesta.getMensaje());
                 }
-            }*/
-        //} else {
-         //   new Mensaje().showModal(Alert.AlertType.WARNING, "Registrar Administrador", this.getStage(), req);
-        //}
-        Respuesta respuesta = new ProyectoService().guardarProyecto(proyecto);
+            }
+        } else {
+            new Mensaje().showModal(Alert.AlertType.WARNING, "Registrar Administrador", this.getStage(), req);
+        }
+        
     }
 
     
