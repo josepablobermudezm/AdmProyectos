@@ -135,18 +135,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="eliminarProyecto">
-<xs:sequence>
-<xs:element name="ID" type="xs:long" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="eliminarProyectoResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:respuesta" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="eliminarActividad">
 <xs:sequence>
 <xs:element name="ID" type="xs:long" minOccurs="0"/>
@@ -154,6 +142,18 @@
 </xs:complexType>
 
 <xs:complexType name="eliminarActividadResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:respuesta" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="eliminarProyecto">
+<xs:sequence>
+<xs:element name="ID" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="eliminarProyectoResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:respuesta" minOccurs="0"/>
 </xs:sequence>
@@ -218,18 +218,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getAdministrador">
-<xs:sequence>
-<xs:element name="ID" type="xs:long" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getAdministradorResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:respuesta" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="guardarActividad">
 <xs:sequence>
 <xs:element name="actividad" type="tns:actividadesDto" minOccurs="0"/>
@@ -253,6 +241,18 @@
 </xs:complexType>
 
 <xs:complexType name="guardarActividadResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:respuesta" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAdministrador">
+<xs:sequence>
+<xs:element name="ID" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAdministradorResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:respuesta" minOccurs="0"/>
 </xs:sequence>
