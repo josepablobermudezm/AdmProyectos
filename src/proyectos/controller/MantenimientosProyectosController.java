@@ -305,6 +305,10 @@ public class MantenimientosProyectosController  extends Controller implements In
 */
     @FXML
     private void btnResumSegui_OnAction(ActionEvent event) {
+        
+        FlowController.getInstance().initialize();
+        FlowController.getInstance().goView("ResumenSeguimiento", "Center", "");
+        
     }
 
     @FXML

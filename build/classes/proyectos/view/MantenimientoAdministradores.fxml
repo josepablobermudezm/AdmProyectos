@@ -83,7 +83,7 @@
                         <ToggleGroup fx:id="Estado" />
                      </toggleGroup>
                   </JFXRadioButton>
-                  <JFXRadioButton fx:id="btnInactivo" text="Inactivo" toggleGroup="$Estado" GridPane.columnIndex="4">
+                  <JFXRadioButton fx:id="btnInactivo" style="-fx-cursor: hand;" text="Inactivo" toggleGroup="$Estado" GridPane.columnIndex="4">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
