@@ -24,17 +24,22 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _EliminarProyecto_QNAME = new QName("http://webService/", "eliminarProyecto");
+    private final static QName _EliminarAdministradorResponse_QNAME = new QName("http://webService/", "eliminarAdministradorResponse");
+    private final static QName _GetAdministrador_QNAME = new QName("http://webService/", "getAdministrador");
+    private final static QName _GuardarActividad_QNAME = new QName("http://webService/", "guardarActividad");
+    private final static QName _EliminarSeguimientoResponse_QNAME = new QName("http://webService/", "eliminarSeguimientoResponse");
+    private final static QName _GetUsuarioResponse_QNAME = new QName("http://webService/", "getUsuarioResponse");
+    private final static QName _GetAdministradorResponse_QNAME = new QName("http://webService/", "getAdministradorResponse");
     private final static QName _GuardarProyecto_QNAME = new QName("http://webService/", "guardarProyecto");
     private final static QName _GuardarActividadResponse_QNAME = new QName("http://webService/", "guardarActividadResponse");
     private final static QName _EliminarActividad_QNAME = new QName("http://webService/", "eliminarActividad");
-    private final static QName _EliminarProyecto_QNAME = new QName("http://webService/", "eliminarProyecto");
     private final static QName _EliminarProyectoResponse_QNAME = new QName("http://webService/", "eliminarProyectoResponse");
-    private final static QName _EliminarAdministradorResponse_QNAME = new QName("http://webService/", "eliminarAdministradorResponse");
+    private final static QName _GetProyecto_QNAME = new QName("http://webService/", "getProyecto");
+    private final static QName _GetProyectoResponse_QNAME = new QName("http://webService/", "getProyectoResponse");
     private final static QName _GuardarProyectoResponse_QNAME = new QName("http://webService/", "guardarProyectoResponse");
     private final static QName _GuardarSeguimiento_QNAME = new QName("http://webService/", "guardarSeguimiento");
-    private final static QName _GuardarActividad_QNAME = new QName("http://webService/", "guardarActividad");
     private final static QName _ProyectoDto_QNAME = new QName("http://webService/", "ProyectoDto");
-    private final static QName _EliminarSeguimientoResponse_QNAME = new QName("http://webService/", "eliminarSeguimientoResponse");
     private final static QName _ActividadesDto_QNAME = new QName("http://webService/", "ActividadesDto");
     private final static QName _GetUsuario_QNAME = new QName("http://webService/", "getUsuario");
     private final static QName _GuardarSeguimientoResponse_QNAME = new QName("http://webService/", "guardarSeguimientoResponse");
@@ -46,7 +51,6 @@ public class ObjectFactory {
     private final static QName _EliminarActividadResponse_QNAME = new QName("http://webService/", "eliminarActividadResponse");
     private final static QName _GuardarAdministradorResponse_QNAME = new QName("http://webService/", "guardarAdministradorResponse");
     private final static QName _Respuesta_QNAME = new QName("http://webService/", "Respuesta");
-    private final static QName _GetUsuarioResponse_QNAME = new QName("http://webService/", "getUsuarioResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: webservice
@@ -96,14 +100,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetUsuarioResponse }
-     * 
-     */
-    public GetUsuarioResponse createGetUsuarioResponse() {
-        return new GetUsuarioResponse();
-    }
-
-    /**
      * Create an instance of {@link EliminarActividadResponse }
      * 
      */
@@ -144,14 +140,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EliminarProyecto }
-     * 
-     */
-    public EliminarProyecto createEliminarProyecto() {
-        return new EliminarProyecto();
-    }
-
-    /**
      * Create an instance of {@link EliminarProyectoResponse }
      * 
      */
@@ -160,19 +148,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetAdministradorResponse }
+     * 
+     */
+    public GetAdministradorResponse createGetAdministradorResponse() {
+        return new GetAdministradorResponse();
+    }
+
+    /**
      * Create an instance of {@link GuardarProyecto }
      * 
      */
     public GuardarProyecto createGuardarProyecto() {
         return new GuardarProyecto();
-    }
-
-    /**
-     * Create an instance of {@link GuardarActividad }
-     * 
-     */
-    public GuardarActividad createGuardarActividad() {
-        return new GuardarActividad();
     }
 
     /**
@@ -216,6 +204,62 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetProyecto }
+     * 
+     */
+    public GetProyecto createGetProyecto() {
+        return new GetProyecto();
+    }
+
+    /**
+     * Create an instance of {@link GuardarProyectoResponse }
+     * 
+     */
+    public GuardarProyectoResponse createGuardarProyectoResponse() {
+        return new GuardarProyectoResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetProyectoResponse }
+     * 
+     */
+    public GetProyectoResponse createGetProyectoResponse() {
+        return new GetProyectoResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetUsuarioResponse }
+     * 
+     */
+    public GetUsuarioResponse createGetUsuarioResponse() {
+        return new GetUsuarioResponse();
+    }
+
+    /**
+     * Create an instance of {@link EliminarProyecto }
+     * 
+     */
+    public EliminarProyecto createEliminarProyecto() {
+        return new EliminarProyecto();
+    }
+
+    /**
+     * Create an instance of {@link GetAdministrador }
+     * 
+     */
+    public GetAdministrador createGetAdministrador() {
+        return new GetAdministrador();
+    }
+
+    /**
+     * Create an instance of {@link GuardarActividad }
+     * 
+     */
+    public GuardarActividad createGuardarActividad() {
+        return new GuardarActividad();
+    }
+
+    /**
      * Create an instance of {@link EliminarSeguimientoResponse }
      * 
      */
@@ -232,11 +276,66 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GuardarProyectoResponse }
+     * Create an instance of {@link JAXBElement }{@code <}{@link EliminarProyecto }{@code >}}
      * 
      */
-    public GuardarProyectoResponse createGuardarProyectoResponse() {
-        return new GuardarProyectoResponse();
+    @XmlElementDecl(namespace = "http://webService/", name = "eliminarProyecto")
+    public JAXBElement<EliminarProyecto> createEliminarProyecto(EliminarProyecto value) {
+        return new JAXBElement<EliminarProyecto>(_EliminarProyecto_QNAME, EliminarProyecto.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link EliminarAdministradorResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService/", name = "eliminarAdministradorResponse")
+    public JAXBElement<EliminarAdministradorResponse> createEliminarAdministradorResponse(EliminarAdministradorResponse value) {
+        return new JAXBElement<EliminarAdministradorResponse>(_EliminarAdministradorResponse_QNAME, EliminarAdministradorResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetAdministrador }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService/", name = "getAdministrador")
+    public JAXBElement<GetAdministrador> createGetAdministrador(GetAdministrador value) {
+        return new JAXBElement<GetAdministrador>(_GetAdministrador_QNAME, GetAdministrador.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GuardarActividad }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService/", name = "guardarActividad")
+    public JAXBElement<GuardarActividad> createGuardarActividad(GuardarActividad value) {
+        return new JAXBElement<GuardarActividad>(_GuardarActividad_QNAME, GuardarActividad.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link EliminarSeguimientoResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService/", name = "eliminarSeguimientoResponse")
+    public JAXBElement<EliminarSeguimientoResponse> createEliminarSeguimientoResponse(EliminarSeguimientoResponse value) {
+        return new JAXBElement<EliminarSeguimientoResponse>(_EliminarSeguimientoResponse_QNAME, EliminarSeguimientoResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetUsuarioResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService/", name = "getUsuarioResponse")
+    public JAXBElement<GetUsuarioResponse> createGetUsuarioResponse(GetUsuarioResponse value) {
+        return new JAXBElement<GetUsuarioResponse>(_GetUsuarioResponse_QNAME, GetUsuarioResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetAdministradorResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService/", name = "getAdministradorResponse")
+    public JAXBElement<GetAdministradorResponse> createGetAdministradorResponse(GetAdministradorResponse value) {
+        return new JAXBElement<GetAdministradorResponse>(_GetAdministradorResponse_QNAME, GetAdministradorResponse.class, null, value);
     }
 
     /**
@@ -267,15 +366,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link EliminarProyecto }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://webService/", name = "eliminarProyecto")
-    public JAXBElement<EliminarProyecto> createEliminarProyecto(EliminarProyecto value) {
-        return new JAXBElement<EliminarProyecto>(_EliminarProyecto_QNAME, EliminarProyecto.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link EliminarProyectoResponse }{@code >}}
      * 
      */
@@ -285,12 +375,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link EliminarAdministradorResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetProyecto }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://webService/", name = "eliminarAdministradorResponse")
-    public JAXBElement<EliminarAdministradorResponse> createEliminarAdministradorResponse(EliminarAdministradorResponse value) {
-        return new JAXBElement<EliminarAdministradorResponse>(_EliminarAdministradorResponse_QNAME, EliminarAdministradorResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://webService/", name = "getProyecto")
+    public JAXBElement<GetProyecto> createGetProyecto(GetProyecto value) {
+        return new JAXBElement<GetProyecto>(_GetProyecto_QNAME, GetProyecto.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetProyectoResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService/", name = "getProyectoResponse")
+    public JAXBElement<GetProyectoResponse> createGetProyectoResponse(GetProyectoResponse value) {
+        return new JAXBElement<GetProyectoResponse>(_GetProyectoResponse_QNAME, GetProyectoResponse.class, null, value);
     }
 
     /**
@@ -312,30 +411,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GuardarActividad }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://webService/", name = "guardarActividad")
-    public JAXBElement<GuardarActividad> createGuardarActividad(GuardarActividad value) {
-        return new JAXBElement<GuardarActividad>(_GuardarActividad_QNAME, GuardarActividad.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ProyectoDto }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://webService/", name = "ProyectoDto")
     public JAXBElement<ProyectoDto> createProyectoDto(ProyectoDto value) {
         return new JAXBElement<ProyectoDto>(_ProyectoDto_QNAME, ProyectoDto.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link EliminarSeguimientoResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://webService/", name = "eliminarSeguimientoResponse")
-    public JAXBElement<EliminarSeguimientoResponse> createEliminarSeguimientoResponse(EliminarSeguimientoResponse value) {
-        return new JAXBElement<EliminarSeguimientoResponse>(_EliminarSeguimientoResponse_QNAME, EliminarSeguimientoResponse.class, null, value);
     }
 
     /**
@@ -435,15 +516,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://webService/", name = "Respuesta")
     public JAXBElement<Respuesta> createRespuesta(Respuesta value) {
         return new JAXBElement<Respuesta>(_Respuesta_QNAME, Respuesta.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetUsuarioResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://webService/", name = "getUsuarioResponse")
-    public JAXBElement<GetUsuarioResponse> createGetUsuarioResponse(GetUsuarioResponse value) {
-        return new JAXBElement<GetUsuarioResponse>(_GetUsuarioResponse_QNAME, GetUsuarioResponse.class, null, value);
     }
 
 }

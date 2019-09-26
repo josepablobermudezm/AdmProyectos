@@ -183,6 +183,14 @@ public class ProyectoDto {
         return proCorreotecnico.get();
     }
 
+    public AdministradorDto getProAdministrador() {
+        return proAdministrador;
+    }
+
+    public void setProAdministrador(AdministradorDto proAdministrador) {
+        this.proAdministrador = proAdministrador;
+    }
+    
     public void setProCorreotecnico(String proCorreotecnico) {
         this.proCorreotecnico.setValue(proCorreotecnico);
     }
@@ -244,13 +252,6 @@ public class ProyectoDto {
         this.seguimientoList = seguimientoList;
     }*/
 
-    public AdministradorDto getProAdministrador() {
-        return proAdministrador;
-    }
-
-    public void setProAdministrador(AdministradorDto proAdministrador) {
-        this.proAdministrador = proAdministrador;
-    }
 
     public Long getProVersion() {
         if (proVersion.get() != null) {

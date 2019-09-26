@@ -109,7 +109,7 @@ public class DrawerContentController extends Controller {
     private void btnProyectos(ActionEvent event) {
         //FlowController.getInstance().goView("MantenimientoProyectos");
         FlowController.getInstance().initialize();
-        FlowController.getInstance().goView("MantenimientoProyectos", "Center", "");
+        FlowController.getInstance().goView("MantenimientosProyectos", "Center", "");
     }
 
     @FXML

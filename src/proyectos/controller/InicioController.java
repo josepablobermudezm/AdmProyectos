@@ -52,13 +52,10 @@ public class InicioController extends Controller {
     private BorderPane Panel = new BorderPane();
     
     private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
     }
 
     @Override
     public void initialize() {
-
         Image omg1;
         try {
             omg1 = new Image("/proyectos/resources/background (1).jpg");
@@ -85,9 +82,7 @@ public class InicioController extends Controller {
         } catch (IOException ex) {
             Logger.getLogger(InicioController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
-    
     
     public void SetBorderPane(BorderPane pane) {
         this.Panel = pane;
@@ -103,5 +98,4 @@ public class InicioController extends Controller {
 
         });
     }
-    
 }

@@ -63,7 +63,7 @@ public class DtoCasting {
         proyectoDto.setProEstado(pro.getProEstado().equals("Planificado")?"P":
         pro.getProEstado().equals("En Curso")?"C":pro.getProEstado().equals("Finalizado")?"F":"S");
         proyectoDto.setProVersion((pro.getProVersion()!=null)?pro.getProVersion()+ 1:1);
-//        proyectoDto.setProAdmin(new DtoCasting().castAdmin((AdministradorDto)AppContext.getInstance().get("AdministradorDto")));
+        proyectoDto.setProAdmin(new DtoCasting().castAdmin((AdministradorDto)AppContext.getInstance().get("AdministradorDto")));
        
         return proyectoDto;
     }

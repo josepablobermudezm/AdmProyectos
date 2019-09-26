@@ -71,12 +71,15 @@ public class AdministradorService {
             return new Respuesta(false, "Error Eliminando el Administrador.", "eliminarAdministrador " + ex.getMessage());
         }
     }
-    /*public Respuesta getAdministrador(Long ID){
+    public Respuesta getAdministrador(Long ID){
         try{
+            //Consulto al Service por un Administrador
             webservice.Respuesta resp = webService.getAdministrador(ID);
             if(!resp.isEstado()){
+                // Respuesta erronea si la respuesta del servidor también lo fue
                 return new Respuesta(Boolean.FALSE, resp.getMensaje(), resp.getMensajeInterno());
             }
+            // Obtengo un nuevo AdministradorDto a base del que el servidor devuelve y lo inserta en una nueva respuesta
             return new Respuesta(Boolean.TRUE, "", "", "AdministradorDto", new AdministradorDto((webservice.AdministradorDto)resp.getResultado()));
         }catch (Exception ex){
             Logger.getLogger(AdministradorService.class.getName()).log(Level.SEVERE, "Error al obtener el Usuario.", ex);
@@ -85,5 +88,5 @@ public class AdministradorService {
             }
             return new Respuesta(false, "Error al obtener el Usuario.", "getAdministradorUsuClave " + ex.getMessage());
         }
-    }*/
+    }
 }
