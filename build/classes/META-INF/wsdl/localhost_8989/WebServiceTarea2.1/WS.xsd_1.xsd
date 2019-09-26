@@ -6,6 +6,8 @@
 
 <xs:element name="ProyectoDto" type="tns:proyectoDto"/>
 
+<xs:element name="Respuesta" type="tns:respuesta"/>
+
 <xs:element name="SeguimientoDto" type="tns:seguimientoDto"/>
 
 <xs:element name="eliminarActividad" type="tns:eliminarActividad"/>
@@ -23,6 +25,14 @@
 <xs:element name="eliminarSeguimiento" type="tns:eliminarSeguimiento"/>
 
 <xs:element name="eliminarSeguimientoResponse" type="tns:eliminarSeguimientoResponse"/>
+
+<xs:element name="getAdministrador" type="tns:getAdministrador"/>
+
+<xs:element name="getAdministradorResponse" type="tns:getAdministradorResponse"/>
+
+<xs:element name="getProyecto" type="tns:getProyecto"/>
+
+<xs:element name="getProyectoResponse" type="tns:getProyectoResponse"/>
 
 <xs:element name="getUsuario" type="tns:getUsuario"/>
 
@@ -161,6 +171,18 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="getProyecto">
+<xs:sequence>
+<xs:element name="ID" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getProyectoResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:respuesta" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="getUsuario">
 <xs:sequence>
 <xs:element name="usuario" type="xs:string" minOccurs="0"/>
@@ -191,6 +213,18 @@
 </xs:complexType>
 
 <xs:complexType name="guardarSeguimientoResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:respuesta" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAdministrador">
+<xs:sequence>
+<xs:element name="ID" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAdministradorResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:respuesta" minOccurs="0"/>
 </xs:sequence>
