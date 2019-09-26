@@ -19,30 +19,7 @@
       <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1030.0" stylesheets="@newCascadeStyleSheet.css">
          <children>
             <ImageView fx:id="omg" fitHeight="800.0" fitWidth="1030.0" pickOnBounds="true" preserveRatio="true" />
-            <GridPane prefHeight="62.0" prefWidth="1030.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="509.0" minWidth="10.0" prefWidth="261.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="859.0" minWidth="10.0" prefWidth="769.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-               <children>
-                  <Label fx:id="Titulo" text="    Mantenimiento de Administradores" GridPane.columnIndex="1" />
-               </children>
-            </GridPane>
-            <GridPane layoutY="68.0" prefHeight="62.0" prefWidth="1030.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="509.0" minWidth="10.0" prefWidth="112.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="509.0" minWidth="10.0" prefWidth="394.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="859.0" minWidth="10.0" prefWidth="102.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="859.0" minWidth="10.0" prefWidth="713.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-            </GridPane>
-            <GridPane layoutY="206.0" prefHeight="62.0" prefWidth="1033.0" AnchorPane.bottomAnchor="532.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="206.0">
+            <GridPane layoutY="271.0" prefHeight="62.0" prefWidth="1033.0" AnchorPane.bottomAnchor="467.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="271.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="509.0" minWidth="10.0" prefWidth="30.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="509.0" minWidth="10.0" prefWidth="261.0" />
@@ -62,7 +39,7 @@
                   <JFXTextField fx:id="txtSapellido" labelFloat="true" prefHeight="29.0" prefWidth="250.0" promptText="Segundo Apellido" GridPane.columnIndex="5" />
                </children>
             </GridPane>
-            <GridPane layoutY="350.0" prefHeight="62.0" prefWidth="1033.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="350.0">
+            <GridPane layoutY="415.0" prefHeight="62.0" prefWidth="1033.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="415.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="509.0" minWidth="10.0" prefWidth="30.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="509.0" minWidth="10.0" prefWidth="261.0" />
@@ -82,7 +59,7 @@
                   <JFXTextField fx:id="txtContrasenna" labelFloat="true" prefHeight="29.0" prefWidth="250.0" promptText="Contraseña" GridPane.columnIndex="5" />
                </children>
             </GridPane>
-            <GridPane layoutY="490.0" prefHeight="62.0" prefWidth="1033.0" AnchorPane.bottomAnchor="248.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="490.0">
+            <GridPane layoutY="555.0" prefHeight="62.0" prefWidth="1033.0" AnchorPane.bottomAnchor="183.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="555.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="509.0" minWidth="0.0" prefWidth="8.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="509.0" minWidth="0.0" prefWidth="22.0" />
@@ -134,6 +111,7 @@
                   </HBox>
                </children>
             </GridPane>
+            <ImageView fx:id="omg" fitHeight="150.0" fitWidth="200.0" layoutX="415.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </center>

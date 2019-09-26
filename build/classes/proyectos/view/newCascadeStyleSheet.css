@@ -202,9 +202,7 @@
     -fx-text-fill: WHITE;
     -jfx-rippler-fill: GREEN;
 }
-
-
-
+/*
 .jfx-list-cell:selected{
     -fx-background-color: #3b8c91;
 }
@@ -224,3 +222,4 @@
     -fx-vertical-gap: 10;
     -fx-background-color: #012985;
 }
+*/

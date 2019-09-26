@@ -56,7 +56,7 @@ public class ProyectoService {
         }
     }
 
-    /*public Respuesta getProyecto(Long ID) {
+    public Respuesta getProyecto(Long ID) {
         try {
             webservice.Respuesta resp = webService.getProyecto(ID);
             if (!resp.isEstado()) {
@@ -70,5 +70,5 @@ public class ProyectoService {
             }
             return new Respuesta(false, "Error al obtener el Usuario.", "getAdministradorUsuClave " + ex.getMessage());
         }
-    }*/
+    }
 }

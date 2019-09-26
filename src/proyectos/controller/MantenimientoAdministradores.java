@@ -25,6 +25,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import proyectos.Proyectos;
@@ -80,7 +81,12 @@ public class MantenimientoAdministradores extends Controller{
     public void initialize() {
         indicarRequeridos();
         Formato();
-        
+        Image imglogo;
+        try {
+            imglogo = new Image("/proyectos/resources/logo2.png");
+            omg.setImage(imglogo);
+        } catch (Exception e) {
+        }
         administrador = (AdministradorDto) AppContext.getInstance().get("AdministradorDto");
         bindAdmin();
         
@@ -89,37 +95,40 @@ public class MantenimientoAdministradores extends Controller{
 
     @FXML
     private void editar(ActionEvent event) {
-        Respuesta respuesta = new AdministradorService().guardarAdministrador(administrador);
-        if(respuesta.getEstado()){
-            unbindAdmin();
-            administrador = (AdministradorDto)respuesta.getResultado("AdministradorDto");
-            bindAdmin();
-            new Mensaje().showModal(Alert.AlertType.INFORMATION, "Información de Registro", this.getStage(), "Cuenta Actualizada Exitosamente.");
-        }else{
-            new Mensaje().showModal(Alert.AlertType.ERROR, "Información de Registro", this.getStage(), "Error de Actualización: "+respuesta.getMensaje());
+        if(new Mensaje().showConfirmation("Editar Cuenta", this.getStage(), "Se editarán los datos de su cuenta ¿Desea Continuar?")){
+            Respuesta respuesta = new AdministradorService().guardarAdministrador(administrador);
+            if(respuesta.getEstado()){
+                unbindAdmin();
+                administrador = (AdministradorDto)respuesta.getResultado("AdministradorDto");
+                bindAdmin();
+                new Mensaje().showModal(Alert.AlertType.INFORMATION, "Información de Registro", this.getStage(), "Cuenta Actualizada Exitosamente.");
+            }else{
+                new Mensaje().showModal(Alert.AlertType.ERROR, "Información de Registro", this.getStage(), "Error de Actualización: "+respuesta.getMensaje());
+            }
+        }
+        if(btnInactivo.isSelected()){
+            FlowController.getMainStage().close();
+            FlowController.getInstance().initialize();
+            AppContext.getInstance().initialize();
+            FlowController.getInstance().goViewInWindowTransparent("LogIn");
         }
     }
 
     @FXML
     private void eliminar(ActionEvent event) {
-        if(new Mensaje().showConfirmation("Eliminar Cuenta", this.getStage(), "Se eliminará la cuenta por completo y todo lo relacionado a la misma "
-                + "¿En verdad desea Continuar? Los Datos no se podrán recuperar")){
+        if(new Mensaje().showConfirmation("Eliminar Cuenta", this.getStage(), "Se eliminará la cuenta por completo y todo lo relacionado a la misma ¿Desea Continuar? Los Datos no se podrán recuperar")){
             Respuesta respuesta = new AdministradorService().eliminarAdministrador(administrador.getAdnId());
             if(respuesta.getEstado()){
                 new Mensaje().showModal(Alert.AlertType.CONFIRMATION, "Eliminar Cuenta", this.getStage(), "Cuenta Eliminada con éxito. El programa cerrará la sesión");
                 FlowController.getInstance().initialize();
                 this.getStage().close();
-                FlowController.getInstance().goViewInWindowTransparent("Ingresar");
+                FlowController.getInstance().goViewInWindowTransparent("LogIn");
             }else{
                 new Mensaje().showModal(Alert.AlertType.ERROR, "Eliminar Cuenta", this.getStage(), respuesta.getMensaje());
             }
         }
     }
 
-    @FXML
-    private void limpiarRegistro(ActionEvent event) {
-        
-    }
     
     public void Formato(){
         txtPapellido.setTextFormatter(Formato.getInstance().maxLengthFormat(30));
@@ -191,10 +200,6 @@ public class MantenimientoAdministradores extends Controller{
     }
 
 
-    @FXML
-    private void agregar(ActionEvent event) {
-        
-    }
 
 
 }

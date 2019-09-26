@@ -16,19 +16,21 @@ import proyectos.util.DtoCasting;
 import proyectos.util.Respuesta;/*
 import webservice.WS;
 import webservice.WS_Service;*/
+import webservice.WS;
+import webservice.WS_Service;
 
 /**
  *
  * @author Jose Pablo Bermudez
  */
 public class ActividadesService {
-    /*WS_Service service = new webservice.WS_Service();
+    WS_Service service = new webservice.WS_Service();
     WS webService = service.getWSPort();
     DtoCasting dtoCast = new DtoCasting();
 
     public Respuesta guardarActividad(ActividadesDto act) {
         try {
-            webservice.ActividadesDto Actividad = dtoCast.(act);
+            webservice.ActividadesDto Actividad = dtoCast.castAct(act);
             webservice.Respuesta resp = webService.guardarActividad(Actividad);
             if (!resp.isEstado()) {
                 return new Respuesta(false, resp.getMensaje(), resp.getMensajeInterno(), "", "");
@@ -67,5 +69,5 @@ public class ActividadesService {
             }
             return new Respuesta(false, "Error Eliminando el Actividad.", "eliminarActividad " + ex.getMessage());
         }
-    }*/
+    }
 }

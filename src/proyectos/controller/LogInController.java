@@ -17,6 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -122,52 +123,36 @@ public class LogInController extends Controller {
 
     @FXML
     private void ingresar(ActionEvent event) {
-         if(!txtUsuario.getText().isEmpty() && !txtClave.getText().isEmpty()){
+        Login();
+         
+    }
+    
+    
+    
+    public void Login(){
+    if(!txtUsuario.getText().isEmpty() && !txtClave.getText().isEmpty()){
             Respuesta respuesta = new AdministradorService().getAdministradorUsuClave(txtUsuario.getText(), txtClave.getText());
             if(respuesta.getEstado()){
                 AdministradorDto admin = (AdministradorDto) respuesta.getResultado("AdministradorDto");
-                AppContext.getInstance().set("AdministradorDto", admin);
-                FlowController.getInstance().goMain();
-                this.getStage().close();
+                if(admin.getAdnEstado().equals("A")){
+                    AppContext.getInstance().set("AdministradorDto", admin);
+                    FlowController.getInstance().goMain();
+                    this.getStage().close();
+                }else{
+                    new Mensaje().showModal(Alert.AlertType.ERROR, "Iniciar Sesión", this.getStage(), "Usuario se encuentra inactivo");
+                }
             }else{
                 new Mensaje().showModal(Alert.AlertType.ERROR, "Iniciar Sesión", this.getStage(), respuesta.getMensaje());
             }
         }else{
-            new Mensaje().showModal(Alert.AlertType.ERROR, "Iniciar Sesión", this.getStage(), "Usuario y Clave deben de ser obligatorios.");
+            new Mensaje().showModal(Alert.AlertType.ERROR, "Iniciar Sesión", this.getStage(), "Usuario y Contraseña son obligatorios.");
         }
     }
-    
-    
-    public void Login(){}
-        /*Mensaje msj = new Mensaje();
-        if(txtUsuario.getText() == null || txtClave.getText() == null){ 
-            msj.show(ERROR,"Error al iniciar secion", "Usuario o Contraseña vacios!");
-        }else{
-            Boolean b =  evaluarPalabra(txtClave.getText(),txtUsuario.getText());
-            if(b == false){
-                msj.show(ERROR,"Error al iniciar secion", "Usuario o Contraseña incorrectos!");
-            } else {
-                AdministradorDto adm = admin;
-                AppContext.getInstance().setAdmin(adm);
-                FlowController.getInstance().goMain();
-            }
-        }*/
         
-    /*public Boolean evaluarPalabra(String contra, String usu){
-        boolean cargado = false;
-        try {
-            AdministradorService adminServ = new AdministradorService();
-            AdministradorDto adminAux = adminServ.cargarAdmin(usu, contra);
-            if(adminAux!=null){
-                this.admin = adminAux;
-                cargado = true;
-            } else {
-                cargado = false;
-            }
-        } catch (NoResultException | NullPointerException ex) {
-            cargado = false;
-            System.out.println("Ha ocurrido un problema cargando el usuario");
+    @FXML
+    private void LogInKey(KeyEvent event) {
+        if (event.getCode() == event.getCode().ENTER) {
+            Login();
         }
-        return cargado;
-    }*/
+    }
 }

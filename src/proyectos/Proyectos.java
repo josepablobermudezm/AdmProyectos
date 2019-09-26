@@ -34,28 +34,4 @@ public class Proyectos extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
-    public final static EventHandler<KeyEvent> aceptaCaracteres = (KeyEvent event) -> {
-        if (Character.isDigit(event.getCharacter().charAt(0))) {
-            event.consume();
-        }
-    };
-
-    public final static EventHandler<KeyEvent> aceptaNumeros = (KeyEvent event) -> {
-        if (!Character.isDigit(event.getCharacter().charAt(0))) {
-            event.consume();
-        }
-    };
-
-    public final static EventHandler<KeyEvent> noEscribir = (KeyEvent event) -> {
-        event.consume();
-    };
-    
-    public final static EventHandler<KeyEvent> sinEspacios = (KeyEvent event) -> {
-        if(event.getCode() == event.getCode().SPACE){
-            event.consume();
-        }
-        
-    };
-    
 }

@@ -62,7 +62,7 @@
                      </rowConstraints>
                      <children>
                         <ImageView fx:id="imgPassword" fitHeight="39.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
-                        <JFXPasswordField fx:id="txtClave" promptText="Contraseña" styleClass="estiloText" GridPane.columnIndex="2" />
+                        <JFXPasswordField fx:id="txtClave" onKeyPressed="#LogInKey" promptText="Contraseña" styleClass="estiloText" GridPane.columnIndex="2" />
                      </children>
                   </GridPane>
                   <Label id="labelContra" onMouseReleased="#restablecerContrasenna" style="-fx-cursor: hand;" text="¿Aún no tienes una cuenta?">
