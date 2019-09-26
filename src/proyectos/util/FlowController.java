@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
+import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -22,6 +23,7 @@ import proyectos.Proyectos;
 import proyectos.controller.Controller;
 import javafx.scene.image.Image;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
 /**
  *
@@ -29,10 +31,12 @@ import javafx.stage.StageStyle;
  */
 public class FlowController {
 
-    private static FlowController INSTANCE = null;
+   private static FlowController INSTANCE = null;
     private static Stage mainStage;
     private static ResourceBundle idioma;
     private static HashMap<String, FXMLLoader> loaders = new HashMap<>();
+
+    private Stage stage;
 
     private FlowController() {
     }
@@ -56,7 +60,15 @@ public class FlowController {
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return null;
+        throw new CloneNotSupportedException();
+    }
+
+    public static Stage getMainStage() {
+        return mainStage;
+    }
+
+    public static void setMainStage(Stage mainStage) {
+        FlowController.mainStage = mainStage;
     }
 
     public void InitializeFlow(Stage stage, ResourceBundle idioma) {
@@ -65,8 +77,6 @@ public class FlowController {
         this.idioma = idioma;
     }
 
-    
-    
     private FXMLLoader getLoader(String name) {
         FXMLLoader loader = loaders.get(name);
         if (loader == null) {
@@ -86,36 +96,14 @@ public class FlowController {
         return loader;
     }
 
-    public void goViewInWindowTransparent(String viewName) {
-        FXMLLoader loader = getLoader(viewName);
-        Controller controller = loader.getController();
-        Stage stage = new Stage();
-        controller.setStage(stage);
-        controller.initialize();
-        stage.initStyle(StageStyle.TRANSPARENT);
-        stage.getIcons().add(new Image(Proyectos.class.getResourceAsStream("resources/icon.png")));
-        stage.setTitle("Proyect Manager");
-//        stage.setMinWidth(630);
-//        stage.setMinHeight(420);
-        stage.setOnHidden((WindowEvent event) -> {
-        });
-        Parent root = loader.getRoot();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.show();
-
-    }
-    
     public void goMain() {
         try {
-
             this.mainStage.setScene(new Scene(FXMLLoader.load(Proyectos.class.getResource("view/Inicio.fxml"), this.idioma)));
-            this.mainStage.setTitle("Administrador De Proyectos");
+            this.mainStage.setTitle("Administrador de Proyectos");
             this.mainStage.getIcons().add(new Image(Proyectos.class.getResourceAsStream("resources/icon.png")));
             this.mainStage.show();
         } catch (IOException ex) {
-            java.util.logging.Logger.getLogger(FlowController.class.getName()).log(Level.SEVERE, "Error inicializando la vista base.", ex);
+            java.util.logging.Logger.getLogger(FlowController.class.getName()).log(Level.SEVERE, "Error inicializando la vista de inicio.", ex);
         }
     }
 
@@ -129,19 +117,27 @@ public class FlowController {
 
     public void goView(String viewName, String location, String accion) {
         FXMLLoader loader = getLoader(viewName);
-        Controller controller = loader.getController();//clase abstracta
+        Controller controller = loader.getController();
         controller.setAccion(accion);
         controller.initialize();
-        Stage stage = controller.getStage();
+        this.stage = controller.getStage();
         if (stage == null) {
             stage = this.mainStage;
             controller.setStage(stage);
         }
-
         switch (location) {
             case "Center":
-                ((VBox) ((BorderPane) stage.getScene().getRoot()).getCenter()).getChildren().clear();
-                ((VBox) ((BorderPane) stage.getScene().getRoot()).getCenter()).getChildren().add(loader.getRoot());
+                FadeTransition t1 = new FadeTransition(Duration.seconds(0.5), ((VBox) ((BorderPane) stage.getScene().getRoot()).getCenter()));
+                t1.setByValue(-1);
+                t1.setOnFinished(f -> {
+                    ((VBox) ((BorderPane) stage.getScene().getRoot()).getCenter()).getChildren().clear();
+                    ((VBox) ((BorderPane) stage.getScene().getRoot()).getCenter()).getChildren().add(loader.getRoot());
+                    FadeTransition t2 = new FadeTransition(Duration.seconds(0.5), ((VBox) ((BorderPane) stage.getScene().getRoot()).getCenter()));
+                    t2.setByValue(1);
+                    t2.play();
+                });
+                t1.play();
+
                 break;
             case "Top":
                 break;
@@ -159,7 +155,6 @@ public class FlowController {
     public void goViewInStage(String viewName, Stage stage) {
         FXMLLoader loader = getLoader(viewName);
         Controller controller = loader.getController();
-        controller.initialize();
         controller.setStage(stage);
         stage.getScene().setRoot(loader.getRoot());
     }
@@ -167,15 +162,36 @@ public class FlowController {
     public void goViewInWindow(String viewName) {
         FXMLLoader loader = getLoader(viewName);
         Controller controller = loader.getController();
-        controller.initialize();
-        Stage stage = new Stage();
-        //stage.getIcons().add(new Image("/clinicauna/resources/medicine.png"));
-        stage.setTitle("Control de Proyectos");
-        stage.setOnHidden((WindowEvent event) -> {
-            controller.getStage().getScene().setRoot(new Pane());
-            controller.setStage(null);
+        
+        Stage stageV = new Stage();
+//        stage.getIcons().add(new Image(Tarea1.class.getResourceAsStream("resources/Preguntados.png")));
+        stageV.setMinWidth(630);
+        stageV.setMinHeight(420);
+        stageV.setOnHidden((WindowEvent event) -> {
         });
+        controller.setStage(stageV);
+        controller.initialize();
+        Parent root = loader.getRoot();
+        Scene scene = new Scene(root);
+        stageV.setScene(scene);
+        stageV.centerOnScreen();
+        stageV.show();
+
+    }
+
+    public void goViewInWindowTransparent(String viewName) {
+        FXMLLoader loader = getLoader(viewName);
+        Controller controller = loader.getController();
+        Stage stage = new Stage();
         controller.setStage(stage);
+        controller.initialize();
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.getIcons().add(new Image(Proyectos.class.getResourceAsStream("resources/icon.png")));
+        stage.setTitle("Administrador de Proyectos");
+//        stage.setMinWidth(630);
+//        stage.setMinHeight(420);
+        stage.setOnHidden((WindowEvent event) -> {
+        });
         Parent root = loader.getRoot();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -189,14 +205,37 @@ public class FlowController {
         Controller controller = loader.getController();
         controller.initialize();
         Stage stage = new Stage();
-        //stage.getIcons().add(new Image("/clinicauna/resources/medicine.png"));
-        stage.setTitle("Control de Proyectos");
+        stage.getIcons().addAll(parentStage.getIcons());
+        stage.setTitle("Proyect Manager");
         stage.setResizable(resizable);
         stage.setOnHidden((WindowEvent event) -> {
             controller.getStage().getScene().setRoot(new Pane());
             controller.setStage(null);
         });
+        controller.setStage(stage);
+        Parent root = loader.getRoot();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(parentStage);
+        stage.centerOnScreen();
+        stage.show();
 
+    }
+
+    public void goViewInWindowModalUndecorated(String viewName, Stage parentStage, Boolean resizable) {
+        FXMLLoader loader = getLoader(viewName);
+        Controller controller = loader.getController();
+        controller.initialize();
+        Stage stage = new Stage();
+        stage.initStyle(StageStyle.TRANSPARENT);
+//        stage.getIcons().addAll(parentStage.getIcons());
+//        stage.setTitle("UNA PLANILLA");
+        stage.setResizable(resizable);
+        stage.setOnHidden((WindowEvent event) -> {
+            controller.getStage().getScene().setRoot(new Pane());
+            controller.setStage(null);
+        });
         controller.setStage(stage);
         Parent root = loader.getRoot();
         Scene scene = new Scene(root);
@@ -212,6 +251,11 @@ public class FlowController {
         return getLoader(viewName).getController();
     }
 
+    public boolean removeView(String viewName) {
+        return loaders.remove(viewName) == null ? false : true;
+
+    }
+
     public static void setIdioma(ResourceBundle idioma) {
         FlowController.idioma = idioma;
     }
@@ -224,7 +268,12 @@ public class FlowController {
         this.mainStage.close();
     }
 
-    public void delete(String parameter) {
-        loaders.put(parameter, null);
+    public void cerrar(Stage stage) {
+        stage.close();
     }
+
+    public void desvincular(String viewName) {
+        loaders.remove(viewName);
+    }
+
 }

@@ -25,6 +25,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import proyectos.model.AdministradorDto;
+import proyectos.util.AppContext;
 
 /**
  *
@@ -50,20 +52,17 @@ public class InicioController extends Controller {
     private BorderPane Panel = new BorderPane();
     
     private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
     }
 
     @Override
     public void initialize() {
-
         Image omg1;
         try {
             omg1 = new Image("/proyectos/resources/background (1).jpg");
             omg.setImage(omg1);
         } catch (Exception e) {
         }
-        
+        AdministradorDto adm = (AdministradorDto) AppContext.getInstance().get("AdministradorDto");
         try {
         VBox box = FXMLLoader.load(getClass().getResource("/proyectos/view/drawerContent.fxml"));
         drawer.setSidePane(box);
@@ -83,9 +82,7 @@ public class InicioController extends Controller {
         } catch (IOException ex) {
             Logger.getLogger(InicioController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
-    
     
     public void SetBorderPane(BorderPane pane) {
         this.Panel = pane;
@@ -101,5 +98,4 @@ public class InicioController extends Controller {
 
         });
     }
-    
 }

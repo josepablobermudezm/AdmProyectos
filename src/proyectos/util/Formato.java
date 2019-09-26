@@ -20,8 +20,7 @@ import javafx.scene.control.TextInputControl;
 public class Formato {
 
     private static Formato INSTANCE = null;
-
-    public DateTimeFormatter formatDateShort = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT);
+public DateTimeFormatter formatDateShort = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT);
     public DateTimeFormatter formatDateMedium = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM);
     public DecimalFormat decimalFormat = new DecimalFormat("#,###,###,##0.00");
 

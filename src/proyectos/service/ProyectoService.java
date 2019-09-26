@@ -32,17 +32,13 @@ public class ProyectoService {
             if (!resp.isEstado()) {
                 return new Respuesta(false, resp.getMensaje(), resp.getMensajeInterno(), "", "");
             }
-            AdministradorDto admin = (AdministradorDto) AppContext.getInstance().get("AdministradorDto");
-            AdministradorService adminService = new AdministradorService();
-            Respuesta respuesta = adminService.getAdministrador(admin.getAdnId());
-            admin = (AdministradorDto) respuesta.getResultado("AdministradorDto");
-            AppContext.getInstance().set("AdministradorDto", admin);
+            AdministradorDto administrador = (AdministradorDto) AppContext.getInstance().get("AdministradorDto");
+            AdministradorService adminisService = new AdministradorService();
+            Respuesta respuesta = adminisService.getAdministrador(administrador.getAdnId());
+            administrador = (AdministradorDto) respuesta.getResultado("AdministradorDto");
+            AppContext.getInstance().set("AdministradorDto", administrador);
             return new Respuesta(true, resp.getMensaje(), resp.getMensajeInterno(), "Proyecto", new ProyectoDto((webservice.ProyectoDto) resp.getResultado()));
         } catch (Exception ex) {
-            Logger.getLogger(AdministradorService.class.getName()).log(Level.SEVERE, "Error guardando el Proyecto.", ex);
-            if (ex.getCause() != null && ex.getCause().getClass() == ConnectException.class) {
-                return new Respuesta(false, "Error. No se pudo hacer conexión con el servidor: ", "guardarProyecto " + ex.getMessage());
-            }
             return new Respuesta(false, "Error guardando el Usuario.", "guardarProyecto " + ex.getMessage());
         }
     }
@@ -60,15 +56,12 @@ public class ProyectoService {
         }
     }
 
-    public Respuesta getProyecto(Long ID) {
+    /*public Respuesta getProyecto(Long ID) {
         try {
-            //Consulto al Service por un Administrador
             webservice.Respuesta resp = webService.getProyecto(ID);
             if (!resp.isEstado()) {
-                // Respuesta erronea si la respuesta del servidor también lo fue
                 return new Respuesta(Boolean.FALSE, resp.getMensaje(), resp.getMensajeInterno());
             }
-            // Obtengo un nuevo AdministradorDto a base del que el servidor devuelve y lo inserta en una nueva respuesta
             return new Respuesta(Boolean.TRUE, "", "", "ProyectoDto", new ProyectoDto((webservice.ProyectoDto) resp.getResultado()));
         } catch (Exception ex) {
             Logger.getLogger(AdministradorService.class.getName()).log(Level.SEVERE, "Error al obtener el Usuario.", ex);
@@ -77,5 +70,5 @@ public class ProyectoService {
             }
             return new Respuesta(false, "Error al obtener el Usuario.", "getAdministradorUsuClave " + ex.getMessage());
         }
-    }
+    }*/
 }

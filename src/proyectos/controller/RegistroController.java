@@ -76,7 +76,6 @@ public class RegistroController extends Controller {
         administradorService = new AdministradorService();
         administradorDto = new AdministradorDto();
         ms = new Mensaje();*/
-        
         Image imgFondo;
         try {
             imgFondo = new Image("/proyectos/resources/e.jpg");
@@ -149,11 +148,9 @@ public class RegistroController extends Controller {
             FlowController.getInstance().goViewInStage("LogIn", this.getStage());
         } */
         String req = validarRequeridos();
-        //Si los requeridos están completos... Continuo
-        if(req.isEmpty()){
+       if(req.isEmpty()){
             if(new Mensaje().showConfirmation("Información de Registro", this.getStage(), "¿Deseas registrar al Adminstrador?")){
                 Respuesta respuesta = new AdministradorService().guardarAdministrador(admin);
-                AppContext.getInstance().setAdmin(admin);
                 if(respuesta.getEstado()){
                     nuevoAdministrador();
                     new Mensaje().showModal(Alert.AlertType.INFORMATION, "Información de Registro", this.getStage(), "Administrador registrado exitosamente.");
@@ -164,6 +161,12 @@ public class RegistroController extends Controller {
         }else{
             new Mensaje().showModal(Alert.AlertType.WARNING, "Registrar Administrador", this.getStage(), req);
         }
+       
+       
+       
+       
+       
+       
     }
     boolean registroCorrecto() {
         return !txtCedula.getText().isEmpty() && !txtClave.getText().isEmpty() && !txtCorreo.getText().isEmpty()

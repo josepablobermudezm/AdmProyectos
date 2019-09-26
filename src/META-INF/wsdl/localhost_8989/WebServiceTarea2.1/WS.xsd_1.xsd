@@ -6,6 +6,8 @@
 
 <xs:element name="ProyectoDto" type="tns:proyectoDto"/>
 
+<xs:element name="Respuesta" type="tns:respuesta"/>
+
 <xs:element name="SeguimientoDto" type="tns:seguimientoDto"/>
 
 <xs:element name="eliminarActividad" type="tns:eliminarActividad"/>
@@ -112,7 +114,6 @@
 <xs:element name="adnSapellido" type="xs:string" minOccurs="0"/>
 <xs:element name="adnUsuario" type="xs:string" minOccurs="0"/>
 <xs:element name="adnVersion" type="xs:long" minOccurs="0"/>
-<xs:element name="proyectos" type="tns:proyectoDto" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -134,18 +135,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="eliminarActividad">
-<xs:sequence>
-<xs:element name="ID" type="xs:long" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="eliminarActividadResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:respuesta" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="eliminarProyecto">
 <xs:sequence>
 <xs:element name="ID" type="xs:long" minOccurs="0"/>
@@ -153,6 +142,18 @@
 </xs:complexType>
 
 <xs:complexType name="eliminarProyectoResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:respuesta" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="eliminarActividad">
+<xs:sequence>
+<xs:element name="ID" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="eliminarActividadResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:respuesta" minOccurs="0"/>
 </xs:sequence>
