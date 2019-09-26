@@ -99,6 +99,8 @@ public class MantenimientosProyectosController  extends Controller implements In
     private ObservableList<String> estados = FXCollections.observableArrayList();
     private ObservableList<ProyectoDto> proyectos;
     private List<JFXTextField> ProyetoList = new ArrayList();
+    @FXML
+    private JFXButton Actividades;
     /**
      * Initializes the controller class.
      */
@@ -303,5 +305,13 @@ public class MantenimientosProyectosController  extends Controller implements In
 */
     @FXML
     private void btnResumSegui_OnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void Actividades(ActionEvent event) {
+        
+        FlowController.getInstance().initialize();
+        FlowController.getInstance().goView("ActividadesProyecto", "Center", "");
+        
     }
 }

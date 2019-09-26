@@ -97,6 +97,7 @@
                            <children>
                               <JFXButton fx:id="btnGuarda_Modificar" onAction="#guardar" prefHeight="37.0" prefWidth="222.0" styleClass="JFXButton" text="Guardar/Editar" />
                               <JFXButton fx:id="btnResumSegui" onAction="#btnResumSegui_OnAction" prefHeight="37.0" prefWidth="242.0" styleClass="JFXButton" text="Resumen Seguimientos" />
+                              <JFXButton fx:id="Actividades" onAction="#Actividades" prefHeight="31.0" prefWidth="193.0" text="Actividades" />
                            </children>
                         </HBox>
                      </children>
