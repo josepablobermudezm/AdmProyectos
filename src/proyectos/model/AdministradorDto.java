@@ -44,9 +44,23 @@ public class AdministradorDto {
         this.adnSapellidoP.setValue(admin.getAdnSapellido());
         this.adnUsuarioP.setValue(admin.getAdnUsuario());
         this.adnVersion.setValue(admin.getAdnVersion().toString());
-        
+        /*if(admin.getProyectos()!=null && !admin.getProyectos().isEmpty()){
+            this.proyectos =  new ArrayList();
+            admin.getProyectos().stream().forEach(pro->{
+                proyectos.add(new ProyectoDto(pro));
+            });
+        }
+        else{
+            this.proyectos =  new ArrayList();
+        }*/
     }
-    
+    public List<ProyectoDto> getProyectos() {
+        return proyectos;
+    }
+
+    public void setProyectos(List<ProyectoDto> proyectos) {
+        this.proyectos = proyectos;
+    }
     public Long getAdnId() {
         if (adnIdP.get() != null) {
             if (!adnIdP.get().isEmpty()) {
@@ -80,14 +94,6 @@ public class AdministradorDto {
         return adnSapellidoP.get();
     }
 
-    public List<ProyectoDto> getProyectos() {
-        return proyectos;
-    }
-
-    public void setProyectos(List<ProyectoDto> proyectos) {
-        this.proyectos = proyectos;
-    }
-    
     public void setAdnSapellido(String adnSapellido) {
         this.adnSapellidoP.setValue(adnSapellido);
     }

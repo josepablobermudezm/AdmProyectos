@@ -41,8 +41,8 @@ public class ProyectoDto {
     public ObjectProperty<LocalDate> proFechafinal;
     public ObjectProperty<String> proEstado;
     public SimpleStringProperty proVersion;
-    //private List<ActividadesDto> actividadList;
-    //private List<SeguimientoDto> seguimientoList;
+    private List<ActividadesDto> actividadList;
+    private List<SeguimientoDto> seguimientoList;
     private AdministradorDto proAdministrador;
 
     public ProyectoDto() {
@@ -60,6 +60,8 @@ public class ProyectoDto {
         this.proFechafinal = new SimpleObjectProperty();
         this.proEstado = new SimpleObjectProperty();
         this.proVersion = new SimpleStringProperty();
+        /*this.actividadList = new ArrayList<>();
+        this.seguimientoList = new ArrayList<>();*/
     }
 
     public ProyectoDto(webservice.ProyectoDto proyect) {
@@ -96,8 +98,20 @@ public class ProyectoDto {
         proyect.getProEstado().equals("C")?"En Curso":proyect.getProEstado().equals("F")?"Finalizado":"Suspendido");
 
         this.proVersion.setValue(proyect.getProVersion().toString());
-        // Faltan listas del Service
-        // Actividades - Seguimientos
+        /*if (proyect.getActividades() != null) {
+            for (webservice.ActividadesDto a : proyect.getActividades()) {
+                ActividadesDto act = new ActividadesDto(a);
+                act.setActProyecto(this);
+                this.actividadList.add(act);
+            }
+        } 
+        if (proyect.getSeguimientos() != null) {
+            for (webservice.SeguimientoDto s : proyect.getSeguimientos()) {
+                SeguimientoDto seg = new SeguimientoDto(s);
+                seg.setSegProyecto(this);
+                this.seguimientoList.add(seg);
+            }
+        } */
     }
 
      public ProyectoDto(Long proId, String proNombre, String proPatrocinador, String proLiderusuario, String proLidertecnico, String proCorreopatrocinador, String proCorreousuario, String proCorreotecnico, LocalDate proFechainireal, LocalDate proFechafinreal, LocalDate proFechainicio, LocalDate proFechafinal, String proEstado, Long proVersion) {
@@ -131,6 +145,22 @@ public class ProyectoDto {
         this.proId.setValue(proId == null ? null : proId.toString());
     }
 
+     public List<ActividadesDto> getActividadList() {
+        return actividadList;
+    }
+
+    public void setActividadList(List<ActividadesDto> actividadList) {
+        this.actividadList = actividadList;
+    }
+
+    public List<SeguimientoDto> getSeguimientoList() {
+        return seguimientoList;
+    }
+
+    public void setSeguimientoList(List<SeguimientoDto> seguimientoList) {
+        this.seguimientoList = seguimientoList;
+    }
+    
     public String getProNombre() {
         return proNombre.get();
     }

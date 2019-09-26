@@ -93,10 +93,12 @@ public class MantenimientosProyectosController  extends Controller implements In
     private JFXListView<ProyectoDto> Proyectos;
     private AdministradorDto admin;
     ProyectoDto proyecto;
-    private ObservableList<String> listaEstados = FXCollections.observableArrayList();
+    
+    List<Node> requeridos = new ArrayList<>();
+    
+    private ObservableList<String> estados = FXCollections.observableArrayList();
     private ObservableList<ProyectoDto> proyectos;
     private List<JFXTextField> ProyetoList = new ArrayList();
-    List<Node> requeridos = new ArrayList<>();
     /**
      * Initializes the controller class.
      */
@@ -104,29 +106,32 @@ public class MantenimientosProyectosController  extends Controller implements In
     public void initialize() {
         Image imglogo;
         try {
-            imglogo = new Image("/proyectos/resources/logo.png");
+            imglogo = new Image("/proyectos/resources/logo2.png");
             logo.setImage(imglogo);
         } catch (Exception e) {
         }
-        listaEstados.addAll("Planificado", "En Curso", "Suspendido", "Finalizado");
+        estados.addAll("Planificado", "En Curso", "Suspendido", "Finalizado");
         admin = ((AdministradorDto) AppContext.getInstance().get("AdministradorDto"));
         proyectos = FXCollections.observableArrayList(admin.getProyectos());
-        proyectos.add(proyecto);
-        cbEstado.setItems(listaEstados);
-
+        //proyectos.add(proyecto);
+        cbEstado.setItems(estados);
+/*
         Proyectos.setItems(proyectos);
         Proyectos.setCellFactory(param -> {
             return new ListCel();
-        });
+        });*/
         proyecto = new ProyectoDto();
         nuevoProyecto();
         indicarRequeridos();
         cbEstado.getSelectionModel().selectFirst();
+        
+        
+        
     }
     
     
     @FXML
-    private void guardar(ActionEvent event) {
+     private void guardar(ActionEvent event) {
         String req = validarRequeridos();
         if (req.isEmpty()) {
             if (new Mensaje().showConfirmation("Guardar Proyecto", this.getStage(), "¿Deseas guardar el proyecto?")) {
@@ -145,7 +150,6 @@ public class MantenimientosProyectosController  extends Controller implements In
         } else {
             new Mensaje().showModal(Alert.AlertType.WARNING, "Registrar Administrador", this.getStage(), req);
         }
-        
     }
 
     
@@ -202,27 +206,23 @@ public class MantenimientosProyectosController  extends Controller implements In
         String invalidos = "";
         for (Node node : requeridos) {
             if (node instanceof JFXTextField) {
-                if(((JFXTextField) node).getText() == null || ((JFXTextField) node).getText().isEmpty())
+                if(((JFXTextField) node).getText() == null || ((JFXTextField) node).getText().isEmpty()){
                     if (validos) {
                         invalidos += ((JFXTextField) node).getPromptText();
                     } else {
                         invalidos += ", " + ((JFXTextField) node).getPromptText();
                     }
-                validos = false;
-            } else if (node instanceof JFXDatePicker && ((JFXDatePicker) node).getValue() == null) {
-                if (validos) {
-                    invalidos += ((JFXDatePicker) node).getPromptText();
-                } else {
-                    invalidos += ", " + ((JFXDatePicker) node).getPromptText();
+                    validos = false;
                 }
-                validos = false;
-            } else if (node instanceof JFXComboBox && ((JFXComboBox) node).getSelectionModel().getSelectedIndex() < 0) {
-                if (validos) {
-                    invalidos += ((JFXComboBox) node).getPromptText();
-                } else {
-                    invalidos += ", " + ((JFXComboBox) node).getPromptText();
+            } else if (node instanceof JFXDatePicker) {
+                if(((JFXDatePicker) node).getValue() == null){
+                    if (validos) {
+                        invalidos += ((JFXDatePicker) node).getPromptText();
+                    } else {
+                        invalidos += ", " + ((JFXDatePicker) node).getPromptText();
+                    }
+                    validos = false;
                 }
-                validos = false;
             }
         }
         if (validos) {
@@ -232,7 +232,7 @@ public class MantenimientosProyectosController  extends Controller implements In
         }
     }
     
-    private void nuevoProyecto(){
+    private void nuevoProyecto() {
         unbindProyecto();
         proyecto = new ProyectoDto();
         bindProyecto(true);
@@ -240,22 +240,12 @@ public class MantenimientosProyectosController  extends Controller implements In
         cbEstado.getSelectionModel().clearSelection();
     }
 
-    private void fillList() { // llenar la lista campos con los text field   
-        ProyetoList.add(txtCorreoTecnico);
-        ProyetoList.add(txtCorreoUsuario);
-        ProyetoList.add(txtCorreoPatro);
-        ProyetoList.add(txtLidTec);
-        ProyetoList.add(txtNomUsuario);
-        ProyetoList.add(txtNombre);
-        ProyetoList.add(txtNomUsuario);
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
     
-    public class ListCel extends ListCell<ProyectoDto> {
+    /*public class ListCel extends ListCell<ProyectoDto> {
 
         HBox hbox = new HBox();
         Label label = new Label();
@@ -276,6 +266,7 @@ public class MantenimientosProyectosController  extends Controller implements In
             });
 
             btnSeguimiento.setOnAction(m -> {
+                AppContext.getInstance().set("ProyectoDto", this.getItem());
                 FlowController.getInstance().goView("Seguimiento", "Center", "");
                 FlowController.getInstance().initialize();
             });
@@ -309,7 +300,7 @@ public class MantenimientosProyectosController  extends Controller implements In
 
         }
     }
-    
+*/
     @FXML
     private void btnResumSegui_OnAction(ActionEvent event) {
     }

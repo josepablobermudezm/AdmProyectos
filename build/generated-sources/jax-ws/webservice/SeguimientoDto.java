@@ -3,9 +3,7 @@ package webservice;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -18,11 +16,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="avance" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="fecha" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="proyecto" type="{http://webService/}proyectoDto" minOccurs="0"/>
- *         &lt;element name="version" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="segAvance" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         &lt;element name="segFecha" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="segId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="segProyecto" type="{http://webService/}proyectoDto" minOccurs="0"/>
+ *         &lt;element name="segVersion" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,139 +31,138 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "seguimientoDto", propOrder = {
-    "avance",
-    "fecha",
-    "id",
-    "proyecto",
-    "version"
+    "segAvance",
+    "segFecha",
+    "segId",
+    "segProyecto",
+    "segVersion"
 })
 public class SeguimientoDto {
 
-    protected Integer avance;
-    @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar fecha;
-    protected Long id;
-    protected ProyectoDto proyecto;
-    protected Long version;
+    protected Double segAvance;
+    protected String segFecha;
+    protected Long segId;
+    protected ProyectoDto segProyecto;
+    protected Long segVersion;
 
     /**
-     * Obtiene el valor de la propiedad avance.
+     * Obtiene el valor de la propiedad segAvance.
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link Double }
      *     
      */
-    public Integer getAvance() {
-        return avance;
+    public Double getSegAvance() {
+        return segAvance;
     }
 
     /**
-     * Define el valor de la propiedad avance.
+     * Define el valor de la propiedad segAvance.
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link Double }
      *     
      */
-    public void setAvance(Integer value) {
-        this.avance = value;
+    public void setSegAvance(Double value) {
+        this.segAvance = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad fecha.
+     * Obtiene el valor de la propiedad segFecha.
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
-    public XMLGregorianCalendar getFecha() {
-        return fecha;
+    public String getSegFecha() {
+        return segFecha;
     }
 
     /**
-     * Define el valor de la propiedad fecha.
+     * Define el valor de la propiedad segFecha.
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
-    public void setFecha(XMLGregorianCalendar value) {
-        this.fecha = value;
+    public void setSegFecha(String value) {
+        this.segFecha = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Obtiene el valor de la propiedad segId.
      * 
      * @return
      *     possible object is
      *     {@link Long }
      *     
      */
-    public Long getId() {
-        return id;
+    public Long getSegId() {
+        return segId;
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Define el valor de la propiedad segId.
      * 
      * @param value
      *     allowed object is
      *     {@link Long }
      *     
      */
-    public void setId(Long value) {
-        this.id = value;
+    public void setSegId(Long value) {
+        this.segId = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad proyecto.
+     * Obtiene el valor de la propiedad segProyecto.
      * 
      * @return
      *     possible object is
      *     {@link ProyectoDto }
      *     
      */
-    public ProyectoDto getProyecto() {
-        return proyecto;
+    public ProyectoDto getSegProyecto() {
+        return segProyecto;
     }
 
     /**
-     * Define el valor de la propiedad proyecto.
+     * Define el valor de la propiedad segProyecto.
      * 
      * @param value
      *     allowed object is
      *     {@link ProyectoDto }
      *     
      */
-    public void setProyecto(ProyectoDto value) {
-        this.proyecto = value;
+    public void setSegProyecto(ProyectoDto value) {
+        this.segProyecto = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad version.
+     * Obtiene el valor de la propiedad segVersion.
      * 
      * @return
      *     possible object is
      *     {@link Long }
      *     
      */
-    public Long getVersion() {
-        return version;
+    public Long getSegVersion() {
+        return segVersion;
     }
 
     /**
-     * Define el valor de la propiedad version.
+     * Define el valor de la propiedad segVersion.
      * 
      * @param value
      *     allowed object is
      *     {@link Long }
      *     
      */
-    public void setVersion(Long value) {
-        this.version = value;
+    public void setSegVersion(Long value) {
+        this.segVersion = value;
     }
 
 }

@@ -4,6 +4,18 @@
 <xsd:import namespace="http://webService/" schemaLocation="http://localhost:8989/WebServiceTarea2.1/WS?xsd=1"/>
 </xsd:schema>
 </types>
+<message name="getUsuario">
+<part name="parameters" element="tns:getUsuario"/>
+</message>
+<message name="getUsuarioResponse">
+<part name="parameters" element="tns:getUsuarioResponse"/>
+</message>
+<message name="eliminarProyecto">
+<part name="parameters" element="tns:eliminarProyecto"/>
+</message>
+<message name="eliminarProyectoResponse">
+<part name="parameters" element="tns:eliminarProyectoResponse"/>
+</message>
 <message name="getAdministrador">
 <part name="parameters" element="tns:getAdministrador"/>
 </message>
@@ -15,30 +27,6 @@
 </message>
 <message name="guardarProyectoResponse">
 <part name="parameters" element="tns:guardarProyectoResponse"/>
-</message>
-<message name="eliminarProyecto">
-<part name="parameters" element="tns:eliminarProyecto"/>
-</message>
-<message name="eliminarProyectoResponse">
-<part name="parameters" element="tns:eliminarProyectoResponse"/>
-</message>
-<message name="guardarActividad">
-<part name="parameters" element="tns:guardarActividad"/>
-</message>
-<message name="guardarActividadResponse">
-<part name="parameters" element="tns:guardarActividadResponse"/>
-</message>
-<message name="getProyecto">
-<part name="parameters" element="tns:getProyecto"/>
-</message>
-<message name="getProyectoResponse">
-<part name="parameters" element="tns:getProyectoResponse"/>
-</message>
-<message name="getUsuario">
-<part name="parameters" element="tns:getUsuario"/>
-</message>
-<message name="getUsuarioResponse">
-<part name="parameters" element="tns:getUsuarioResponse"/>
 </message>
 <message name="guardarSeguimiento">
 <part name="parameters" element="tns:guardarSeguimiento"/>
@@ -58,11 +46,17 @@
 <message name="eliminarActividadResponse">
 <part name="parameters" element="tns:eliminarActividadResponse"/>
 </message>
-<message name="guardarAdministrador">
-<part name="parameters" element="tns:guardarAdministrador"/>
+<message name="getProyecto">
+<part name="parameters" element="tns:getProyecto"/>
 </message>
-<message name="guardarAdministradorResponse">
-<part name="parameters" element="tns:guardarAdministradorResponse"/>
+<message name="getProyectoResponse">
+<part name="parameters" element="tns:getProyectoResponse"/>
+</message>
+<message name="guardarActividad">
+<part name="parameters" element="tns:guardarActividad"/>
+</message>
+<message name="guardarActividadResponse">
+<part name="parameters" element="tns:guardarActividadResponse"/>
 </message>
 <message name="eliminarAdministrador">
 <part name="parameters" element="tns:eliminarAdministrador"/>
@@ -70,7 +64,21 @@
 <message name="eliminarAdministradorResponse">
 <part name="parameters" element="tns:eliminarAdministradorResponse"/>
 </message>
+<message name="guardarAdministrador">
+<part name="parameters" element="tns:guardarAdministrador"/>
+</message>
+<message name="guardarAdministradorResponse">
+<part name="parameters" element="tns:guardarAdministradorResponse"/>
+</message>
 <portType name="WS">
+<operation name="getUsuario">
+<input wsam:Action="http://webService/WS/getUsuarioRequest" message="tns:getUsuario"/>
+<output wsam:Action="http://webService/WS/getUsuarioResponse" message="tns:getUsuarioResponse"/>
+</operation>
+<operation name="eliminarProyecto">
+<input wsam:Action="http://webService/WS/eliminarProyectoRequest" message="tns:eliminarProyecto"/>
+<output wsam:Action="http://webService/WS/eliminarProyectoResponse" message="tns:eliminarProyectoResponse"/>
+</operation>
 <operation name="getAdministrador">
 <input wsam:Action="http://webService/WS/getAdministradorRequest" message="tns:getAdministrador"/>
 <output wsam:Action="http://webService/WS/getAdministradorResponse" message="tns:getAdministradorResponse"/>
@@ -78,22 +86,6 @@
 <operation name="guardarProyecto">
 <input wsam:Action="http://webService/WS/guardarProyectoRequest" message="tns:guardarProyecto"/>
 <output wsam:Action="http://webService/WS/guardarProyectoResponse" message="tns:guardarProyectoResponse"/>
-</operation>
-<operation name="eliminarProyecto">
-<input wsam:Action="http://webService/WS/eliminarProyectoRequest" message="tns:eliminarProyecto"/>
-<output wsam:Action="http://webService/WS/eliminarProyectoResponse" message="tns:eliminarProyectoResponse"/>
-</operation>
-<operation name="guardarActividad">
-<input wsam:Action="http://webService/WS/guardarActividadRequest" message="tns:guardarActividad"/>
-<output wsam:Action="http://webService/WS/guardarActividadResponse" message="tns:guardarActividadResponse"/>
-</operation>
-<operation name="getProyecto">
-<input wsam:Action="http://webService/WS/getProyectoRequest" message="tns:getProyecto"/>
-<output wsam:Action="http://webService/WS/getProyectoResponse" message="tns:getProyectoResponse"/>
-</operation>
-<operation name="getUsuario">
-<input wsam:Action="http://webService/WS/getUsuarioRequest" message="tns:getUsuario"/>
-<output wsam:Action="http://webService/WS/getUsuarioResponse" message="tns:getUsuarioResponse"/>
 </operation>
 <operation name="guardarSeguimiento">
 <input wsam:Action="http://webService/WS/guardarSeguimientoRequest" message="tns:guardarSeguimiento"/>
@@ -107,27 +99,26 @@
 <input wsam:Action="http://webService/WS/eliminarActividadRequest" message="tns:eliminarActividad"/>
 <output wsam:Action="http://webService/WS/eliminarActividadResponse" message="tns:eliminarActividadResponse"/>
 </operation>
-<operation name="guardarAdministrador">
-<input wsam:Action="http://webService/WS/guardarAdministradorRequest" message="tns:guardarAdministrador"/>
-<output wsam:Action="http://webService/WS/guardarAdministradorResponse" message="tns:guardarAdministradorResponse"/>
+<operation name="getProyecto">
+<input wsam:Action="http://webService/WS/getProyectoRequest" message="tns:getProyecto"/>
+<output wsam:Action="http://webService/WS/getProyectoResponse" message="tns:getProyectoResponse"/>
+</operation>
+<operation name="guardarActividad">
+<input wsam:Action="http://webService/WS/guardarActividadRequest" message="tns:guardarActividad"/>
+<output wsam:Action="http://webService/WS/guardarActividadResponse" message="tns:guardarActividadResponse"/>
 </operation>
 <operation name="eliminarAdministrador">
 <input wsam:Action="http://webService/WS/eliminarAdministradorRequest" message="tns:eliminarAdministrador"/>
 <output wsam:Action="http://webService/WS/eliminarAdministradorResponse" message="tns:eliminarAdministradorResponse"/>
 </operation>
+<operation name="guardarAdministrador">
+<input wsam:Action="http://webService/WS/guardarAdministradorRequest" message="tns:guardarAdministrador"/>
+<output wsam:Action="http://webService/WS/guardarAdministradorResponse" message="tns:guardarAdministradorResponse"/>
+</operation>
 </portType>
 <binding name="WSPortBinding" type="tns:WS">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="getAdministrador">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="guardarProyecto">
+<operation name="getUsuario">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -145,7 +136,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="guardarActividad">
+<operation name="getAdministrador">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -154,16 +145,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="getProyecto">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="getUsuario">
+<operation name="guardarProyecto">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -199,7 +181,16 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="guardarAdministrador">
+<operation name="getProyecto">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="guardarActividad">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -209,6 +200,15 @@
 </output>
 </operation>
 <operation name="eliminarAdministrador">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="guardarAdministrador">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

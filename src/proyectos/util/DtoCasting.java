@@ -7,6 +7,8 @@ package proyectos.util;
 
 import proyectos.model.AdministradorDto;
 import proyectos.model.ProyectoDto;
+import proyectos.model.ActividadesDto;
+import proyectos.model.SeguimientoDto;
 
 /**
  *
@@ -35,12 +37,36 @@ public class DtoCasting {
     
     
     
+    public webservice.ActividadesDto castAct(ActividadesDto actividadDto){
+        webservice.ActividadesDto actividad = new webservice.ActividadesDto();
+        
+        actividad.setDescripcion(actividadDto.getActDescripcion());
+        actividad.setEncargado(actividadDto.getActEncargado());
+        actividad.setEstado(actividadDto.getActEstado().equals("Planificada")?"P":
+        actividadDto.getActEstado().equals("En Curso")?"C":actividadDto.getActEstado().equals("Postergada")?"M":"F");
+        actividad.setFinalEsperado(actividadDto.getActFechafinal());
+        actividad.setFinalReal(actividadDto.getActFechafinreal());
+        actividad.setInicioEsperado(actividadDto.getActFechainicio());
+        actividad.setInicioReal(actividadDto.getActFechainireal());
+        actividad.setId(actividadDto.getActId());
+        actividad.setOrden(actividadDto.getActNumorden());
+        actividad.setProyecto(new DtoCasting().castPro((ProyectoDto)AppContext.getInstance().get("ProyectoDto")));
+        actividad.setVersion((actividadDto.getActVersion()!=null)?actividadDto.getActVersion()+1:1);
+        return actividad;
+    }
     
     
     
     
-    
-    
+    public webservice.SeguimientoDto castSeg(SeguimientoDto seg){
+        webservice.SeguimientoDto seguimiento = new webservice.SeguimientoDto();
+        seguimiento.setSegAvance(seg.getSegAvance());
+        seguimiento.setSegFecha(seg.getSegFecha());
+        seguimiento.setSegProyecto(new DtoCasting().castPro((ProyectoDto)AppContext.getInstance().get("ProyectoDto")));
+        seguimiento.setSegVersion((seg.getSegVersion()!=null)?seg.getSegVersion()+1:1);
+        seguimiento.setSegId(seg.getSegId());
+        return seguimiento;
+    }
     
     
     
