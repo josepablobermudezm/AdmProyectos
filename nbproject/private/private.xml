@@ -2,17 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/ANNIA%20GONZALEZ/Documents/GitHub/AdmProyectos/src/proyectos/Proyectos.java</file>
-            <file>file:/C:/Users/ANNIA%20GONZALEZ/Documents/GitHub/AdmProyectos/src/proyectos/service/AdministradorService.java</file>
-            <file>file:/C:/Users/ANNIA%20GONZALEZ/Documents/GitHub/AdmProyectos/src/proyectos/util/FlowController.java</file>
-            <file>file:/C:/Users/ANNIA%20GONZALEZ/Documents/GitHub/AdmProyectos/src/proyectos/view/newCascadeStyleSheet.css</file>
-            <file>file:/C:/Users/ANNIA%20GONZALEZ/Documents/GitHub/AdmProyectos/src/proyectos/model/ProyectoDto.java</file>
-            <file>file:/C:/Users/ANNIA%20GONZALEZ/Documents/GitHub/AdmProyectos/src/proyectos/service/ProyectoService.java</file>
-            <file>file:/C:/Users/ANNIA%20GONZALEZ/Documents/GitHub/AdmProyectos/src/proyectos/controller/LogInController.java</file>
-            <file>file:/C:/Users/ANNIA%20GONZALEZ/Documents/GitHub/AdmProyectos/src/proyectos/view/LogIn.fxml</file>
-            <file>file:/C:/Users/ANNIA%20GONZALEZ/Documents/GitHub/AdmProyectos/src/proyectos/controller/MantenimientoProyectosController.java</file>
-            <file>file:/C:/Users/ANNIA%20GONZALEZ/Documents/GitHub/AdmProyectos/src/proyectos/util/DtoCasting.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
