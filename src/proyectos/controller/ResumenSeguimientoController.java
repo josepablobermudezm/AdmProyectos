@@ -7,6 +7,7 @@ package proyectos.controller;
 
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
+import com.jfoenix.controls.JFXSlider;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -31,6 +32,10 @@ public class ResumenSeguimientoController extends Controller  {
 
     @FXML
     private Label Titulo;
+    @FXML
+    private JFXSlider slider;
+    @FXML
+    private TableView<?> table;
 
     
     

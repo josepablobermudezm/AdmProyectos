@@ -202,6 +202,19 @@
     -fx-text-fill: WHITE;
     -jfx-rippler-fill: GREEN;
 }
+
+.jfx-slider .colored-track{
+    -fx-background-color: #0d54d1;
+}
+
+.jfx-slider .thumb{
+    -fx-background-color: #0d54d1;
+}
+
+.jfx-slider .animated-thumb{
+    -fx-background-color: #0d54d1;
+}
+
 /*
 .jfx-list-cell:selected{
     -fx-background-color: #3b8c91;
