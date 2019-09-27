@@ -12,11 +12,14 @@
             <VBox prefHeight="800.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <JFXButton fx:id="btnAdministradores" onAction="#Administradores" prefHeight="162.0" prefWidth="200.0" style="-fx-cursor: Hand;" text="Administradores" />
-                  <JFXButton fx:id="btnProyectos" onAction="#btnProyectos" prefHeight="162.0" prefWidth="200.0" style="-fx-cursor: Hand;" text="Proyectos">
+                  <JFXButton fx:id="btnAdministradores" onAction="#Administradores" prefHeight="150.0" prefWidth="200.0" style="-fx-cursor: Hand;" text="Administradores" />
+                  <JFXButton fx:id="btnProyectos" onAction="#btnProyectos" prefHeight="150.0" prefWidth="200.0" style="-fx-cursor: Hand;" text="Proyectos">
                   </JFXButton>
-                  <JFXButton fx:id="btnResumen" onAction="#btnResumen" prefHeight="162.0" prefWidth="200.0" style="-fx-cursor: Hand;" text="Resumen Seguimientos" />
-                  <JFXButton fx:id="btnExit" onAction="#exit" prefHeight="162.0" prefWidth="200.0" style="-fx-cursor: Hand;" text="Salir">
+                  <JFXButton fx:id="btnResumen" onAction="#btnResumen" prefHeight="150.0" prefWidth="200.0" style="-fx-cursor: Hand;" text="Resumen de Seguimientos">
+                  </JFXButton>
+                  <JFXButton fx:id="btnActividades" onAction="#btnActividades" prefHeight="150.0" prefWidth="200.0" style="-fx-cursor: Hand;" text="Actividades Proyectos">
+                  </JFXButton>
+                  <JFXButton fx:id="btnExit" onAction="#exit" prefHeight="150.0" prefWidth="200.0" style="-fx-cursor: Hand;" text="Exit">
                   </JFXButton>
                </children>
             </VBox>
