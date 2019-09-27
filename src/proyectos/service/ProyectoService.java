@@ -5,7 +5,9 @@
  */
 package proyectos.service;
 
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.net.ConnectException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import proyectos.model.AdministradorDto;
@@ -63,6 +65,21 @@ public class ProyectoService {
                 return new Respuesta(Boolean.FALSE, resp.getMensaje(), resp.getMensajeInterno());
             }
             return new Respuesta(Boolean.TRUE, "", "", "ProyectoDto", new ProyectoDto((webservice.ProyectoDto) resp.getResultado()));
+        } catch (Exception ex) {
+            Logger.getLogger(AdministradorService.class.getName()).log(Level.SEVERE, "Error al obtener el Usuario.", ex);
+            if (ex.getCause() != null && ex.getCause().getClass() == ConnectException.class) {
+                return new Respuesta(false, "Error al obtener el Usuario. No se pudo hacer conexión con el servidor: ", "getAdministrador " + ex.getMessage());
+            }
+            return new Respuesta(false, "Error al obtener el Usuario.", "getAdministradorUsuClave " + ex.getMessage());
+        }
+    }
+    public Respuesta getProyectos() {
+        try {
+            //webservice.Respuesta resp = webService.getProyectos();
+            /*if (!resp.isEstado()) {
+                return new Respuesta(Boolean.FALSE, resp.getMensaje(), resp.getMensajeInterno());
+            }*/
+            return new Respuesta(Boolean.TRUE, "", "", "Proyectos", webService.getProyectos());
         } catch (Exception ex) {
             Logger.getLogger(AdministradorService.class.getName()).log(Level.SEVERE, "Error al obtener el Usuario.", ex);
             if (ex.getCause() != null && ex.getCause().getClass() == ConnectException.class) {
