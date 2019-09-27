@@ -35,8 +35,6 @@ public class DrawerContentController extends Controller {
     private JFXButton btnProyectos;
     @FXML
     private JFXButton btnResumen;
-    @FXML
-    private JFXButton btnActividades;
 
     @FXML
     private void exit(ActionEvent event) {
@@ -114,16 +112,9 @@ public class DrawerContentController extends Controller {
 
     @FXML
     private void btnResumen(ActionEvent event) {
-        //FlowController.getInstance().goView("ResumenSeguimiento");
+        
         FlowController.getInstance().initialize();
         FlowController.getInstance().goView("ResumenSeguimiento", "Center", "");
-    }
-    
-    @FXML
-    private void btnActividades(ActionEvent event) {
-       //FlowController.getInstance().goView("ActividadesProyecto");
-       FlowController.getInstance().initialize();
-       FlowController.getInstance().goView("ActividadesProyecto", "Center", "");
     }
 
 }
