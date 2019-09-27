@@ -6,6 +6,7 @@
 package proyectos.service;
 
 import java.net.ConnectException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import proyectos.model.AdministradorDto;
@@ -21,6 +22,7 @@ import proyectos.util.Respuesta;
  * @author Jose Pablo Bermudez
  */
 public class ProyectoService {
+
     WS_Service service = new webservice.WS_Service();
     WS webService = service.getWSPort();
     DtoCasting dtoCast = new DtoCasting();
@@ -69,6 +71,23 @@ public class ProyectoService {
                 return new Respuesta(false, "Error al obtener el Usuario. No se pudo hacer conexión con el servidor: ", "getAdministrador " + ex.getMessage());
             }
             return new Respuesta(false, "Error al obtener el Usuario.", "getAdministradorUsuClave " + ex.getMessage());
+        }
+    }
+
+    public Respuesta getProyectosFiltrados(String nombre, String patrocinador, String estado, Long id) {
+        try {
+            webservice.Respuesta res = webService.getProyectosporFiltro(nombre, patrocinador, estado, id);
+            if (!res.isEstado()) {
+                return new Respuesta(false, res.getMensaje(), res.getMensajeInterno());
+            }
+            return new Respuesta(true, "", "", "Proyectos", res.getResultado());
+        } catch (Exception ex) {
+
+            if (ex.getCause() != null && ex.getCause().getClass() == ConnectException.class) {
+                return new Respuesta(false, "Error al obtener el Usuario. No se pudo hacer conexión con el servidor: ", "getProyectosporFiltro " + ex.getMessage());
+            }
+            return new Respuesta(false, "Error al obtener el Usuario.", "getAProyectoPorFiltros " + ex.getMessage());
+
         }
     }
 }

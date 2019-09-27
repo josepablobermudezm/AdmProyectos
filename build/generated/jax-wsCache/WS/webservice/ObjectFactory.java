@@ -24,6 +24,7 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _GetProyectosporFiltroResponse_QNAME = new QName("http://webService/", "getProyectosporFiltroResponse");
     private final static QName _EliminarProyecto_QNAME = new QName("http://webService/", "eliminarProyecto");
     private final static QName _EliminarAdministradorResponse_QNAME = new QName("http://webService/", "eliminarAdministradorResponse");
     private final static QName _GetAdministrador_QNAME = new QName("http://webService/", "getAdministrador");
@@ -47,6 +48,7 @@ public class ObjectFactory {
     private final static QName _EliminarSeguimiento_QNAME = new QName("http://webService/", "eliminarSeguimiento");
     private final static QName _SeguimientoDto_QNAME = new QName("http://webService/", "SeguimientoDto");
     private final static QName _EliminarAdministrador_QNAME = new QName("http://webService/", "eliminarAdministrador");
+    private final static QName _GetProyectosporFiltro_QNAME = new QName("http://webService/", "getProyectosporFiltro");
     private final static QName _GuardarAdministrador_QNAME = new QName("http://webService/", "guardarAdministrador");
     private final static QName _EliminarActividadResponse_QNAME = new QName("http://webService/", "eliminarActividadResponse");
     private final static QName _GuardarAdministradorResponse_QNAME = new QName("http://webService/", "guardarAdministradorResponse");
@@ -81,6 +83,14 @@ public class ObjectFactory {
      */
     public EliminarAdministrador createEliminarAdministrador() {
         return new EliminarAdministrador();
+    }
+
+    /**
+     * Create an instance of {@link GetProyectosporFiltro }
+     * 
+     */
+    public GetProyectosporFiltro createGetProyectosporFiltro() {
+        return new GetProyectosporFiltro();
     }
 
     /**
@@ -244,6 +254,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetProyectosporFiltroResponse }
+     * 
+     */
+    public GetProyectosporFiltroResponse createGetProyectosporFiltroResponse() {
+        return new GetProyectosporFiltroResponse();
+    }
+
+    /**
      * Create an instance of {@link GetAdministrador }
      * 
      */
@@ -273,6 +291,15 @@ public class ObjectFactory {
      */
     public EliminarAdministradorResponse createEliminarAdministradorResponse() {
         return new EliminarAdministradorResponse();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetProyectosporFiltroResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService/", name = "getProyectosporFiltroResponse")
+    public JAXBElement<GetProyectosporFiltroResponse> createGetProyectosporFiltroResponse(GetProyectosporFiltroResponse value) {
+        return new JAXBElement<GetProyectosporFiltroResponse>(_GetProyectosporFiltroResponse_QNAME, GetProyectosporFiltroResponse.class, null, value);
     }
 
     /**
@@ -480,6 +507,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://webService/", name = "eliminarAdministrador")
     public JAXBElement<EliminarAdministrador> createEliminarAdministrador(EliminarAdministrador value) {
         return new JAXBElement<EliminarAdministrador>(_EliminarAdministrador_QNAME, EliminarAdministrador.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetProyectosporFiltro }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService/", name = "getProyectosporFiltro")
+    public JAXBElement<GetProyectosporFiltro> createGetProyectosporFiltro(GetProyectosporFiltro value) {
+        return new JAXBElement<GetProyectosporFiltro>(_GetProyectosporFiltro_QNAME, GetProyectosporFiltro.class, null, value);
     }
 
     /**

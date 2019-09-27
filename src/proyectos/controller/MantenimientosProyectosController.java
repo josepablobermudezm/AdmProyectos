@@ -101,6 +101,8 @@ public class MantenimientosProyectosController  extends Controller implements In
     private List<JFXTextField> ProyetoList = new ArrayList();
     @FXML
     private JFXButton Actividades;
+    @FXML
+    private JFXButton btn_buscarPro001;
     /**
      * Initializes the controller class.
      */
@@ -317,5 +319,18 @@ public class MantenimientosProyectosController  extends Controller implements In
         FlowController.getInstance().initialize();
         FlowController.getInstance().goView("ActividadesProyecto", "Center", "");
         
+    }
+
+    @FXML
+    private void AbrirBuscador(ActionEvent event) {
+        FlowController.getInstance().goViewInWindowModal("BuscarProyecto", this.stage, Boolean.FALSE);//queda esprando finalisacion
+        try{
+            proyecto=(ProyectoDto) AppContext.getInstance().get("ProyectoTemporal");
+            unbindProyecto();
+            bindProyecto(Boolean.TRUE); //corregir
+            AppContext.getInstance().delete("ProyectoTemporal"); //elimina el objeto buscando, para poder reutilizar el espacio
+        } catch(Exception ex){
+            
+        }
     }
 }

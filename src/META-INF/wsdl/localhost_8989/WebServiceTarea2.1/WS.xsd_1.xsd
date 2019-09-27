@@ -34,6 +34,10 @@
 
 <xs:element name="getProyectoResponse" type="tns:getProyectoResponse"/>
 
+<xs:element name="getProyectosporFiltro" type="tns:getProyectosporFiltro"/>
+
+<xs:element name="getProyectosporFiltroResponse" type="tns:getProyectosporFiltroResponse"/>
+
 <xs:element name="getUsuario" type="tns:getUsuario"/>
 
 <xs:element name="getUsuarioResponse" type="tns:getUsuarioResponse"/>
@@ -84,7 +88,6 @@
 
 <xs:complexType name="proyectoDto">
 <xs:sequence>
-<xs:element name="actividades" type="tns:actividadesDto" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
 <xs:element name="proAdmin" type="tns:administradorDto" minOccurs="0"/>
 <xs:element name="proCorreopatrocinador" type="xs:string" minOccurs="0"/>
 <xs:element name="proCorreotecnico" type="xs:string" minOccurs="0"/>
@@ -100,23 +103,6 @@
 <xs:element name="proNombre" type="xs:string" minOccurs="0"/>
 <xs:element name="proPatrocinador" type="xs:string" minOccurs="0"/>
 <xs:element name="proVersion" type="xs:long" minOccurs="0"/>
-<xs:element name="seguimientos" type="tns:seguimientoDto" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="actividadesDto">
-<xs:sequence>
-<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
-<xs:element name="encargado" type="xs:string" minOccurs="0"/>
-<xs:element name="estado" type="xs:string" minOccurs="0"/>
-<xs:element name="finalEsperado" type="xs:string" minOccurs="0"/>
-<xs:element name="finalReal" type="xs:string" minOccurs="0"/>
-<xs:element name="id" type="xs:long" minOccurs="0"/>
-<xs:element name="inicioEsperado" type="xs:string" minOccurs="0"/>
-<xs:element name="inicioReal" type="xs:string" minOccurs="0"/>
-<xs:element name="orden" type="xs:int" minOccurs="0"/>
-<xs:element name="proyecto" type="tns:proyectoDto" minOccurs="0"/>
-<xs:element name="version" type="xs:long" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -132,17 +118,6 @@
 <xs:element name="adnSapellido" type="xs:string" minOccurs="0"/>
 <xs:element name="adnUsuario" type="xs:string" minOccurs="0"/>
 <xs:element name="adnVersion" type="xs:long" minOccurs="0"/>
-<xs:element name="proyectos" type="tns:proyectoDto" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="seguimientoDto">
-<xs:sequence>
-<xs:element name="segAvance" type="xs:double" minOccurs="0"/>
-<xs:element name="segFecha" type="xs:string" minOccurs="0"/>
-<xs:element name="segId" type="xs:long" minOccurs="0"/>
-<xs:element name="segProyecto" type="tns:proyectoDto" minOccurs="0"/>
-<xs:element name="segVersion" type="xs:long" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -183,6 +158,21 @@
 </xs:complexType>
 
 <xs:complexType name="eliminarProyectoResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:respuesta" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getProyectosporFiltro">
+<xs:sequence>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="patrocinador" type="xs:string" minOccurs="0"/>
+<xs:element name="estado" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getProyectosporFiltroResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:respuesta" minOccurs="0"/>
 </xs:sequence>
@@ -231,6 +221,14 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="seguimientoDto">
+<xs:sequence>
+<xs:element name="segAvance" type="xs:int" minOccurs="0"/>
+<xs:element name="segFecha" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="segProyecto" type="tns:proyectoDto" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="guardarSeguimientoResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:respuesta" minOccurs="0"/>
@@ -240,6 +238,22 @@
 <xs:complexType name="guardarActividad">
 <xs:sequence>
 <xs:element name="actividad" type="tns:actividadesDto" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="actividadesDto">
+<xs:sequence>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="encargado" type="xs:string" minOccurs="0"/>
+<xs:element name="estado" type="xs:string" minOccurs="0"/>
+<xs:element name="finalEsperado" type="xs:string" minOccurs="0"/>
+<xs:element name="finalReal" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:long" minOccurs="0"/>
+<xs:element name="inicioEsperado" type="xs:string" minOccurs="0"/>
+<xs:element name="inicioReal" type="xs:string" minOccurs="0"/>
+<xs:element name="orden" type="xs:int" minOccurs="0"/>
+<xs:element name="proyecto" type="tns:proyectoDto" minOccurs="0"/>
+<xs:element name="version" type="xs:long" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
