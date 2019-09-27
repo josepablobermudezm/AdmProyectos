@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -28,8 +27,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -87,11 +84,12 @@ public class MantenimientosProyectosController  extends Controller implements In
     @FXML
     private JFXDatePicker DateFinalReal;
     @FXML
-    private JFXComboBox<String> Estado;
+    private JFXComboBox<String> cbEstado;
     @FXML
     private JFXButton btnGuarda_Modificar;
     @FXML
     private JFXButton btnResumSegui;
+    @FXML
     private JFXListView<ProyectoDto> Proyectos;
     private AdministradorDto admin;
     ProyectoDto proyecto;
@@ -103,16 +101,6 @@ public class MantenimientosProyectosController  extends Controller implements In
     private List<JFXTextField> ProyetoList = new ArrayList();
     @FXML
     private JFXButton Actividades;
-    @FXML
-    private TableView<ProyectoDto> table;
-    @FXML
-    private TableColumn<ProyectoDto, String> CL_NOMBRE_PRO;
-    @FXML
-    private TableColumn<ProyectoDto, String> CL_PATROCINADOR_PRO;
-    private ProyectoService proyectoService;
-    private Mensaje ms;
-    private Respuesta resp;
-     private ObservableList items;
     /**
      * Initializes the controller class.
      */
@@ -126,28 +114,20 @@ public class MantenimientosProyectosController  extends Controller implements In
         }
         estados.addAll("Planificado", "En Curso", "Suspendido", "Finalizado");
         admin = ((AdministradorDto) AppContext.getInstance().get("AdministradorDto"));
-        Estado.setItems(estados);
-        proyectoService = new ProyectoService();
+        proyectos = FXCollections.observableArrayList(admin.getProyectos());
+        //proyectos.add(proyecto);
+        cbEstado.setItems(estados);
+/*
+        Proyectos.setItems(proyectos);
+        Proyectos.setCellFactory(param -> {
+            return new ListCel();
+        });*/
         proyecto = new ProyectoDto();
-        /*ms = new Mensaje();
-        resp = proyectoService.getProyectos();*/
         nuevoProyecto();
         indicarRequeridos();
-        Estado.getSelectionModel().selectFirst();
+        cbEstado.getSelectionModel().selectFirst();
         
-        CL_NOMBRE_PRO.setCellValueFactory(value -> new SimpleStringProperty(value.getValue().getProNombre()));
-        CL_PATROCINADOR_PRO.setCellValueFactory(value -> new SimpleStringProperty(value.getValue().getProPatrocinador()));
         
-        proyectoService = new ProyectoService();
-        ms = new Mensaje();
-        List<ProyectoDto> proyectosList = new ArrayList<>();
-        resp = proyectoService.getProyectos();
-        for (Object pro : (List<Object>) resp.getResultado("Proyectos")) {
-            proyectosList.add(new ProyectoDto((webservice.ProyectoDto) pro));
-        }
-        
-        items = FXCollections.observableArrayList(proyectosList);
-        table.setItems(items);
         
     }
     
@@ -196,7 +176,7 @@ public class MantenimientosProyectosController  extends Controller implements In
         txtCorreoPatro.textProperty().bindBidirectional(proyecto.proPatrocinador);
         txtNomUsuario.textProperty().bindBidirectional(proyecto.proLiderusuario);
         txtNombre.textProperty().bindBidirectional(proyecto.proNombre);
-        Estado.valueProperty().bindBidirectional(proyecto.proEstado);
+        cbEstado.valueProperty().bindBidirectional(proyecto.proEstado);
         DateFinalReal.valueProperty().bindBidirectional(proyecto.proFechafinreal);
         dpFinalEsperado.valueProperty().bindBidirectional(proyecto.proFechafinal);
         dpInicioEsperado.valueProperty().bindBidirectional(proyecto.proFechainicio);
@@ -211,7 +191,7 @@ public class MantenimientosProyectosController  extends Controller implements In
         txtNomPatro.textProperty().unbindBidirectional(proyecto.proPatrocinador);
         txtNomUsuario.textProperty().unbindBidirectional(proyecto.proLiderusuario);
         txtNombre.textProperty().unbindBidirectional(proyecto.proNombre);
-        Estado.valueProperty().unbindBidirectional(proyecto.proEstado);
+        cbEstado.valueProperty().unbindBidirectional(proyecto.proEstado);
         dpFinalEsperado.valueProperty().unbindBidirectional(proyecto.proFechafinal);
         DateFinalReal.valueProperty().unbindBidirectional(proyecto.proFechafinreal);
         dpInicioEsperado.valueProperty().unbindBidirectional(proyecto.proFechainicio);
@@ -220,7 +200,7 @@ public class MantenimientosProyectosController  extends Controller implements In
     
      public void indicarRequeridos() {
         requeridos.clear();
-        requeridos.addAll(Arrays.asList(txtNombre, txtCorreoPatro, txtCorreoTecnico, txtCorreoUsuario, txtLidTec, txtNomPatro, txtNomUsuario, DateInicioReal, DateFinalReal, Estado,dpFinalEsperado,dpInicioEsperado));
+        requeridos.addAll(Arrays.asList(txtNombre, txtCorreoPatro, txtCorreoTecnico, txtCorreoUsuario, txtLidTec, txtNomPatro, txtNomUsuario, DateInicioReal, DateFinalReal, cbEstado,dpFinalEsperado,dpInicioEsperado));
     }
     
     public String validarRequeridos() {
@@ -259,7 +239,7 @@ public class MantenimientosProyectosController  extends Controller implements In
         proyecto = new ProyectoDto();
         bindProyecto(true);
         txtId.clear();
-        Estado.getSelectionModel().clearSelection();
+        cbEstado.getSelectionModel().clearSelection();
     }
 
     @Override
