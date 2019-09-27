@@ -5,6 +5,7 @@
  */
 package proyectos.service;
 
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.net.ConnectException;
 import java.util.List;
 import java.util.logging.Level;
@@ -34,11 +35,11 @@ public class ProyectoService {
             if (!resp.isEstado()) {
                 return new Respuesta(false, resp.getMensaje(), resp.getMensajeInterno(), "", "");
             }
-            AdministradorDto administrador = (AdministradorDto) AppContext.getInstance().get("AdministradorDto");
+            /*AdministradorDto administrador = (AdministradorDto) AppContext.getInstance().get("AdministradorDto");
             AdministradorService adminisService = new AdministradorService();
             Respuesta respuesta = adminisService.getAdministrador(administrador.getAdnId());
             administrador = (AdministradorDto) respuesta.getResultado("AdministradorDto");
-            AppContext.getInstance().set("AdministradorDto", administrador);
+            AppContext.getInstance().set("AdministradorDto", administrador);*/
             return new Respuesta(true, resp.getMensaje(), resp.getMensajeInterno(), "Proyecto", new ProyectoDto((webservice.ProyectoDto) resp.getResultado()));
         } catch (Exception ex) {
             return new Respuesta(false, "Error guardando el Usuario.", "guardarProyecto " + ex.getMessage());
@@ -73,6 +74,7 @@ public class ProyectoService {
             return new Respuesta(false, "Error al obtener el Usuario.", "getAdministradorUsuClave " + ex.getMessage());
         }
     }
+<<<<<<< HEAD
 
     public Respuesta getProyectosFiltrados(String nombre, String patrocinador, String estado, Long id) {
         try {
@@ -88,6 +90,21 @@ public class ProyectoService {
             }
             return new Respuesta(false, "Error al obtener el Usuario.", "getAProyectoPorFiltros " + ex.getMessage());
 
+=======
+    public Respuesta getProyectos() {
+        try {
+            //webservice.Respuesta resp = webService.getProyectos();
+            /*if (!resp.isEstado()) {
+                return new Respuesta(Boolean.FALSE, resp.getMensaje(), resp.getMensajeInterno());
+            }*/
+            return new Respuesta(Boolean.TRUE, "", "", "Proyectos", webService.getProyectos());
+        } catch (Exception ex) {
+            Logger.getLogger(AdministradorService.class.getName()).log(Level.SEVERE, "Error al obtener el Usuario.", ex);
+            if (ex.getCause() != null && ex.getCause().getClass() == ConnectException.class) {
+                return new Respuesta(false, "Error al obtener el Usuario. No se pudo hacer conexión con el servidor: ", "getAdministrador " + ex.getMessage());
+            }
+            return new Respuesta(false, "Error al obtener el Usuario.", "getAdministradorUsuClave " + ex.getMessage());
+>>>>>>> 45664b290822d5e56ccbcc1b66c6a7af0951e4d9
         }
     }
 }

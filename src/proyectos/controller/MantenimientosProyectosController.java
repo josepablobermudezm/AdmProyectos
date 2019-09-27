@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,14 +28,18 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import proyectos.model.AdministradorDto;
 import proyectos.model.ProyectoDto;
+import proyectos.service.AdministradorService;
 import proyectos.service.ProyectoService;
 import proyectos.util.AppContext;
 import proyectos.util.FlowController;
@@ -84,12 +89,11 @@ public class MantenimientosProyectosController  extends Controller implements In
     @FXML
     private JFXDatePicker DateFinalReal;
     @FXML
-    private JFXComboBox<String> cbEstado;
+    private JFXComboBox<String> Estado;
     @FXML
     private JFXButton btnGuarda_Modificar;
     @FXML
     private JFXButton btnResumSegui;
-    @FXML
     private JFXListView<ProyectoDto> Proyectos;
     private AdministradorDto admin;
     ProyectoDto proyecto;
@@ -102,7 +106,21 @@ public class MantenimientosProyectosController  extends Controller implements In
     @FXML
     private JFXButton Actividades;
     @FXML
+<<<<<<< HEAD
     private JFXButton btn_buscarPro001;
+=======
+    private TableView<ProyectoDto> table;
+    @FXML
+    private TableColumn<ProyectoDto, String> CL_NOMBRE_PRO;
+    @FXML
+    private TableColumn<ProyectoDto, String> CL_PATROCINADOR_PRO;
+    private ProyectoService proyectoService;
+    private Mensaje ms;
+    private Respuesta resp;
+     private ObservableList items;
+    @FXML
+    private JFXButton btnEditar;
+>>>>>>> 45664b290822d5e56ccbcc1b66c6a7af0951e4d9
     /**
      * Initializes the controller class.
      */
@@ -116,35 +134,47 @@ public class MantenimientosProyectosController  extends Controller implements In
         }
         estados.addAll("Planificado", "En Curso", "Suspendido", "Finalizado");
         admin = ((AdministradorDto) AppContext.getInstance().get("AdministradorDto"));
-        proyectos = FXCollections.observableArrayList(admin.getProyectos());
-        //proyectos.add(proyecto);
-        cbEstado.setItems(estados);
-/*
-        Proyectos.setItems(proyectos);
-        Proyectos.setCellFactory(param -> {
-            return new ListCel();
-        });*/
+        Estado.setItems(estados);
+        proyectoService = new ProyectoService();
         proyecto = new ProyectoDto();
+        /*ms = new Mensaje();
+        resp = proyectoService.getProyectos();*/
         nuevoProyecto();
         indicarRequeridos();
-        cbEstado.getSelectionModel().selectFirst();
+        Estado.getSelectionModel().selectFirst();
         
+        CL_NOMBRE_PRO.setCellValueFactory(value -> new SimpleStringProperty(value.getValue().getProNombre()));
+        CL_PATROCINADOR_PRO.setCellValueFactory(value -> new SimpleStringProperty(value.getValue().getProPatrocinador()));
         
-        
+        proyectoService = new ProyectoService();
+        ms = new Mensaje();
+        List<ProyectoDto> proyectosList = new ArrayList<>();
+        resp = proyectoService.getProyectos();
+        for (Object pro : (List<Object>) resp.getResultado("Proyectos")) {
+            
+            proyectosList.add(new ProyectoDto((webservice.ProyectoDto) pro));
+        }
+        items = FXCollections.observableArrayList(proyectosList);
+        table.setItems(items);
     }
     
     
     @FXML
      private void guardar(ActionEvent event) {
-        String req = validarRequeridos();
+        String req = validarValores();
         if (req.isEmpty()) {
             if (new Mensaje().showConfirmation("Guardar Proyecto", this.getStage(), "¿Deseas guardar el proyecto?")) {
                 Respuesta respuesta = new ProyectoService().guardarProyecto(proyecto);
                 if (respuesta.getEstado()) {
-                    Proyectos.getItems().clear();
                     AdministradorDto admin = (AdministradorDto) AppContext.getInstance().get("AdministradorDto");
-                    proyectos = FXCollections.observableArrayList(admin.getProyectos());
-                    Proyectos.setItems(proyectos);
+                    List<ProyectoDto> proyectosList = new ArrayList<>();
+                    resp = proyectoService.getProyectos();
+                    for (Object pro : (List<Object>) resp.getResultado("Proyectos")) {
+                        proyectosList.add(new ProyectoDto((webservice.ProyectoDto) pro));
+                    }
+                    table.getItems().clear();
+                    items = FXCollections.observableArrayList(proyectosList);
+                    table.setItems(items);
                     nuevoProyecto();
                     new Mensaje().showModal(Alert.AlertType.INFORMATION, "Información de Registro", this.getStage(), respuesta.getMensaje());
                 } else {
@@ -156,6 +186,33 @@ public class MantenimientosProyectosController  extends Controller implements In
         }
     }
 
+     @FXML
+    private void editar(ActionEvent event) {
+        
+        String requisitos = validarValores();
+        if (requisitos.isEmpty()) {
+            if (new Mensaje().showConfirmation("Guardar Proyecto", this.getStage(), "¿Deseas guardar el proyecto?")) {
+                Respuesta respuesta = new ProyectoService().guardarProyecto(proyecto);
+                if (respuesta.getEstado()) {
+                    proyecto = (ProyectoDto)respuesta.getResultado("ProyectoDto");
+                    List<ProyectoDto> proyectosList = new ArrayList<>();
+                    resp = proyectoService.getProyectos();
+                    for (Object pro : (List<Object>) resp.getResultado("Proyectos")) {
+                        proyectosList.add(new ProyectoDto((webservice.ProyectoDto) pro));
+                    }
+                    table.getItems().clear();
+                    items = FXCollections.observableArrayList(proyectosList);
+                    table.setItems(items);
+                    clear();
+                    new Mensaje().showModal(Alert.AlertType.INFORMATION, "Información de Registro", this.getStage(), respuesta.getMensaje());
+                } else {
+                    new Mensaje().showModal(Alert.AlertType.ERROR, "Información de Registro", this.getStage(), "Error de guardado: " + respuesta.getMensaje());
+                }
+            }
+        } else {
+            new Mensaje().showModal(Alert.AlertType.WARNING, "Registrar Administrador", this.getStage(), requisitos);
+        }
+    }
     
     public void Formato(){
         txtCorreoTecnico.setTextFormatter(Formato.getInstance().maxLengthFormat(50));
@@ -175,10 +232,10 @@ public class MantenimientosProyectosController  extends Controller implements In
         txtCorreoTecnico.textProperty().bindBidirectional(proyecto.proCorreotecnico);
         txtCorreoUsuario.textProperty().bindBidirectional(proyecto.proCorreousuario);
         txtLidTec.textProperty().bindBidirectional(proyecto.proLidertecnico);
-        txtCorreoPatro.textProperty().bindBidirectional(proyecto.proPatrocinador);
         txtNomUsuario.textProperty().bindBidirectional(proyecto.proLiderusuario);
+        txtNomPatro.textProperty().bindBidirectional(proyecto.proPatrocinador);
         txtNombre.textProperty().bindBidirectional(proyecto.proNombre);
-        cbEstado.valueProperty().bindBidirectional(proyecto.proEstado);
+        Estado.valueProperty().bindBidirectional(proyecto.proEstado);
         DateFinalReal.valueProperty().bindBidirectional(proyecto.proFechafinreal);
         dpFinalEsperado.valueProperty().bindBidirectional(proyecto.proFechafinal);
         dpInicioEsperado.valueProperty().bindBidirectional(proyecto.proFechainicio);
@@ -193,7 +250,7 @@ public class MantenimientosProyectosController  extends Controller implements In
         txtNomPatro.textProperty().unbindBidirectional(proyecto.proPatrocinador);
         txtNomUsuario.textProperty().unbindBidirectional(proyecto.proLiderusuario);
         txtNombre.textProperty().unbindBidirectional(proyecto.proNombre);
-        cbEstado.valueProperty().unbindBidirectional(proyecto.proEstado);
+        Estado.valueProperty().unbindBidirectional(proyecto.proEstado);
         dpFinalEsperado.valueProperty().unbindBidirectional(proyecto.proFechafinal);
         DateFinalReal.valueProperty().unbindBidirectional(proyecto.proFechafinreal);
         dpInicioEsperado.valueProperty().unbindBidirectional(proyecto.proFechainicio);
@@ -202,10 +259,10 @@ public class MantenimientosProyectosController  extends Controller implements In
     
      public void indicarRequeridos() {
         requeridos.clear();
-        requeridos.addAll(Arrays.asList(txtNombre, txtCorreoPatro, txtCorreoTecnico, txtCorreoUsuario, txtLidTec, txtNomPatro, txtNomUsuario, DateInicioReal, DateFinalReal, cbEstado,dpFinalEsperado,dpInicioEsperado));
+        requeridos.addAll(Arrays.asList(txtNombre, txtCorreoPatro, txtCorreoTecnico, txtCorreoUsuario, txtLidTec, txtNomPatro, txtNomUsuario, DateInicioReal, DateFinalReal, Estado,dpFinalEsperado,dpInicioEsperado));
     }
     
-    public String validarRequeridos() {
+    public String validarValores() {
         Boolean validos = true;
         String invalidos = "";
         for (Node node : requeridos) {
@@ -241,7 +298,7 @@ public class MantenimientosProyectosController  extends Controller implements In
         proyecto = new ProyectoDto();
         bindProyecto(true);
         txtId.clear();
-        cbEstado.getSelectionModel().clearSelection();
+        Estado.getSelectionModel().clearSelection();
     }
 
     @Override
@@ -249,62 +306,6 @@ public class MantenimientosProyectosController  extends Controller implements In
 
     }
     
-    /*public class ListCel extends ListCell<ProyectoDto> {
-
-        HBox hbox = new HBox();
-        Label label = new Label();
-        Pane pane = new Pane();
-        JFXButton btnActividad = new JFXButton("Actividades");
-        JFXButton btnSeguimiento = new JFXButton("Seguimientos");
-
-        public ListCel() {
-            setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
-            setAlignment(Pos.CENTER);
-            btnActividad.getStyleClass().add("JFXButton");
-            btnSeguimiento.getStyleClass().add("JFXButton");
-
-            btnActividad.setOnAction(m -> {
-                AppContext.getInstance().set("ProyectoDto", this.getItem());
-                FlowController.getInstance().goView("Actividades", "Center", "");
-                FlowController.getInstance().initialize();
-            });
-
-            btnSeguimiento.setOnAction(m -> {
-                AppContext.getInstance().set("ProyectoDto", this.getItem());
-                FlowController.getInstance().goView("Seguimiento", "Center", "");
-                FlowController.getInstance().initialize();
-            });
-
-            label.getStyleClass().add("Label2");
-
-            label.setOnMouseReleased(event -> {
-                unbindProyecto();
-                proyecto = this.getItem();
-                bindProyecto(false);
-            });
-
-            label.setCursor(Cursor.HAND);
-
-            hbox.setSpacing(10);
-            hbox.getChildren().addAll(label, pane, btnActividad, btnSeguimiento);
-            HBox.setHgrow(pane, Priority.ALWAYS);
-        }
-
-        @Override
-        public void updateItem(ProyectoDto pro, boolean empty) {
-            super.updateItem(pro, empty);
-
-            setText(null);
-            setGraphic(null);
-
-            if (pro != null && !empty) {
-                label.setText(pro.getProNombre());
-                setGraphic(hbox);
-            }
-
-        }
-    }
-*/
     @FXML
     private void btnResumSegui_OnAction(ActionEvent event) {
         
@@ -322,6 +323,7 @@ public class MantenimientosProyectosController  extends Controller implements In
     }
 
     @FXML
+<<<<<<< HEAD
     private void AbrirBuscador(ActionEvent event) {
         FlowController.getInstance().goViewInWindowModal("BuscarProyecto", this.stage, Boolean.FALSE);//queda esprando finalisacion
         try{
@@ -333,4 +335,51 @@ public class MantenimientosProyectosController  extends Controller implements In
             
         }
     }
+=======
+    private void datosProyecto(MouseEvent event) {
+        proyecto = table.getSelectionModel().getSelectedItem();
+        bindProyecto(Boolean.TRUE);
+        txtId.textProperty().bind(proyecto.proId);
+        
+    }
+    void clear(){
+    
+        txtNombre.clear();
+        txtCorreoPatro.clear();
+        txtCorreoTecnico.clear();
+        txtCorreoUsuario.clear();
+        txtLidTec.clear();
+        txtNomPatro.clear();
+        txtNomUsuario.clear();
+        DateFinalReal.setValue(null);
+        DateInicioReal.setValue(null);
+        dpFinalEsperado.setValue(null);
+        dpInicioEsperado.setValue(null);
+        Estado.getSelectionModel().clearSelection();
+        
+    }
+    
+    void datos(){
+        if (table.getSelectionModel() != null) {
+            if (table.getSelectionModel().getSelectedItem() != null) {
+                proyecto = table.getSelectionModel().getSelectedItem();
+                /*txtId.setText(proyecto.getProId().toString());
+                txtNombre.setText(proyecto.getProNombre());
+                txtCorreoPatro.setText(proyecto.getProCorreopatrocinador());
+                txtCorreoTecnico.setText(proyecto.getProCorreotecnico());
+                txtCorreoUsuario.setText(proyecto.getProCorreousuario());
+                txtLidTec.setText(proyecto.getProLidertecnico());
+                txtNomPatro.setText(proyecto.getProPatrocinador());
+                txtNomUsuario.setText(proyecto.getProLiderusuario());
+                DateFinalReal.setValue(proyecto.getProFechafinreal());
+                DateInicioReal.setValue(proyecto.getProFechainireal());
+                dpFinalEsperado.setValue(proyecto.getProFechafinal());
+                dpInicioEsperado.setValue(proyecto.getProFechainicio());
+                Estado.setValue(proyecto.getProEstado());*/
+            }
+        }
+    }
+
+    
+>>>>>>> 45664b290822d5e56ccbcc1b66c6a7af0951e4d9
 }
