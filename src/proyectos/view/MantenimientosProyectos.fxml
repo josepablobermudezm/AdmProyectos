@@ -3,9 +3,10 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
-<?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -88,14 +89,15 @@
                               </HBox>
                            </children>
                         </VBox>
-                        <JFXComboBox fx:id="cbEstado" focusColor="WHITE" labelFloat="true" prefHeight="34.0" prefWidth="360.0" promptText="Estado" styleClass="Combo" unFocusColor="WHITE">
+                        <JFXComboBox fx:id="Estado" focusColor="WHITE" labelFloat="true" prefHeight="34.0" prefWidth="360.0" promptText="Estado" styleClass="Combo" unFocusColor="WHITE">
                            <VBox.margin>
                               <Insets right="370.0" />
                            </VBox.margin>
                         </JFXComboBox>
                         <HBox alignment="CENTER" prefHeight="56.0" prefWidth="736.0" spacing="30.0">
                            <children>
-                              <JFXButton fx:id="btnGuarda_Modificar" onAction="#guardar" prefHeight="37.0" prefWidth="222.0" style="-fx-cursor: hand;" styleClass="JFXButton" text="Guardar/Editar" />
+                              <JFXButton fx:id="btnGuarda_Modificar" onAction="#guardar" prefHeight="37.0" prefWidth="222.0" style="-fx-cursor: hand;" styleClass="JFXButton" text="Guardar" />
+                              <JFXButton fx:id="btnEditar" onAction="#editar" prefHeight="37.0" prefWidth="222.0" style="-fx-cursor: hand;" styleClass="JFXButton" text="Editar" />
                               <JFXButton fx:id="btnResumSegui" onAction="#btnResumSegui_OnAction" prefHeight="37.0" prefWidth="242.0" style="-fx-cursor: hand;" styleClass="JFXButton" text="Resumen Seguimientos" />
                               <JFXButton fx:id="Actividades" onAction="#Actividades" prefHeight="31.0" prefWidth="193.0" style="-fx-cursor: hand;" text="Actividades" />
                            </children>
@@ -116,7 +118,12 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <JFXListView fx:id="Proyectos" prefHeight="801.0" prefWidth="284.0" />
+            <TableView fx:id="table" onMouseReleased="#datosProyecto" prefHeight="846.0" prefWidth="284.0">
+              <columns>
+                <TableColumn fx:id="CL_NOMBRE_PRO" prefWidth="142.0" text="Nombre" />
+                <TableColumn fx:id="CL_PATROCINADOR_PRO" prefWidth="142.0" text="Patrocinador" />
+              </columns>
+            </TableView>
          </children>
       </VBox>
    </center>
